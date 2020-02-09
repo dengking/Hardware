@@ -1,0 +1,5 @@
+nav:
+    - Processor(computing): Processor(computing).md
+    - Word: Word
+    - Memory-access: Memory-access
+    - Instruction-set-architectures: Instruction-set-architectures
