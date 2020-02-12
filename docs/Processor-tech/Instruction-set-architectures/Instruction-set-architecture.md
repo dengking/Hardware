@@ -51,3 +51,23 @@ The binary compatibility that they provide make ISAs one of the most fundamental
 - particular [addressing modes](https://en.wikipedia.org/wiki/Addressing_mode) (used to interpret the operands)
 
 More complex operations are built up by combining these simple instructions, which are executed sequentially, or as otherwise directed by [control flow](https://en.wikipedia.org/wiki/Control_flow) instructions.
+
+
+
+### [Instruction types](https://en.wikipedia.org/wiki/Instruction_set_architecture#Instruction_types)
+
+
+
+#### [Data handling and memory operations](https://en.wikipedia.org/wiki/Instruction_set_architecture#Data_handling_and_memory_operations)
+
+
+
+#### [Arithmetic and logic](https://en.wikipedia.org/wiki/Arithmetic_logic_unit) operations
+
+
+
+#### [Control flow](https://en.wikipedia.org/wiki/Control_flow) operations
+
+
+
+#### [Coprocessor](https://en.wikipedia.org/wiki/Coprocessor) instructions
