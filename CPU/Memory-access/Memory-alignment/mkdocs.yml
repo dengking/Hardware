@@ -1,0 +1,4 @@
+nav:
+    - Introduction: index.md
+    - Data-alignment-Straighten-up-and-fly-right: Data-alignment-Straighten-up-and-fly-right.md
+    - Memory-alignment: Memory-alignment.md
