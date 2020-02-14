@@ -1,9 +1,10 @@
 nav:
+    - Processor(computing): Processor(computing).md
     - Central-processing-unit: Central-processing-unit.md
-    - Instruction-cycle: Instruction-cycle.md
-    - Word: Word
-    - Assembly-language: Assembly-language
     - Instruction-set-architectures: Instruction-set-architectures
     - Components: Components
     - Memory-access: Memory-access
+    - Instruction-cycle: Instruction-cycle.md
+    - Word: Word
+    - Assembly-language: Assembly-language
     - Intel: Intel

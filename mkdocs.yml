@@ -1,0 +1,66 @@
+edit_uri: ''
+extra_css:
+- css/extra.css
+google_analytics:
+- UA-27795084-5
+- mkdocs.org
+markdown_extensions:
+- toc:
+    baselevel: 1
+    permalink: '#'
+    separator: _
+- admonition
+- def_list
+- mdx_gh_links:
+    repo: mkdocs
+    user: mkdocs
+nav:
+- Introduction: index.md
+- "Book-\u8BA1\u7B97\u673A\u7EC4\u6210\u539F\u7406-\u79D1\u5B66\u51FA\u7248\u793E":
+  - "\u7B2C\u4E00\u7AE0-\u8BA1\u7B97\u673A\u7CFB\u7EDF\u6982\u8FF0":
+    - "1.2-\u8BA1\u7B97\u673A\u7684\u53D1\u5C55\u7B80\u53F2": "Book-\u8BA1\u7B97\u673A\
+        \u7EC4\u6210\u539F\u7406-\u79D1\u5B66\u51FA\u7248\u793E/\u7B2C\u4E00\u7AE0\
+        -\u8BA1\u7B97\u673A\u7CFB\u7EDF\u6982\u8FF0/1.2-\u8BA1\u7B97\u673A\u7684\u53D1\
+        \u5C55\u7B80\u53F2.md"
+    - "1.3-\u8BA1\u7B97\u673A\u786C\u4EF6": "Book-\u8BA1\u7B97\u673A\u7EC4\u6210\u539F\
+        \u7406-\u79D1\u5B66\u51FA\u7248\u793E/\u7B2C\u4E00\u7AE0-\u8BA1\u7B97\u673A\
+        \u7CFB\u7EDF\u6982\u8FF0/1.3-\u8BA1\u7B97\u673A\u786C\u4EF6.md"
+- CPU:
+  - Processor(computing): CPU/Processor(computing).md
+  - Central-processing-unit: CPU/Central-processing-unit.md
+  - Instruction-set-architectures:
+    - Instruction-set-architecture: CPU/Instruction-set-architectures/Instruction-set-architecture.md
+    - Machine-code: CPU/Instruction-set-architectures/Machine-code.md
+  - Components:
+    - Control-unit: CPU/Components/Control-unit.md
+    - Processor-register:
+      - Program-counter: CPU/Components/Register/Program-counter.md
+      - Stack-register: CPU/Components/Register/Stack-register.md
+  - Memory-access:
+    - Introduction: CPU/Memory-access/index.md
+    - "Memory\u2013access": "CPU/Memory-access/Memory\u2013access.md"
+    - Memory-alignment:
+      - Introduction: CPU/Memory-access/Memory-alignment/index.md
+      - Data-alignment-Straighten-up-and-fly-right: CPU/Memory-access/Memory-alignment/Data-alignment-Straighten-up-and-fly-right.md
+      - Memory-alignment: CPU/Memory-access/Memory-alignment/Memory-alignment.md
+  - Instruction-cycle: CPU/Instruction-cycle.md
+  - Word:
+    - Word(computer-architecture): CPU/Word/Word(computer-architecture).md
+  - Assembly-language:
+    - Assembly-language: CPU/Assembly-language/Assembly-language.md
+  - Intel:
+    - Introduction: CPU/Intel/index.md
+    - X86-instruction:
+      - Introduction: CPU/Intel/X86-instruction/index.md
+      - INT: CPU/Intel/X86-instruction/INT.md
+      - Book-X86-assembly:
+        - Introduction: CPU/Intel/X86-instruction/Book-X86-assembly/index.md
+plugins:
+- search
+repo_url: https://github.com/dengking/
+site_author: DengKing
+site_description: Project documentation with Markdown.
+site_name: null
+site_url: https://dengking.github.io/
+theme:
+  name: material

@@ -1,2 +1,3 @@
 nav:
+    - Control-unit: Control-unit.md
     - Processor-register: Register

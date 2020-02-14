@@ -1,0 +1,36 @@
+site_name:  
+site_url: https://dengking.github.io/
+site_description: Project documentation with Markdown.
+site_author: DengKing
+
+
+repo_url: https://github.com/dengking/
+
+edit_uri: ""
+
+
+
+theme:
+    name: material
+
+        
+nav: None
+
+markdown_extensions:
+    - toc:
+        baselevel: 1
+        permalink: '#'
+        separator: _
+    - admonition
+    - def_list
+    - mdx_gh_links:
+        user: mkdocs
+        repo: mkdocs
+        
+extra_css:
+    - css/extra.css
+
+google_analytics: ['UA-27795084-5', 'mkdocs.org']
+       
+plugins:
+    - search
