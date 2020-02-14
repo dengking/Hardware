@@ -4,16 +4,6 @@ extra_css:
 google_analytics:
 - UA-27795084-5
 - mkdocs.org
-markdown_extensions:
-- toc:
-    baselevel: 1
-    permalink: '#'
-    separator: _
-- admonition
-- def_list
-- mdx_gh_links:
-    repo: mkdocs
-    user: mkdocs
 nav:
 - Introduction: index.md
 - "Book-\u8BA1\u7B97\u673A\u7EC4\u6210\u539F\u7406-\u79D1\u5B66\u51FA\u7248\u793E":
@@ -57,10 +47,10 @@ nav:
         - Introduction: CPU/Intel/X86-instruction/Book-X86-assembly/index.md
 plugins:
 - search
-repo_url: https://github.com/dengking/
+repo_url: https://github.com/dengking/Hardware
 site_author: DengKing
 site_description: Project documentation with Markdown.
-site_name: null
-site_url: https://dengking.github.io/
+site_name: Hardware
+site_url: https://dengking.github.io/Hardware
 theme:
   name: material
