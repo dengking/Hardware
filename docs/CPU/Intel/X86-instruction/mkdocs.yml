@@ -1,4 +1,9 @@
 nav:
     - Introduction: index.md
+    - x86: x86.md
+    - x86-64: x86-64.md
+    - x86-instruction-listings: x86-instruction-listings.md
+    - x86-memory-segmentation: x86-memory-segmentation.md
     - INT: INT.md
+    - BOUND: BOUND.md
     - Book-X86-assembly: Book-X86-assembly
