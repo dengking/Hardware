@@ -4,4 +4,8 @@
 
 
 
-## [felixcloutier x86 and amd64 instruction reference](https://www.felixcloutier.com/x86/)
+## felixcloutier [x86 and amd64 instruction reference](https://www.felixcloutier.com/x86/)
+
+
+
+## penguin [80x86 instruction set](http://www.penguin.cz/~literakl/intel/intel.html)

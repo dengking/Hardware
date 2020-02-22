@@ -1,3 +1,4 @@
 nav:
     - Introduction: index.md
+    - Register: Register
     - X86-instruction: X86-instruction
