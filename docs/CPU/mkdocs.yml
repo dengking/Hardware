@@ -1,10 +1,19 @@
 nav:
+#################### 首先说明processor的概念，CPU就是一种processor##########
     - Processor(computing): Processor(computing).md
+#################### CPU####################    
     - Central-processing-unit: Central-processing-unit.md
+#################### 指令集的概念####################    
     - Instruction-set-architectures: Instruction-set-architectures
+#################### CPU的组成###################    
     - Components: Components
+#################### CPU的memory access####################    
     - Memory-access: Memory-access
+#################### 指令周期的概念####################    
     - Instruction-cycle: Instruction-cycle.md
+#################### 字的概念####################    
     - Word: Word
+################### 汇编语言####################    
     - Assembly-language: Assembly-language
+#################### Intel是我们最最常见CPU####################    
     - Intel: Intel

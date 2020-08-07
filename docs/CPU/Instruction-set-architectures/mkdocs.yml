@@ -1,3 +1,4 @@
 nav:
     - Instruction-set-architecture: Instruction-set-architecture.md
     - Machine-code: Machine-code.md
+    - Comparison-of-instruction-set-architectures: Comparison-of-instruction-set-architectures.md
