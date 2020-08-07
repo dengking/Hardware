@@ -20,10 +20,20 @@ The earliest example of a load–store architecture was the [CDC 6600](https://e
 
 - [Load–store unit](https://en.wikipedia.org/wiki/Load–store_unit)
 - [Register memory architecture](https://en.wikipedia.org/wiki/Register_memory_architecture)
+
+
+
+## chortle [Load and Store](https://chortle.ccsu.edu/AssemblyTutorial/Chapter-15/ass15_2.html)
+
+The operands for all arithmetic and logic operations are contained in registers. To operate on data in main memory, the data is first copied into registers. A **load** operation copies data from main memory into a register. A **store** operation copies data from a register into main memory .
+
+When a word (4 bytes) is loaded or stored the memory address must be a multiple of four. This is called an alignment restriction. Addresses that are a multiple of four are called **word aligned**. This restriction makes the hardware simpler and faster.
+
+The `lw` instruction loads a word into a register from memory. The `sw` instruction stores a word from a register into memory. Each instruction specifies a register and a memory address (details in a few pages).
+
 ## reading list
 
-https://chortle.ccsu.edu/AssemblyTutorial/Chapter-15/ass15_2.html
+
 
 https://azeria-labs.com/memory-instructions-load-and-store-part-4/
 
-https://en.wikipedia.org/wiki/Load%E2%80%93store_architecture
