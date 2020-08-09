@@ -13,6 +13,8 @@ nav:
     - Instruction-cycle: Instruction-cycle.md
 #################### 字的概念####################    
     - Word: Word
+#################### 大小端的概念####################        
+    - Endianess: Endianess
 ################### 汇编语言####################    
     - Assembly-language: Assembly-language
 #################### Intel是我们最最常见CPU####################    
