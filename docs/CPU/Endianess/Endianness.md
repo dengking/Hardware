@@ -1,22 +1,30 @@
-# [Endianness](https://en.wikipedia.org/wiki/Endianness)
+# Endianness
+
+“endianness”决定了value的memory representation。关于memory representation，参见工程computer-arithmetic的`Bitwise-operation\Binary-representation`章节的内容。关于value和memory representation，在cppreference [Object#Object representation and value representation](https://en.cppreference.com/w/cpp/language/object#Object_representation_and_value_representation)中进行了详细说明，其中的object representation就是前面所说的memory representation。
+
+## wikipedia [Endianness](https://en.wikipedia.org/wiki/Endianness)
 
 In [computing](https://en.wikipedia.org/wiki/Computing), **endianness** refers to the order of [bytes](https://en.wikipedia.org/wiki/Byte) (or sometimes [bits](https://en.wikipedia.org/wiki/Bit)) within a [binary](https://en.wikipedia.org/wiki/Binary_number) representation of a number. It can also be used more generally to refer to the internal ordering of any representation, such as the digits in a [numeral system](https://en.wikipedia.org/wiki/Numeral_system) or the sections of a [date](https://en.wikipedia.org/wiki/Date_format_by_country).
 
-In its most common usage, endianness indicates the ordering of bytes within a multi-byte number. A **little-endian** ordering places the least significant byte first and the most significant byte last, while a **big-endian** ordering does the opposite. For example, consider the [unsigned](https://en.wikipedia.org/wiki/Signedness) [hexadecimal](https://en.wikipedia.org/wiki/Hexadecimal) number `0x1234`, which requires at least two bytes to represent. In a little-endian ordering, the bytes would be arranged `[ 0x34, 0x12 ]`, while in a big-endian ordering they would be `[ 0x12, 0x34 ]`.
+> NOTE: 我们主要关注的是byte ordering
 
+In its most common usage, endianness indicates the ordering of bytes within a multi-byte number. A **little-endian** ordering places the **least significant byte** first and the most significant byte last, while a **big-endian** ordering does the opposite. For example, consider the [unsigned](https://en.wikipedia.org/wiki/Signedness) [hexadecimal](https://en.wikipedia.org/wiki/Hexadecimal) number `0x1234`, which requires at least two bytes to represent. In a little-endian ordering, the bytes would be arranged `[ 0x34, 0x12 ]`, while in a big-endian ordering they would be `[ 0x12, 0x34 ]`.
 
+> NOTE : `0x1234`表的是一个数，即我们前面所述的value，我们的认读顺序是从右往左，即`0X34`是最低有效位，而`0X12`是最高有效位；`[ 0x34, 0x12 ]`表示的是一个数组，顺序是从左往右，即它的第0个元素是`0X34`，第1个元素是`0x12`；显然， numeric [literals](https://en.wikipedia.org/wiki/Literal_(computer_programming)) 是big-endian，我们会把最高有效位放到低地址
 
 Historically, various methods of endianness have been used in computing, including exotic forms such as middle-endianness. Today, however, **little-endianness** is the dominant ordering for **processor architectures** ([x86](https://en.wikipedia.org/wiki/X86), most [ARM](https://en.wikipedia.org/wiki/ARM_architecture) implementations) and their associated [memory](https://en.wikipedia.org/wiki/Computer_memory). Conversely, **big-endianness** is the dominant ordering in **networking protocols** ([IP](https://en.wikipedia.org/wiki/Internet_Protocol), [TCP](https://en.wikipedia.org/wiki/Transmission_Control_Protocol), [UDP](https://en.wikipedia.org/wiki/User_Datagram_Protocol)). [File formats](https://en.wikipedia.org/wiki/File_format) can use either ordering; in fact, some formats use a mixture of both.
 
-In [left-to-right scripts](https://en.wikipedia.org/wiki/Writing_system#Directionality), numbers are written with their digits in big-endian order. Similarly, programming languages use big-endian digit ordering for numeric [literals](https://en.wikipedia.org/wiki/Literal_(computer_programming)) as well as big-endian language (“left” and “right”) for [bit-shift](https://en.wikipedia.org/wiki/Bitwise_operation#Logical_shift) operations, regardless of the endianness of the target architecture. This can lead to confusion when interacting with little-endian numbers.
+> NOTE: 两者各有优势，在后面会对它们进行详细的分析说明；这就造成了它们在不同领域的application。
 
-***SUMMARY*** : `0x1234`表的是一个数，我们的认读顺序是从右往左，即`0X34`是最低有效位，而`0X12`是最高有效位；`[ 0x34, 0x12 ]`表示的是一个数组，顺序是从左往右，即它的第0个元素是`0X34`，第1个元素是`0x12`；显然， numeric [literals](https://en.wikipedia.org/wiki/Literal_(computer_programming)) 是big-endian，我们会把最高有效位放到低地址
+In [left-to-right scripts](https://en.wikipedia.org/wiki/Writing_system#Directionality), numbers are written with their digits in big-endian order. Similarly, programming languages use **big-endian digit ordering** for numeric [literals](https://en.wikipedia.org/wiki/Literal_(computer_programming)) as well as **big-endian language** (“left” and “right”) for [bit-shift](https://en.wikipedia.org/wiki/Bitwise_operation#Logical_shift) operations, regardless of the endianness of the target architecture. This can lead to confusion when interacting with little-endian numbers.
 
-***SUMMARY*** : 
+> NOTE: 上面这段话非常重要，它解答了我关于bitwise-operation和endian之间关系的疑惑，它总结得非常好。关于bitwise-operation，参见工程computer-arithmetic的`Bitwise-operation\Bitwise-operation.md`。
+>
+> 对于programmer而言的话，应该这样思考：我们在进行program的时候，我们是使用的value，我们是不需要关注这个value的memory representation的，也就是在大多数情况下，我们是不需要关注endian，正如前面所言““endianness”决定了value的memory representation。”，这个过程对于programmer而言是透明的，它往往是由compiler来实现的。
 
 
 
-## Illustration
+### Illustration
 
 The following two descriptive illustrations assume a normal reading and writing convention of *left to right*, where the left-most digit or character therefore corresponds to data being sent or received first, or being in the *lowest address in memory,* and the right-most digit or character corresponds to the data being sent or received last, or being in the *highest* address in memory.
 
@@ -30,14 +38,14 @@ The illustrations to the right, where *a* is a memory address, show big-endian a
 
 ![little-endian](https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Little-Endian.svg/200px-Little-Endian.svg.png)
 
-## Hardware
+### Hardware
 
 [Computer memory](https://en.wikipedia.org/wiki/Computer_memory) consists of a sequence of storage cells. Each cell is identified in hardware and software by its [memory address](https://en.wikipedia.org/wiki/Memory_address). If the total number of storage cells in memory is *n*, then addresses are enumerated from *0* to *n-1*. Computer programs often use data structures of [fields](https://en.wikipedia.org/wiki/Field_(computer_science)) that may consist of more data than is stored in one memory cell. For the purpose of this article where its use as an operand of an instruction is relevant, a field consists of a consecutive sequence of [bytes](https://en.wikipedia.org/wiki/Byte) and represents a simple data value. In addition to that, it has to be of numeric type in some [positional number system](https://en.wikipedia.org/wiki/Positional_notation) (mostly base-10 or base-2 – or base-256 in case of 8-bit bytes).[[5\]](https://en.wikipedia.org/wiki/Endianness#cite_note-5) In such a number system the "value" of a digit is determined not only by its value as a single digit, but also by the position it holds in the complete number, its "significance". These positions can be mapped to memory mainly in two ways:[[6\]](https://en.wikipedia.org/wiki/Endianness#cite_note-TanenbaumAustin2012-6)
 
 - increasing numeric significance with increasing memory addresses (or increasing time), known as *little-endian*, and
 - decreasing numeric significance with increasing memory addresses (or increasing time), known as *big-endian*[[7\]](https://en.wikipedia.org/wiki/Endianness#cite_note-7)
 
-### Current architectures
+#### Current architectures
 
 The Intel [x86](https://en.wikipedia.org/wiki/X86) and also AMD64 / [x86-64](https://en.wikipedia.org/wiki/X86-64) series of processors use the **little-endian** format. Recently designed instruction set architectures typically follow this convention, either allowing only little-endian mode (e.g. [RISC-V](https://en.wikipedia.org/wiki/RISC-V), [Nios II](https://en.wikipedia.org/wiki/Nios_II), [Andes Technology](https://en.wikipedia.org/wiki/Andes_Technology)NDS32, or [Qualcomm Hexagon](https://en.wikipedia.org/wiki/Qualcomm_Hexagon)), or running mostly little-endian software on a bi-endian architecture (e.g. ARM [Aarch64](https://en.wikipedia.org/wiki/Aarch64), [C-Sky](https://en.wikipedia.org/w/index.php?title=C-Sky&action=edit&redlink=1)).
 
@@ -45,58 +53,82 @@ Some **big-endian** architectures that remain popular include mostly older examp
 
 
 
-### Floating point
+#### Floating point
 
 Although the ubiquitous x86 processors of today use little-endian storage for all types of data (integer, floating point, [BCD](https://en.wikipedia.org/wiki/Binary_coded_decimal)), there are a number of hardware architectures where [floating-point](https://en.wikipedia.org/wiki/Floating-point) numbers are represented in big-endian form while integers are represented in little-endian form.[[15\]](https://en.wikipedia.org/wiki/Endianness#cite_note-15) There are [ARM](https://en.wikipedia.org/wiki/ARM_architecture) processors that have half little-endian, half big-endian floating-point representation for double-precision numbers: both 32-bit words are stored in little-endian like integer registers, but the most significant one first. Because there have been many floating-point formats with no "[network](https://en.wikipedia.org/wiki/Computer_network)" standard representation for them, the [XDR](https://en.wikipedia.org/wiki/External_Data_Representation) standard uses big-endian IEEE 754 as its representation. It may therefore appear strange that the widespread [IEEE 754](https://en.wikipedia.org/wiki/IEEE_754) floating-point standard does not specify endianness.[[16\]](https://en.wikipedia.org/wiki/Endianness#cite_note-16) Theoretically, this means that even standard IEEE floating-point data written by one machine might not be readable by another. However, on modern standard computers (i.e., implementing IEEE 754), one may in practice safely assume that the endianness is the same for floating-point numbers as for integers, making the conversion straightforward regardless of data type. (Small [embedded systems](https://en.wikipedia.org/wiki/Embedded_system) using special floating-point formats may be another matter however.)
 
-### Optimization
+#### Optimization
 
-The little-endian system has the property that the same value can be read from memory at **different lengths** without using **different addresses** (even when [alignment](https://en.wikipedia.org/wiki/Byte_alignment) restrictions are imposed). For example, a 32-bit memory location with content 4A 00 00 00 can be read at the same address as either [8-bit](https://en.wikipedia.org/wiki/8-bit) (value = `4A`), [16-bit](https://en.wikipedia.org/wiki/16-bit) (`004A`), [24-bit](https://en.wikipedia.org/wiki/24-bit) (`00004A`), or [32-bit](https://en.wikipedia.org/wiki/32-bit) (`0000004A`), all of which retain the same numeric value. Although this **little-endian** property is rarely used directly by high-level programmers, it is often employed by code optimizers as well as by [assembly language](https://en.wikipedia.org/wiki/Assembly_language) programmers. In more concrete terms, such optimizations are the equivalent of the following C code returning true on most little-endian systems:
+The little-endian system has the property that the same **value** can be read from memory at **different lengths** without using **different addresses** (even when [alignment](https://en.wikipedia.org/wiki/Byte_alignment) restrictions are imposed). For example, a 32-bit memory location with content `4A 00 00 00` can be read at the same address as either [8-bit](https://en.wikipedia.org/wiki/8-bit) (value = `4A`), [16-bit](https://en.wikipedia.org/wiki/16-bit) (`004A`), [24-bit](https://en.wikipedia.org/wiki/24-bit) (`00004A`), or [32-bit](https://en.wikipedia.org/wiki/32-bit) (`0000004A`), all of which retain the same numeric value. Although this **little-endian** property is rarely used directly by high-level programmers, it is often employed by code optimizers as well as by [assembly language](https://en.wikipedia.org/wiki/Assembly_language) programmers. In more concrete terms, such optimizations are the equivalent of the following C code returning true on most little-endian systems:
+
+> NOTE:  要理解上面这段话所表达的思想，需要搞清楚：value、memory representation之间的关联；上述“a 32-bit memory location with content `4A 00 00 00` ”中的`4A 00 00 00`是32-bit big endian representation，它是memory representation，它的value是
+>
+> 对比big-endian来进行理解。对于 `4A 00 00 00` ，如果使用big-endian来进行存储，则`4A`肯定需要放到低地址，`4A 00` 和 `4A 00 00` 表示的是不同的值；
+>
+> 
 
 ```c
-union u_t {
-  uint8_t u8; uint16_t u16; uint32_t u32; uint64_t u64;
-} u = { .u64 = 0x4A };
-puts(u.u8 == u.u16 && u.u8 == u.u32 && u.u8 == u.u64 ? "true" : "false");
+#include "stdint.h"
+#include "stdio.h"
+
+int main(void)
+{
+	union u_t
+	{
+		uint8_t u8;
+		uint16_t u16;
+		uint32_t u32;
+		uint64_t u64;
+	} u = { .u64 = 0x4A };
+	puts(u.u8 == u.u16 && u.u8 == u.u32 && u.u8 == u.u64 ? "true" : "false");
+}
+// gcc test.c
+
 ```
+
+
 
 While not allowed by C++, such [Type punning](https://en.wikipedia.org/wiki/Type_punning) code is allowed as "implementation-defined" by the C11 standard[[17\]](https://en.wikipedia.org/wiki/Endianness#cite_note-17) and commonly used[[18\]](https://en.wikipedia.org/wiki/Endianness#cite_note-18) in code interacting with hardware.[[19\]](https://en.wikipedia.org/wiki/Endianness#cite_note-19)
 
 On the other hand, in some situations it may be useful to obtain an approximation of a multi-byte or multi-word value by reading only its most significant portion instead of the complete representation; a big-endian processor may read such an approximation using the same base-address that would be used for the full value.
 
-***SUMMARY*** : 因为对于big-endian而言，它的most significant bit位于低地址
+> NOTE: 因为对于big-endian而言，它的most significant bit位于低地址
 
 Optimizations of this kind are not portable across systems of different endianness.
 
-### Calculation order
+#### Calculation order
 
 Little-endian representation simplifies hardware in processors that add multi-byte integral values a byte at a time, such as small-scale byte-addressable processors and [microcontrollers](https://en.wikipedia.org/wiki/Microcontroller). As carry propagation must start at the least significant bit (and thus byte), multi-byte addition can then be carried out with a monotonically-incrementing address sequence, a simple operation already present in hardware. On a big-endian processor, its addressing unit has to be told how big the addition is going to be so that it can hop forward to the least significant byte, then count back down towards the most significant byte (**MSB**). On the other hand, arithmetic division is done starting from the **MSB**, so it is more natural for **big-endian** processors. However, high-performance processors usually fetch typical multi-byte operands from memory in the same amount of time they would have fetched a single byte, so the complexity of the hardware is not affected by the **byte ordering**.
 
-## Mapping multi-byte binary values to memory
+### Mapping multi-byte binary values to memory
 
 We can assume that as we write text *left to right*, we are increasing the 'address' on paper, as a processor would write bytes with increasing memory addresses — as in the adjacent table. On paper, the hex value `0a0b0c0d` (written 168496141 in usual decimal notation) is big-endian style since we write the most significant digit first and the rest follow in ***de*creasing** significance. Mapping this number as a binary value to a sequence of 4 bytes in memory in big-endian style also writes the bytes from *left to right* in ***de*creasing** significance: `0Ah` at +0, `0Bh` at +1, `0Ch` at +2, `0Dh` at +3.
 
 On a little-endian system, the bytes are written from *left to right* in ***in**creasing* significance, starting with the one's byte: `0Dh` at +0, `0Ch` at +1, `0Bh` at +2, `0Ah`at +3. Writing a 32-bit binary value to a memory location on a little-endian system and outputting the memory location (with growing addresses from left to right) shows that the order is *reversed* (byte-swapped) compared to usual big-endian notation. This is the way a [hexdump](https://en.wikipedia.org/wiki/Hexdump) is displayed: because the dumping program is unable to know what kind of data it is dumping, the only orientation it can observe is monotonically increasing addresses. The human reader, however, who knows that they are reading a hexdump of a little-endian system and who knows what kind of data they are reading, reads the byte sequence `0Dh`,`0Ch`,`0Bh`,`0Ah` as the 32-bit binary value 168496141, or 0x0a0b0c0d in hexadecimal notation. (Of course, this is *not* the same as the 
 
-## Examples
+### Examples
 
-### A C programming example
+#### A C programming example
 
 Consider the following [C language](https://en.wikipedia.org/wiki/C_(programming_language)) program:
 
 ```c
-    #include <stdio.h>
-    int main(void) {                                                                                                                              
-      union {
-        unsigned int word;  // a 32-bit integer
-        unsigned char bytes[4];
-      } u;
-                                                                                                                                          
-      u.word = 0x0A0B0C0D;
-      for (int i = 0; i < 4; i++) {
-        printf("byte[%d] = 0x%x\n", i, (int)u.bytes[i]);
-      }
-    }
+#include <stdio.h>
+int main(void)
+{
+	union
+	{
+		unsigned int word;  // a 32-bit integer
+		unsigned char bytes[4];
+	} u;
+
+	u.word = 0x0A0B0C0D;
+	for (int i = 0; i < 4; i++)
+	{
+		printf("byte[%d] = 0x%x\n", i, (int) u.bytes[i]);
+	}
+}
+
 ```
 
 On a little-endian computer, this program would output:
@@ -117,7 +149,7 @@ On a big-endian computer, this program would output:
    byte[3] = 0xd
 ```
 
-## Files and byte swap
+### Files and byte swap
 
 Endianness is a problem when a binary file created on a computer is read on another computer with different endianness. Some [CPU](https://en.wikipedia.org/wiki/CPU) instruction sets provide native support for endian byte swapping, such as *bswap*[[21\]](https://en.wikipedia.org/wiki/Endianness#cite_note-21) ([x86](https://en.wikipedia.org/wiki/X86) - [486](https://en.wikipedia.org/wiki/Intel_80486) and later), and *rev*[[22\]](https://en.wikipedia.org/wiki/Endianness#cite_note-22)([ARMv6](https://en.wikipedia.org/wiki/ARM_architecture) and later).
 
@@ -160,11 +192,11 @@ uint32_t ChangeEndianness(uint32_t value)
 
 ***SUMMARY*** :关于上面这段代码的细致分析，参见[Endianness conversion in C](https://codereview.stackexchange.com/questions/151049/endianness-conversion-in-c)
 
-## File systems
+### File systems
 
 
 
-## Networking
+### Networking
 
 Many [IETF RFCs](https://en.wikipedia.org/wiki/IETF_RFC) use the term *network order*, meaning the order of transmission for bits and bytes *over the wire* in [network protocols](https://en.wikipedia.org/wiki/Network_protocols). Among others, the historic [RFC 1700](https://tools.ietf.org/html/rfc1700) (also known as [Internet standard](https://en.wikipedia.org/wiki/Internet_standard) STD 2) has defined the network order for protocols in the [Internet protocol suite](https://en.wikipedia.org/wiki/Internet_protocol_suite) to be [big-endian](https://en.wikipedia.org/wiki/Endianness#Big-endian), hence the use of the term "network byte order" for big-endian byte order.[[25\]](https://en.wikipedia.org/wiki/Endianness#cite_note-25)
 
@@ -176,18 +208,10 @@ While the high-level network protocols usually consider the byte (mostly meant a
 
 
 
-## Bit endianness
+### Bit endianness
 
 [Bit numbering](https://en.wikipedia.org/wiki/Bit_numbering) is a concept similar to endianness, but on a level of bits, not bytes. *Bit endianness* or *bit-level endianness* refers to the transmission order of bits over a serial medium. The bit-level analogue of little-endian (least significant bit goes first) is used in [RS-232](https://en.wikipedia.org/wiki/RS-232), [HDLC](https://en.wikipedia.org/wiki/HDLC), [Ethernet](https://en.wikipedia.org/wiki/Ethernet), and [USB](https://en.wikipedia.org/wiki/USB). Some protocols use the opposite ordering (e.g. [Teletext](https://en.wikipedia.org/wiki/Teletext), [I²C](https://en.wikipedia.org/wiki/I²C), [SMBus](https://en.wikipedia.org/wiki/SMBus), [PMBus](https://en.wikipedia.org/wiki/PMBus), and [SONET and SDH](https://en.wikipedia.org/wiki/Synchronous_optical_networking)[[27\]](https://en.wikipedia.org/wiki/Endianness#cite_note-27)). Usually, there exists a consistent view to the bits irrespective of their order in the byte, such that the latter becomes relevant only on a very low level. One exception is caused by the feature of some [cyclic redundancy checks](https://en.wikipedia.org/wiki/Cyclic_redundancy_check) to detect *all* [burst errors](https://en.wikipedia.org/wiki/Burst_error) up to a known length, which would be spoiled if the bit order is different from the byte order on serial transmission.
 
 Apart from serialization, the terms *bit endianness* and *bit-level endianness* are seldom used, as computer architectures where each individual bit has a unique address are rare. Individual bits or [bit fields](https://en.wikipedia.org/wiki/Bit_field) are accessed via their numerical value or, in high-level programming languages, assigned names, the effects of which, however, may be machine dependent or lack [software portability](https://en.wikipedia.org/wiki/Software_portability). The natural numbering is that the [arithmetic left shift](https://en.wikipedia.org/wiki/Arithmetic_left_shift) `1 << *n*` yields a mask for the bit of position *n*, a rule which exhibits the machine's (byte) endianness at least if `*n* >= 8`, e.g. if used for indexing a sufficiently large bit array. Other numberings do occur in various documentations.
 
 
-
-## External links
-
-- [Understanding big and little endian byte order](https://betterexplained.com/articles/understanding-big-and-little-endian-byte-order/)
-- [Byte Ordering PPC](https://developer.apple.com/library/archive/documentation/CoreFoundation/Conceptual/CFMemoryMgmt/Concepts/ByteOrdering.html#//apple_ref/doc/uid/20001150-CJBEJBHH)
-- [Writing endian-independent code in C](https://developer.ibm.com/articles/au-endianc/)
-
-This article is based on material taken from the *Free On-line Dictionary of Computing* prior to 1 November 2008 and incorporated under the "relicensing" terms of the [GFDL](https://en.wikipedia.org/wiki/GNU_Free_Documentation_License), version 1.3 or later.
