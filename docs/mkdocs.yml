@@ -1,5 +1,6 @@
 nav:
     - Home: index.md
     - Book-计算机组成原理-科学出版社: Book-计算机组成原理-科学出版社
+    - Computer-architecture: Computer-architecture
     - Memory: Memory
     - CPU: CPU

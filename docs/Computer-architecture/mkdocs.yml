@@ -1,0 +1,4 @@
+nav:
+    - Computer-architecture: Computer-architecture.md
+    - Von-Neumann-architecture: Von-Neumann-architecture.md
+    - Harvard-architecture: Harvard-architecture
