@@ -1,4 +1,8 @@
-# [Endianness conversion in C](https://codereview.stackexchange.com/questions/151049/endianness-conversion-in-c)
+# Endianness operation
+
+## Conversion
+
+### stackexchange [Endianness conversion in C](https://codereview.stackexchange.com/questions/151049/endianness-conversion-in-c)
 
 I have written a simple C header for converting the endianness of `short` integers and `long` integers. It uses the GCC macro `__BYTE_ORDER__` to check the system's byte order and define the macros based on that.
 
@@ -58,7 +62,7 @@ Is this a good way to implement the macros or is there a better way?
 
 
 
-## [A](https://codereview.stackexchange.com/a/151070)
+#### [A](https://codereview.stackexchange.com/a/151070)
 
 First off, [Jean-François is absolutely right](https://codereview.stackexchange.com/a/151059/121675): you cannot assume any particular bit widths for the built-in types, `short`, `int`, `long`, etc. Use the types defined in `stdint.h` that have explicit bit widths to ensure that the code is correct and portable.
 
@@ -158,11 +162,33 @@ You'll use them in basically the same way as the macros. Instead of `LITTLE_ENDI
 
 
 
-# [Implementation of C Standard Library Function ntohl()](https://codereview.stackexchange.com/questions/149717/implementation-of-c-standard-library-function-ntohl)
+### stackexchange [Implementation of C Standard Library Function ntohl()](https://codereview.stackexchange.com/questions/149717/implementation-of-c-standard-library-function-ntohl)
 
 
 
 
 
-# [Convert Little Endian to Big Endian](https://stackoverflow.com/questions/19275955/convert-little-endian-to-big-endian)
+### stackoverflow [Convert Little Endian to Big Endian](https://stackoverflow.com/questions/19275955/convert-little-endian-to-big-endian)
+
+
+
+## Query 
+
+compile time：
+
+quarkslab [Unaligned accesses in C/C++: what, why and solutions to do it properly](https://blog.quarkslab.com/unaligned-accesses-in-cc-what-why-and-solutions-to-do-it-properly.html) 中的例子：
+
+```c++
+#include <stdint.h>
+#include <stdlib.h>
+
+static uint64_t load64_le(uint8_t const* V)
+{
+#if !defined(__LITTLE_ENDIAN__)
+#error This code only works with little endian systems
+#endif
+  uint64_t Ret = *((uint64_t const*)V);
+  return Ret;
+}
+```
 
