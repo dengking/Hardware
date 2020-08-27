@@ -1,5 +1,16 @@
 # Endianness operation
 
+需要考虑在哪些情况，programmer是需要考虑endian的，哪些情况是不需要考虑的。
+
+下面罗列了需要考虑的典型场景：
+
+- 计算hash值（参见 quarkslab [Unaligned accesses in C/C++: what, why and solutions to do it properly](https://blog.quarkslab.com/unaligned-accesses-in-cc-what-why-and-solutions-to-do-it-properly.html)）
+- 网络传输：网络数据采用的是big endian，发送时，需要将其转换为big endian，接收时，需要将其从big endian转换为主句的endian。
+
+下面罗列了不需要考虑的典型场景：
+
+- literal默认是big endian，所以literal、bit-shift operation是不需要考虑endian的（参见wikipedia [Endianness](https://en.wikipedia.org/wiki/Endianness)）
+
 ## Conversion
 
 ### stackexchange [Endianness conversion in C](https://codereview.stackexchange.com/questions/151049/endianness-conversion-in-c)
@@ -174,7 +185,7 @@ You'll use them in basically the same way as the macros. Instead of `LITTLE_ENDI
 
 ## Query 
 
-compile time：
+### Compile time
 
 quarkslab [Unaligned accesses in C/C++: what, why and solutions to do it properly](https://blog.quarkslab.com/unaligned-accesses-in-cc-what-why-and-solutions-to-do-it-properly.html) 中的例子：
 
@@ -192,3 +203,26 @@ static uint64_t load64_le(uint8_t const* V)
 }
 ```
 
+
+
+### Dynamic
+
+这个例子是源自creference `Objects and alignment#Strict aliasing`
+
+```C++
+#include <cstdio>
+
+int main()
+{
+	int i = 7;//最低有效位是0x7
+	char* pc = (char*) (&i);
+	if (pc[0] == '\x7') // aliasing through char is ok
+		puts("This system is little-endian");
+	else
+		puts("This system is big-endian");
+
+}
+
+```
+
+`i`的最低有效位是`0x7`，所以如果低地址`pc[0]`的值等于`'\x7'`，则是little-endian。

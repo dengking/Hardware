@@ -1,6 +1,9 @@
 # Endianness
 
-“endianness”决定了value的memory representation。关于memory representation，参见工程computer-arithmetic的`Bitwise-operation\Binary-representation`章节的内容。关于value和memory representation，在cppreference [Object#Object representation and value representation](https://en.cppreference.com/w/cpp/language/object#Object_representation_and_value_representation)中进行了详细说明，其中的object representation就是前面所说的memory representation。
+从C++和C标准来看，“endianness”决定了object的value的memory representation，关于memory representation，参见：
+
+- 工程computer-arithmetic的`Bitwise-operation\Binary-representation`章节的内容。
+- 关于object、value、和memory representation，在cppreference [Object#Object representation and value representation](https://en.cppreference.com/w/cpp/language/object#Object_representation_and_value_representation)中进行了详细说明，其中的object representation就是前面所说的memory representation。
 
 ## wikipedia [Endianness](https://en.wikipedia.org/wiki/Endianness)
 
@@ -61,11 +64,29 @@ Although the ubiquitous x86 processors of today use little-endian storage for al
 
 The little-endian system has the property that the same **value** can be read from memory at **different lengths** without using **different addresses** (even when [alignment](https://en.wikipedia.org/wiki/Byte_alignment) restrictions are imposed). For example, a 32-bit memory location with content `4A 00 00 00` can be read at the same address as either [8-bit](https://en.wikipedia.org/wiki/8-bit) (value = `4A`), [16-bit](https://en.wikipedia.org/wiki/16-bit) (`004A`), [24-bit](https://en.wikipedia.org/wiki/24-bit) (`00004A`), or [32-bit](https://en.wikipedia.org/wiki/32-bit) (`0000004A`), all of which retain the same numeric value. Although this **little-endian** property is rarely used directly by high-level programmers, it is often employed by code optimizers as well as by [assembly language](https://en.wikipedia.org/wiki/Assembly_language) programmers. In more concrete terms, such optimizations are the equivalent of the following C code returning true on most little-endian systems:
 
-> NOTE:  要理解上面这段话所表达的思想，需要搞清楚：value、memory representation之间的关联；上述“a 32-bit memory location with content `4A 00 00 00` ”中的`4A 00 00 00`是32-bit big endian representation，它是memory representation，它的value是
+> NOTE:  要理解上面这段话所表达的思想，需要搞清楚：value、memory representation、endian之间的关联，在工程programming-language的`C-family-language\C++\Language-reference\Basic-concept\Data-model\Object\Object.md`中，有过这方面的讨论：Type determines the interpretion of memory representation, and further determine value。下面结合endian进行更加深入的论述：
 >
-> 对比big-endian来进行理解。对于 `4A 00 00 00` ，如果使用big-endian来进行存储，则`4A`肯定需要放到低地址，`4A 00` 和 `4A 00 00` 表示的是不同的值；
+> 上述“a 32-bit memory location with content `4A 00 00 00` ”中的`4A 00 00 00`是memory representation：
 >
-> 
+> - 第一字节：`4A`
+> - 第二字节：`00`
+> - 第三字节：`00`
+> - 第四字节：`00`
+>
+> 不同的endian下，它表示的value是不同的：
+>
+> |               | 最高/最低有效位            | memory representation in bit                                 | value                      |
+> | ------------- | -------------------------- | ------------------------------------------------------------ | -------------------------- |
+> | big endian    | 最高: `4A` <br>最低: `00`  | `0100 1010` <br>` 0000 0000`<br>`0000 0000`<br>`0000 0000`   | $2^{30} + 2^{27} + 2^{25}$ |
+> | little endian | 最高: `00` <br/>最低: `4A` | `0100 1010` <br/>` 0000 0000`<br/>`0000 0000`<br/>`0000 0000` | $2^6 + 2^3 + 2^1$          |
+>
+> 通过上述解释，就能够理解原文中"The little-endian system has the property that the same **value** can be read from memory at **different lengths** without using **different addresses** (even when [alignment](https://en.wikipedia.org/wiki/Byte_alignment) restrictions are imposed). "的含义了，下面是我的直观的理解：
+>
+> 对于little endian，给定memory representation，CPU对memory representation的interpretion是可以渐进式地计算的：即从低地址开始逐步计算，因为**最低有效位**位于**低地址**，对于低地址的值的计算是不受后面的高地址的值的影响。
+>
+> 对于big endain，与little endian是正好相反的。
+>
+> 下面的代码，极好的展示了little endian的这种attribute：
 
 ```c
 #include "stdint.h"
@@ -86,7 +107,7 @@ int main(void)
 
 ```
 
-
+> NOTE: `0x4A`位于低地址，它只需要一个字节即可。
 
 While not allowed by C++, such [Type punning](https://en.wikipedia.org/wiki/Type_punning) code is allowed as "implementation-defined" by the C11 standard[[17\]](https://en.wikipedia.org/wiki/Endianness#cite_note-17) and commonly used[[18\]](https://en.wikipedia.org/wiki/Endianness#cite_note-18) in code interacting with hardware.[[19\]](https://en.wikipedia.org/wiki/Endianness#cite_note-19)
 
@@ -98,7 +119,7 @@ Optimizations of this kind are not portable across systems of different endianne
 
 #### Calculation order
 
-Little-endian representation simplifies hardware in processors that add multi-byte integral values a byte at a time, such as small-scale byte-addressable processors and [microcontrollers](https://en.wikipedia.org/wiki/Microcontroller). As carry propagation must start at the least significant bit (and thus byte), multi-byte addition can then be carried out with a monotonically-incrementing address sequence, a simple operation already present in hardware. On a big-endian processor, its addressing unit has to be told how big the addition is going to be so that it can hop forward to the least significant byte, then count back down towards the most significant byte (**MSB**). On the other hand, arithmetic division is done starting from the **MSB**, so it is more natural for **big-endian** processors. However, high-performance processors usually fetch typical multi-byte operands from memory in the same amount of time they would have fetched a single byte, so the complexity of the hardware is not affected by the **byte ordering**.
+Little-endian representation simplifies hardware in processors that add multi-byte integral values a byte at a time, such as small-scale byte-addressable processors and [microcontrollers](https://en.wikipedia.org/wiki/Microcontroller). As carry propagation（进位） must start at the **least significant bit** (and thus byte), multi-byte addition can then be carried out with a monotonically-incrementing address sequence, a simple operation already present in hardware. On a big-endian processor, its addressing unit has to be told how big the addition is going to be so that it can hop forward to the least significant byte, then count back down towards the most significant byte (**MSB**). On the other hand, arithmetic division is done starting from the **MSB**, so it is more natural for **big-endian** processors. However, high-performance processors usually fetch typical multi-byte operands from memory in the same amount of time they would have fetched a single byte, so the complexity of the hardware is not affected by the **byte ordering**.
 
 ### Mapping multi-byte binary values to memory
 
