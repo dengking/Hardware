@@ -1,5 +1,3 @@
 nav:
     - Introduction: index.md
-    - Register: Register
-    - X86-instruction: X86-instruction
-    - x86-memory-segmentation: x86-memory-segmentation.md
+    - x86: x86

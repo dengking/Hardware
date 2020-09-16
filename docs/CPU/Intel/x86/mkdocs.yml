@@ -1,0 +1,6 @@
+nav:
+    - Introduction: index.md
+    - x86: x86.md
+    - Instruction: Instruction
+    - Calling-convertion: Calling-convertion
+    - x86-memory-segmentation: x86-memory-segmentation.md

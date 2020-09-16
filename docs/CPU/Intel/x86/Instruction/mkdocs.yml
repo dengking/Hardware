@@ -5,4 +5,3 @@ nav:
     - x86-instruction-listings: x86-instruction-listings.md
     - INT: INT.md
     - BOUND: BOUND.md
-    - Book-X86-assembly: Book-X86-assembly
