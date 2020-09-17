@@ -164,3 +164,7 @@ In the **flags register**, each bit has a specific meaning and they are used to 
 - skullsecurity [Registers#16-bit and 8-bit Registers](https://wiki.skullsecurity.org/Registers#16-bit_and_8-bit_Registers)
 - utoronto [x86 Registers](https://www.eecg.utoronto.ca/~amza/www.mindsec.com/files/x86regs.html)
 
+
+
+
+
