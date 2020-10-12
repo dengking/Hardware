@@ -1,8 +1,7 @@
 nav:
-#################### 首先说明processor的概念，CPU就是一种processor##########
-    - Processor(computing): Processor(computing).md
+
 #################### CPU####################    
-    - Central-processing-unit: Central-processing-unit.md
+    - Introduction: index.md
 #################### 指令集的概念####################    
     - Instruction-set-architectures: Instruction-set-architectures
 #################### CPU的组成###################    
