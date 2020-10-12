@@ -17,7 +17,9 @@
 
 > The database [file format](https://sqlite.org/fileformat2.html) is cross-platform - you can freely copy a database between 32-bit and 64-bit systems or between [big-endian](http://en.wikipedia.org/wiki/Endianness) and [little-endian](http://en.wikipedia.org/wiki/Endianness) architectures. These features make SQLite a popular choice as an [Application File Format](https://sqlite.org/appfileformat.html). 
 
+### TODO C network library
 
+在C network library中提供了endian转换函数。
 
 ## wikipedia [Endianness](https://en.wikipedia.org/wiki/Endianness)
 
