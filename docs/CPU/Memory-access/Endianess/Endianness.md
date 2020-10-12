@@ -1,9 +1,23 @@
 # Endianness
 
+## Endianness in software engineering
+
+本节总结在software engineering中的一些关于endian的内容，它能够启示我们，什么时候需要考虑endian。
+
+### C-family language object representation
+
 从C++和C标准来看，“endianness”决定了object的value的memory representation，关于memory representation，参见：
 
 - 工程computer-arithmetic的`Bitwise-operation\Binary-representation`章节的内容。
 - 关于object、value、和memory representation，在cppreference [Object#Object representation and value representation](https://en.cppreference.com/w/cpp/language/object#Object_representation_and_value_representation)中进行了详细说明，其中的object representation就是前面所说的memory representation。
+
+### Sqlite file format
+
+在[About SQLite](https://sqlite.org/about.html)中有这样的描述
+
+> The database [file format](https://sqlite.org/fileformat2.html) is cross-platform - you can freely copy a database between 32-bit and 64-bit systems or between [big-endian](http://en.wikipedia.org/wiki/Endianness) and [little-endian](http://en.wikipedia.org/wiki/Endianness) architectures. These features make SQLite a popular choice as an [Application File Format](https://sqlite.org/appfileformat.html). 
+
+
 
 ## wikipedia [Endianness](https://en.wikipedia.org/wiki/Endianness)
 
@@ -211,7 +225,7 @@ uint32_t ChangeEndianness(uint32_t value)
 }
 ```
 
-***SUMMARY*** :关于上面这段代码的细致分析，参见[Endianness conversion in C](https://codereview.stackexchange.com/questions/151049/endianness-conversion-in-c)
+> NOTE :关于上面这段代码的细致分析，参见[Endianness conversion in C](https://codereview.stackexchange.com/questions/151049/endianness-conversion-in-c)
 
 ### File systems
 
