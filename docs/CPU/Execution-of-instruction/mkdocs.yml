@@ -1,0 +1,5 @@
+nav:
+    - Introduction: index.md
+    - CPU的时序: CPU的时序.md
+#################### 指令周期的概念####################    
+    - Instruction-cycle: Instruction-cycle.md

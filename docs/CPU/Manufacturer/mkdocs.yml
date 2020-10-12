@@ -1,4 +1,6 @@
 nav:
+
+
     - Introduction: index.md
     #################### CPU####################    
     - CPU: CPU.md
@@ -9,4 +11,9 @@ nav:
     #################### CPU的memory access####################    
     - Memory-access: Memory-access
 #################### 指令周期的概念####################    
-    - Execution-of-instruction: Execution-of-instruction
+    - Instruction-cycle: Instruction-cycle.md
+
+
+#################### Intel是我们最最常见CPU####################    
+    - Intel: Intel
+    - ARM: ARM
