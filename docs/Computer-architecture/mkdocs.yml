@@ -1,6 +1,6 @@
 nav:
-    - Computer-architecture: Computer-architecture.md
+    - Computer-architecture: index.md
     - Stored-program-computer: Stored-program-computer.md
-    - Von-Neumann-architecture: Von-Neumann-architecture.md
+    - Von-Neumann-architecture: Von-Neumann-architecture
     - Harvard-architecture: Harvard-architecture
     - Universal-Turing-machine: Universal-Turing-machine.md

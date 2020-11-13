@@ -1,6 +1,5 @@
 nav:
     - Introduction: index.md
-    - Memory–access: Memory–access.md
     - Memory-alignment: Memory-alignment
     #################### 字的概念####################    
     - Word: Word
