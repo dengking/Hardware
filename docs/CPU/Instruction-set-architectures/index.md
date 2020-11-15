@@ -1,4 +1,6 @@
-# [Instruction set architecture](https://en.wikipedia.org/wiki/Instruction_set_architecture)	
+# Instruction set architecture
+
+## wikipedia [Instruction set architecture](https://en.wikipedia.org/wiki/Instruction_set_architecture)	
 
 An **instruction set architecture** (**ISA**) is an abstract model of a [computer](https://en.wikipedia.org/wiki/Computer). It is also referred to as **architecture** or **computer architecture**. A realization of an ISA is called an *implementation*. An ISA permits multiple implementations that may vary in [performance](https://en.wikipedia.org/wiki/Computer_performance), physical size, and monetary cost (among other things); because the ISA serves as the [interface](https://en.wikipedia.org/wiki/Interface_(computing)) between [software](https://en.wikipedia.org/wiki/Software) and [hardware](https://en.wikipedia.org/wiki/Computer_hardware). Software that has been written for an ISA can run on different implementations of the same ISA. This has enabled [binary compatibility](https://en.wikipedia.org/wiki/Binary_compatibility) between different generations of computers to be easily achieved, and the development of **computer families**. Both of these developments have helped to lower the cost of computers and to increase their applicability. For these reasons, the ISA is one of the most important abstractions in [computing](https://en.wikipedia.org/wiki/Computing) today.
 
@@ -16,7 +18,7 @@ An ISA can be extended by adding instructions or other capabilities, or adding s
 
 The binary compatibility that they provide make ISAs one of the most fundamental abstractions in [computing](https://en.wikipedia.org/wiki/Computing).
 
-## Example
+### Example
 
 下面罗列了一些比较常见的ISA:
 
@@ -34,7 +36,7 @@ The binary compatibility that they provide make ISAs one of the most fundamental
 
   
 
-## [Classification of ISAs](https://en.wikipedia.org/wiki/Instruction_set_architecture)
+### [Classification of ISAs](https://en.wikipedia.org/wiki/Instruction_set_architecture)
 
 [complex instruction set computer](https://en.wikipedia.org/wiki/Complex_instruction_set_computer) (CISC) 
 
@@ -42,7 +44,7 @@ The binary compatibility that they provide make ISAs one of the most fundamental
 
 
 
-## Instructions
+### Instructions
 
 [Machine language](https://en.wikipedia.org/wiki/Machine_code) is built up from discrete *statements* or *instructions*. On the processing architecture, a given instruction may specify:
 
@@ -64,10 +66,14 @@ More complex operations are built up by combining these simple instructions, whi
 
 #### [Arithmetic and logic](https://en.wikipedia.org/wiki/Arithmetic_logic_unit) operations
 
-
+> NOTE: 这是最最基本的指令
 
 #### [Control flow](https://en.wikipedia.org/wiki/Control_flow) operations
 
-
+> NOTE: 控制流指令
 
 #### [Coprocessor](https://en.wikipedia.org/wiki/Coprocessor) instructions
+
+
+
+## wikipedia [Machine code](https://en.wikipedia.org/wiki/Machine_code)
