@@ -10,3 +10,4 @@ nav:
     - Memory-access: Memory-access
 #################### 指令周期的概念####################    
     - Execution-of-instruction: Execution-of-instruction
+    - Parallel-computing: Parallel-computing

@@ -2,7 +2,6 @@ nav:
     - Home: index.md
     - Book-计算机组成原理-科学出版社: Book-计算机组成原理-科学出版社
     - Computer-architecture: Computer-architecture
-
     - Memory: Memory
     #################### 首先说明processor的概念，CPU就是一种processor##########
     - Processor(computing): Processor(computing).md

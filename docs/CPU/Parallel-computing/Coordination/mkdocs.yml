@@ -1,0 +1,4 @@
+nav:
+    - Introduction: index.md
+    - Memory-coherence: Memory-coherence
+    - Cache-coherence: Cache-coherence

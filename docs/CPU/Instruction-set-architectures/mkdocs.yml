@@ -1,4 +1,5 @@
 nav:
     - Instruction-set-architecture: index.md
     - Architecture: Architecture
+    - Manufacturer: Manufacturer
     - Comparison-of-instruction-set-architectures: Comparison-of-instruction-set-architectures.md
