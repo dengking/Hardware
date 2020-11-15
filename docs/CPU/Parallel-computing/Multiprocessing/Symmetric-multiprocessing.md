@@ -39,3 +39,21 @@ In cases where an SMP environment processes many jobs, administrators often expe
 **Access to RAM is serialized**; this and [cache coherency](https://infogalactic.com/info/Cache_coherency) issues causes performance to lag(落后) slightly behind the number of additional processors in the system.
 
 > NOTE: 这种结构的瓶颈所在。结构决定***。
+
+
+
+## Consistency model of SMP
+
+这个问题在Wikipedia [Memory ordering](https://infogalactic.com/info/Memory_ordering)中进行了讨论:
+
+> ### In symmetric multiprocessing (SMP) microprocessor systems
+>
+> There are several memory-consistency models for [SMP](https://infogalactic.com/info/Symmetric_multiprocessing) systems:
+>
+> - Sequential consistency (all reads and all writes are in-order)
+> - Relaxed consistency (some types of reordering are allowed)
+>   - Loads can be reordered after loads (for better working of cache coherency, better scaling)
+>   - Loads can be reordered after stores
+>   - Stores can be reordered after stores
+>   - Stores can be reordered after loads
+> - Weak consistency (reads and writes are arbitrarily reordered, limited only by explicit [memory barriers](https://infogalactic.com/info/Memory_barrier))

@@ -5,3 +5,4 @@ nav:
     - Word: Word
     #################### 大小端的概念####################        
     - Endianess: Endianess
+    - Memory-ordering: Memory-ordering.md
