@@ -1,0 +1,7 @@
+# Memory dependence prediction
+
+
+
+## wikipedia [Memory dependence prediction](https://en.wikipedia.org/wiki/Memory_dependence_prediction)
+
+**Memory dependence prediction** is a technique, employed by high-performance [out-of-order execution](https://en.wikipedia.org/wiki/Out-of-order_execution) [microprocessors](https://en.wikipedia.org/wiki/Microprocessor) that execute [memory](https://en.wikipedia.org/wiki/Primary_storage) access operations (loads and stores) out of program order, to predict true dependencies between loads and stores at [instruction](https://en.wikipedia.org/wiki/Instruction_(computer_science)) [execution](https://en.wikipedia.org/wiki/Execution_(computers)) time. With the predicted dependence information, the processor can then decide to [speculatively execute](https://en.wikipedia.org/wiki/Speculative_execution) certain loads and stores out of order, while preventing other loads and stores from executing out-of-order (keeping them in-order). Later in the [pipeline](https://en.wikipedia.org/wiki/Pipeline_(computing)), [memory disambiguation](https://en.wikipedia.org/wiki/Memory_disambiguation) techniques are used to determine if the loads and stores were correctly executed and, if not, to recover.
