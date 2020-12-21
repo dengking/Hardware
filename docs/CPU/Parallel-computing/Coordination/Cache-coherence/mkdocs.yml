@@ -1,4 +1,4 @@
 nav:
     - Introduction: index.md
-    - MSI-protocol: MSI-protocol.md
+    - Protocol: Protocol
     - Cache-invalidation: Cache-invalidation.md
