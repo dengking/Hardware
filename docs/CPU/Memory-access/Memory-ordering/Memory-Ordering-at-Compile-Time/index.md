@@ -17,3 +17,11 @@ As a result of this rule, **memory reordering** goes largely **unnoticed** by pr
 > NOTE: 只有当使用了无锁技术时——当内存在线程之间共享而不存在任何互斥现象时——问题才最终得到解决，并且内存重新排序的效果可以清楚地观察到。
 
 Mind you, it is possible to write **lock-free** code for multicore platforms without the hassles(麻烦事) of **memory reordering**. As I mentioned in my [introduction to lock-free programming](http://preshing.com/20120612/an-introduction-to-lock-free-programming), one can take advantage of **sequentially consistent types**, such as `volatile` variables in Java or **C++11 atomics** – possibly at the price of a little performance. I won’t go into detail about those here. In this post, I’ll focus on the impact of the compiler on memory ordering for regular, **non-sequentially-consistent types**.
+
+
+
+## Thoughts
+
+### Compiler memory optimization
+
+compiler能够全局地、高屋建瓴地分析我们的程序，能够通过对memory操作顺序来进行optimization。需要整理这方面文章。
