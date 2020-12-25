@@ -24,6 +24,8 @@ The stored-program computer idea can be traced back to the 1936 theoretical conc
 
 
 
+# 
+
 ## Function and data model
 
 在现代，不断地涌现着新的programming language，不断地涌现着新的programming paradigm（比如从procedural到OOP），programming technique的提高能够大大提高开发效率，但是无论如何变化，它们最终执行的时候，还是遵循“stored-program computer”的思想，即它们的可执行程序，最终都会被“吃”到RAM中，然后由CPU进行执行；为了便于理解各种programming language的run mode，可以将各种programming language的可执行程序（后面简称为program）简化为有下面两部分组成:
@@ -33,7 +35,38 @@ The stored-program computer idea can be traced back to the 1936 theoretical conc
 | function | 函数<br>从汇编的角度来看，函数就是一堆指令； |
 | data     | 数据                                         |
 
-我们将它简称为Function and data model，显然它是一个统一的模型，建立在programming language和CPU之间。下面结合一些具体问题，来对它进行描述。
+我们将它简称为**Function and data model**，显然它是一个统一的模型，建立在programming language和CPU之间。
+
+下面结合一些具体问题，来对它进行描述。
+
+### wikipedia [Memory address # Address space in application programming](https://en.wikipedia.org/wiki/Memory_address#Address_space_in_application_programming) 
+
+> NOTE: 将process的VMA分为两部分:
+>
+> 1) **[Machine code](https://en.wikipedia.org/wiki/Machine_code)** / instruction，对应的是data
+>
+> 2) **[Data](https://en.wikipedia.org/wiki/Data_(computing))**
+
+Each memory location in a [stored-program computer](https://en.wikipedia.org/wiki/Stored-program_computer) holds a [binary number](https://en.wikipedia.org/wiki/Binary_number) or [decimal number](https://en.wikipedia.org/wiki/Decimal_number) *of some sort*. Its interpretation, as data of some [data type](https://en.wikipedia.org/wiki/Data_type) or as an instruction, and use are determined by the [instructions](https://en.wikipedia.org/wiki/Instruction_(computer_science)) which retrieve and manipulate it.
+
+#### Address space in application programming
+
+In modern [multitasking](https://en.wikipedia.org/wiki/Computer_multitasking) environment, an [application](https://en.wikipedia.org/wiki/Application_program) [process](https://en.wikipedia.org/wiki/Process_(computing)) usually has in its address space (or spaces) chunks of memory of following types:
+
+1) [Machine code](https://en.wikipedia.org/wiki/Machine_code), including:
+
+- program's own code (historically known as *[code segment](https://en.wikipedia.org/wiki/Code_segment)* or *text segment*);
+- [shared libraries](https://en.wikipedia.org/wiki/Shared_libraries).
+
+2) [Data](https://en.wikipedia.org/wiki/Data_(computing)), including:
+
+- initialized data ([data segment](https://en.wikipedia.org/wiki/Data_segment));
+- [uninitialized (but allocated)](https://en.wikipedia.org/wiki/.bss) variables;
+- [run-time stack](https://en.wikipedia.org/wiki/Run-time_stack);
+- [heap](https://en.wikipedia.org/wiki/Heap_(programming));
+- [shared memory](https://en.wikipedia.org/wiki/Shared_memory_(interprocess_communication)) and [memory mapped files](https://en.wikipedia.org/wiki/Memory_mapped_file).
+
+Some parts of address space may be not mapped at all.
 
 ### OOP
 
