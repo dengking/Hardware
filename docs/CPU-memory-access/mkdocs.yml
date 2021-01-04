@@ -1,5 +1,6 @@
 nav:
     - Introduction: index.md
+    - Primer-What-Every-Programmer-Should-Know-About-Memory: Primer-What-Every-Programmer-Should-Know-About-Memory
     - Memory-alignment: Memory-alignment
     #################### 字的概念####################    
     - Word: Word
