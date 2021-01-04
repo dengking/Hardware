@@ -1,3 +1,5 @@
 nav:
-    - Cache: Cache.md
+    - Cache: index.md
+    - Cache-line: Cache-line
     - Locality: Locality.md
+    

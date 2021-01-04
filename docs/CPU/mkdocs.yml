@@ -6,8 +6,7 @@ nav:
     - Instruction-set-architectures: Instruction-set-architectures
     #################### CPU的组成###################    
     - Components: Components
-    #################### CPU的memory access####################    
-    - Memory-access: Memory-access
+
 #################### 指令周期的概念####################    
     - Execution-of-instruction: Execution-of-instruction
     - Parallel-computing: Parallel-computing
