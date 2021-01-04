@@ -1,4 +1,4 @@
-# [Data alignment: Straighten up and fly right](https://developer.ibm.com/articles/pa-dalign/)
+# developer.ibm [Data alignment: Straighten up and fly right](https://developer.ibm.com/articles/pa-dalign/)
 
 > NOTE: 本文给出了memory access详细细节以及相关问题。其中的*memory access granularity*概念尤其重要，结合前面章节的内容，在此可以预告读者目前大多数CPU的*memory access granularity*取[word size](https://en.wikipedia.org/wiki/Word_(computer_architecture))。
 

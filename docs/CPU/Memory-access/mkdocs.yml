@@ -7,3 +7,4 @@ nav:
     - Endianess: Endianess
     - Memory-ordering: Memory-ordering
     - Memory-disambiguation: Memory-disambiguation
+    - Atomic: Atomic
