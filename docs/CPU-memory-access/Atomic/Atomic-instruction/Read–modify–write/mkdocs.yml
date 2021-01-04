@@ -1,0 +1,5 @@
+nav:
+    - Introduction: index.md
+    - Compare-and-swap: Compare-and-swap
+    - Fetch-and-add: Fetch-and-add
+    - Test-and-set: Test-and-set

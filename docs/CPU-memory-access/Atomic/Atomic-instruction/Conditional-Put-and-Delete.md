@@ -1,0 +1,1 @@
+https://en.wikipedia.org/wiki/Amazon_SimpleDB#Conditional_Put_and_Delete
