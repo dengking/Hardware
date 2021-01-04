@@ -1,5 +1,8 @@
-
 # Load–store architecture
+
+load 对应的是read data from memory；
+
+store 对应的是write data to memory；
 
 
 ## wikipedia [Load–store architecture](https://en.wikipedia.org/wiki/Load%E2%80%93store_architecture)

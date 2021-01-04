@@ -1,0 +1,4 @@
+nav:
+    - Introduction: index.md
+    - Load–store-architecture: Load–store-architecture
+    - Register-memory-architecture: Register-memory-architecture
