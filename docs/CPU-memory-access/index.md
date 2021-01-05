@@ -34,6 +34,8 @@ When the processor reads from the memory subsystem into a register or writes a r
 
 2、write
 
+在hardware中，一般load、store来表示read、write。
+
 ## Memory-consistency model
 
 CPU的consistency model是非常重要的一个内容，尤其是对于支持multiprocessing的CPU。这是我在阅读Wikipedia [Memory ordering](https://infogalactic.com/info/Memory_ordering)时，其中有相关描述:

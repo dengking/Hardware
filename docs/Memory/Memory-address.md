@@ -1,4 +1,4 @@
-# [Memory address](https://en.wikipedia.org/wiki/Memory_address)
+# wikipedia [Memory address](https://en.wikipedia.org/wiki/Memory_address)
 
 In [computing](https://en.wikipedia.org/wiki/Computing), a **memory address** is a reference to a specific [memory](https://en.wikipedia.org/wiki/Computer_memory) location used at various levels by [software](https://en.wikipedia.org/wiki/Software) and [hardware](https://en.wikipedia.org/wiki/Computer_hardware). Memory addresses are fixed-length sequences of [digits](https://en.wikipedia.org/wiki/Numerical_digit) conventionally displayed and manipulated as [unsigned](https://en.wikipedia.org/wiki/Signedness) [integers](https://en.wikipedia.org/wiki/Integer_(computing)).[[1\]](https://en.wikipedia.org/wiki/Memory_address#cite_note-1)Such numerical semantic bases（基于） itself upon features of CPU (such as the [instruction pointer](https://en.wikipedia.org/wiki/Instruction_pointer) and incremental [address registers](https://en.wikipedia.org/wiki/Memory_address_register)), as well upon use of the memory like an [array](https://en.wikipedia.org/wiki/Array_data_structure) endorsed by various [programming languages](https://en.wikipedia.org/wiki/Programming_language).
 
@@ -54,7 +54,7 @@ Some parts of address space may be not mapped at all.
 
 
 
-***SUMMARY*** : address space in application将指令（machine code）和data分开来进行存储，但是在底层，是不区分的；
+> NOTE: address space in application将指令（machine code）和data分开来进行存储，但是在底层，是不区分的；
 
 ## Addressing schemes
 
