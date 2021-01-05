@@ -1,2 +1,4 @@
 nav:
+    - Introduction: index.md
+    - Memory-access-unit-and-atomic: Memory-access-unit-and-atomic
     - Atomic-instruction: Atomic-instruction

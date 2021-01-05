@@ -1,4 +1,8 @@
-# [Word (computer architecture)](https://en.wikipedia.org/wiki/Word_(computer_architecture))
+# Word 
+
+CPU memory access的unit。
+
+## wikipedia [Word (computer architecture)](https://en.wikipedia.org/wiki/Word_(computer_architecture))
 
 In [computing](https://en.wikipedia.org/wiki/Computing), a **word** is the natural unit of data used by a particular [processor](https://en.wikipedia.org/wiki/Central_processing_unit) design. A word is a fixed-sized [piece of data](https://en.wikipedia.org/wiki/Data_(computing)) handled as a unit by the [instruction set](https://en.wikipedia.org/wiki/Instruction_set) or the hardware of the processor. The number of [bits](https://en.wikipedia.org/wiki/Bit) in a word (the *word size*, *word width*, or *word length*) is an important characteristic of any specific processor design or [computer architecture](https://en.wikipedia.org/wiki/Computer_architecture).
 
@@ -8,7 +12,7 @@ In [computing](https://en.wikipedia.org/wiki/Computing), a **word** is the natur
 
 The size of a word is reflected in many aspects of a computer's structure and operation; the majority of the [registers](https://en.wikipedia.org/wiki/Processor_register) in a processor are usually word sized and the largest piece of data that can be transferred to and from the [working memory](https://en.wikipedia.org/wiki/Computer_memory) in a single operation is a word in many (not all) architectures. The largest possible [address](https://en.wikipedia.org/wiki/Memory_address) size, used to designate a location in memory, is typically a hardware word (here, "hardware word" means the full-sized natural word of the processor, as opposed to any other definition used).
 
-## Uses of words
+### Uses of words
 
 Depending on how a computer is organized, **word-size units** may be used for:
 

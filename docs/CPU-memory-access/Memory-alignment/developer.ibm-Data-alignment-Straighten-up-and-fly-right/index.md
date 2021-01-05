@@ -12,11 +12,11 @@ Figure 1. How programmers see memory
 
 However, your computer’s processor does not read from and write to memory in byte-sized chunks. Instead, it accesses memory in two-, four-, eight- 16- or even 32-byte chunks. We’ll call the size in which a **processor** accesses memory its *memory access granularity*.
 
-> NOTE: 需要理解granularity的含义，它的中文意思是**粒度**，可以把它看做是**单位**的意思，它具有**原子性**。**memory access granularity**是CPU从memory中读取数据的**单位**，所以CPU无法从memory中读取半个单位的数据，只能够读取一个单位的数据。下面的Figure 2就非常直观地展示了CPU视角的memory。通过前面的这些分析，我们应该知道的是，CPU只能够从位置`0`、`4`、`8`等位置开始读取数据，这些位置我们通常将它们称为memory access boundary（在后续章节会介绍），显然CPU access boundary是**memory access granularity**的整数倍，如果一个数据的存储位置是memory access boundary，则称为**align to memory access granularity**（对齐），使用aligned来形容这样的地址，否则就是unaligned。通过后面的章节，我们会看到，aligned address相比于unaligned address有着诸多优势。
+> NOTE: 需要理解granularity的含义，它的中文意思是**粒度**，可以把它看做是**单位**的意思，它具有**原子性**(不可分的)。**memory access granularity**是CPU从memory中读取数据的**单位**，所以CPU无法从memory中读取半个单位的数据，只能够读取一个单位的数据。下面的Figure 2就非常直观地展示了CPU视角的memory。通过前面的这些分析，我们应该知道的是，CPU只能够从位置`0`、`4`、`8`等位置开始读取数据，这些位置我们通常将它们称为memory access boundary（在后续章节会介绍），显然CPU access boundary是**memory access granularity**的整数倍，如果一个数据的存储位置是memory access boundary，则称为**align to memory access granularity**（对齐），使用aligned来形容这样的地址，否则就是unaligned。通过后面的章节，我们会看到，aligned address相比于unaligned address有着诸多优势。
 
 Figure 2. How processors see memory
 
-![How Some Processors See Memory](https://developer.ibm.com/developer/articles/pa-dalign/images/howProcessorsSeeMemory.jpg)
+![How Some Processors See Memory](E:\github\Hardware\docs\CPU-memory-access\Memory-alignment\developer.ibm-Data-alignment-Straighten-up-and-fly-right\howProcessorsSeeMemory.jpg)
 
 If you don’t understand and address alignment issues in your software, the following scenarios, in increasing order of severity, are all possible:
 
@@ -29,13 +29,17 @@ If you don’t understand and address alignment issues in your software, the fol
 
 To illustrate the principles behind alignment, examine a constant task, and how it’s affected by a processor’s **memory access granularity**. The task is simple: first read four bytes from address 0 into the processor’s register. Then read four bytes from address 1 into the same register.
 
+### Single-byte memory access granularity
+
 First examine what would happen on a processor with a one-byte memory access granularity:
 
 Figure 3. Single-byte memory access granularity
 
-![Single-byte memory access granularity](https://developer.ibm.com/developer/articles/pa-dalign/images/singleByteAccess.jpg)
+![Single-byte memory access granularity](E:\github\Hardware\docs\CPU-memory-access\Memory-alignment\developer.ibm-Data-alignment-Straighten-up-and-fly-right\singleByteAccess.jpg)
 
 This fits in with the naive programmer’s model of how memory works: it takes the same four memory accesses to read from address 0 as it does from address 1. Now see what would happen on a processor with two-byte granularity, like the original 68000:
+
+### Double-byte memory access granularity
 
 Figure 4. Double-byte memory access granularity
 
@@ -49,11 +53,13 @@ However, notice what happens when reading from address 1. Because the address do
 
 Finally, examine what would happen on a processor with four-byte memory access granularity, like the 68030 or PowerPC® 601:
 
+### Quad-byte memory access granularity
+
 Figure 5. Quad-byte memory access granularity
 
 ![Quad-byte memory access granularity](https://developer.ibm.com/developer/articles/pa-dalign/images/quadByteAccess.jpg)
 
-A processor with four-byte granularity can slurp up four bytes from an aligned address with one read. Also note that reading from an **unaligned address** doubles the access count.
+A processor with four-byte granularity can slurp(大口吃) up four bytes from an aligned address with one read. Also note that reading from an **unaligned address** doubles the access count.
 
 Now that you understand the fundamentals behind **aligned data access**, you can explore some of the issues related to alignment.	
 
@@ -87,8 +93,9 @@ On the other hand, modern PowerPC processors lack hardware support for unaligned
 
 Writing some tests illustrates the performance penalties of **unaligned memory access**. The test is simple: you read, negate, and write back the numbers in a ten-megabyte buffer. These tests have two variables:
 
-1. **The size, in bytes, in which you process the buffer.** First you’ll process the buffer one byte at a time. Then you’ll move onto two-, four- and eight-bytes at a time.
-2. **The alignment of the buffer.** You’ll stagger the alignment of the buffer by incrementing the pointer to the buffer and running each test again.
+1、**The size, in bytes, in which you process the buffer.** First you’ll process the buffer one byte at a time. Then you’ll move onto two-, four- and eight-bytes at a time.
+
+2、**The alignment of the buffer.** You’ll stagger the alignment of the buffer by incrementing the pointer to the buffer and running each test again.
 
 These tests were performed on a 800 MHz PowerBook G4. To help normalize performance fluctuations from interrupt processing, each test was run ten times, keeping the average of the runs. First up is the test that operates on a single byte at a time:
 

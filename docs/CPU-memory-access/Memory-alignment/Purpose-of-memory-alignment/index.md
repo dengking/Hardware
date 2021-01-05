@@ -50,7 +50,15 @@ This can even affect the physical design of the system. If the address bus needs
 
 The CPU can operate on an aligned word of memory atomically, meaning that no other instruction can interrupt that operation. This is critical to the correct operation of many [lock-free data structures](http://kukuruku.co/hub/cpp/lock-free-data-structures-basics-atomicity-and-atomic-primitives) and other [concurrency](http://www.sciencedirect.com/science/article/pii/0304397588900965) paradigms.
 
-> NOTE: 这是非常重要的: "tag-aligned pointers are atomic"
+> NOTE: 
+>
+> 上面这段话，需要从如下几个角度来进行理解:
+>
+> 1、Memory processor transfer机制
+>
+> 2、"unit and atomic": Memory processor transfer的unit是Word，因此"The CPU can operate on an aligned word of memory atomically"
+>
+> 这是非常重要的: "tag-aligned pointers are atomic"
 
 #### Conclusion
 
@@ -64,6 +72,6 @@ A computer's primary use is to transform data. Modern memory architectures and t
 
 Another alignment-for-performance that I alluded to previously is alignment on cache lines which are (for example, on some CPUs) 64B.
 
-For more info on how much performance can be gained by leveraging caches, take a look at [Gallery of Processor Cache Effects](http://igoro.com/archive/gallery-of-processor-cache-effects/); from this [question on cache-line sizes](https://stackoverflow.com/questions/14707803/line-size-of-l1-and-l2-caches)
+For more info on how much performance can be gained by leveraging caches, take a look at [Gallery of Processor Cache Effects](http://igoro.com/archive/gallery-of-processor-cache-effects/); from this [question on cache-line sizes](https://stackoverflow.com/questions/14707803/line-size-of-l1-and-l2-caches) 
 
 > Understanding of cache lines can be important for certain types of program optimizations. For example, alignment of data may determine whether an operation touches one or two cache lines. As we saw in the example above, this can easily mean that in the misaligned case, the operation will be twice slower.
