@@ -12,7 +12,7 @@ The memory subsystem on a modern processor is restricted to accessing memory at 
 
 Modern processors have multiple levels of cache memory that data must be pulled through; supporting single-byte reads would make the memory subsystem throughput tightly bound to the execution unit throughput (aka cpu-bound); this is all reminiscent of how [PIO mode was surpassed by DMA](http://www.differencebetween.net/technology/difference-between-dma-and-pio/) for many of the same reasons in hard drives.
 
-The CPU **always** reads at its word size (4 bytes on a 32-bit processor), so when you do an unaligned address access — on a processor that supports it — the processor is going to read multiple words. The CPU will read each word of memory that your requested address straddles. This causes an amplification of up to 2X the number of memory transactions required to access the requested data.
+The CPU **always** reads at its word size (4 bytes on a 32-bit processor), so when you do an unaligned address access — on a processor that supports it — the processor is going to read multiple words. The CPU will read each word of memory that your requested address straddles(跨式组合). This causes an amplification(放大) of up to 2X the number of memory transactions required to access the requested data.
 
 Because of this, it can very easily be slower to read two bytes than four. For example, say you have a struct in memory that looks like this:
 
@@ -36,9 +36,9 @@ Say you had a packed version of the struct, maybe from the network where it was 
 
 Reading the first byte is going to be the same.
 
-When you ask the processor to give you 16 bits from 0x0005 it will have to read a word from from 0x0004 and shift left 1 byte to place it in a 16-bit register; some extra work, but most can handle that in one cycle.
+When you ask the processor to give you 16 bits from `0x0005` it will have to read a word from from `0x0004` and shift left 1 byte to place it in a 16-bit register; some extra work, but most can handle that in one cycle.
 
-When you ask for 32 bits from 0x0001 you'll get a 2X amplification. The processor will read from 0x0000 into the result register and shift left 1 byte, then read again from 0x0004 into a temporary register, shift right 3 bytes, then `OR` it with the result register.
+When you ask for 32 bits from `0x0001` you'll get a 2X amplification. The processor will read from `0x0000` into the result register and shift left 1 byte, then read again from `0x0004` into a temporary register, shift right 3 bytes, then `OR` it with the result register.
 
 #### Range
 
@@ -49,6 +49,8 @@ This can even affect the physical design of the system. If the address bus needs
 #### Atomicity
 
 The CPU can operate on an aligned word of memory atomically, meaning that no other instruction can interrupt that operation. This is critical to the correct operation of many [lock-free data structures](http://kukuruku.co/hub/cpp/lock-free-data-structures-basics-atomicity-and-atomic-primitives) and other [concurrency](http://www.sciencedirect.com/science/article/pii/0304397588900965) paradigms.
+
+> NOTE: 这是非常重要的: "tag-aligned pointers are atomic"
 
 #### Conclusion
 
