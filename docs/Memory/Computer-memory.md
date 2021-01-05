@@ -6,9 +6,10 @@
 
 
 
+## Book-计算机组成原理-科学出版社
 
+> NOTE: Hierarchy of computer memory
 
-## Hierarchy of computer memory
+![](./Book-计算机组成原理-科学出版社/3.1.jpg)
 
-> NOTE: 使用计算机组成原理书的内容来表示
-
+![](./Book-计算机组成原理-科学出版社/3.1.2.jpg)
