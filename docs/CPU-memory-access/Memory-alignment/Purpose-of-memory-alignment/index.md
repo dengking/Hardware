@@ -50,15 +50,8 @@ This can even affect the physical design of the system. If the address bus needs
 
 The CPU can operate on an aligned word of memory atomically, meaning that no other instruction can interrupt that operation. This is critical to the correct operation of many [lock-free data structures](http://kukuruku.co/hub/cpp/lock-free-data-structures-basics-atomicity-and-atomic-primitives) and other [concurrency](http://www.sciencedirect.com/science/article/pii/0304397588900965) paradigms.
 
-> NOTE: 
+> NOTE: 在`./CPU-memory-access/Atomic/Memory-access-unit-and-atomic`章节中会对上面这段话进行解释。
 >
-> 上面这段话，需要从如下几个角度来进行理解:
->
-> 1、Memory processor transfer机制
->
-> 2、"unit and atomic": Memory processor transfer的unit是Word，因此"The CPU can operate on an aligned word of memory atomically"
->
-> 这是非常重要的: "tag-aligned pointers are atomic"
 
 #### Conclusion
 

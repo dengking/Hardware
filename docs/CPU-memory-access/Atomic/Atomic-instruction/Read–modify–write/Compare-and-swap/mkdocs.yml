@@ -1,3 +1,4 @@
 nav:
     - Introduction: index.md
+    - Intel-x86-cmpxchg: Intel-x86-cmpxchg
     

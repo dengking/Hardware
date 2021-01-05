@@ -16,4 +16,4 @@
 
 ## Application
 
-non-blocking。
+non-blocking algorithm。
