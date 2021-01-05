@@ -1,4 +1,5 @@
 nav:
     - Introduction: index.md
-    - Memory-Ordering-at-Compile-Time: Memory-Ordering-at-Compile-Time
+    - Memory-reordering: Memory-reordering
+    - Memory-ordering: Memory-ordering
     - Memory-barrier: Memory-barrier
