@@ -160,3 +160,9 @@ Suppose that `bool` is a 1-byte type. Suppose also that your `is_true` variable 
 Observe that at the end this sequence, the update to `is_true` was lost, because it was overwritten by thread 2, which captured an old value of `is_true`.
 
 It so happens that x86 is very forgiving of this type of error because it supports byte-granular updates and has a very tight memory model. Other Win32 processors are not as forgiving. RISC chips, for example, often do not support byte-granular updates, and even if they do, they usually have very weak memory models.
+
+### stroustrup C++11FAQ [Memory model](https://www.stroustrup.com/C++11FAQ.html#memory-model)
+
+> NOTE: 其实列举了和 stackoverflow [is assignment operator '=' atomic?](https://stackoverflow.com/questions/8290768/is-assignment-operator-atomic) 中类似的例子。在其中给出了C++中的规定
+
+So, C++11 guarantees that no such problems occur for "**separate memory locations**". More precisely: **A memory location cannot be safely accessed by two threads without some form of locking unless they are both read accesses**. 
