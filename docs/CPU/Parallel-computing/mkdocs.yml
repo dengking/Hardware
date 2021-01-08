@@ -1,5 +1,5 @@
 nav:
     - Introduction: index.md
     - Multiprocessing: Multiprocessing
-    - Multiple-core-and-multiple-processor: Multiple-core-and-multiple-processor
+    - Multicore-and-multiprocessor: Multicore-and-multiprocessor
     - Coordination: Coordination

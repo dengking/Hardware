@@ -2,7 +2,7 @@
 
 本章讨论CPU parallel computing的内容。
 
-## 技术演进: 从[frequency scaling](https://infogalactic.com/info/Frequency_scaling) 到 [parallel scaling](https://infogalactic.com/w/index.php?title=Parallel_scaling&action=edit&redlink=1)
+## 发展概述: 从[frequency scaling](https://infogalactic.com/info/Frequency_scaling) 到 [parallel scaling](https://infogalactic.com/w/index.php?title=Parallel_scaling&action=edit&redlink=1)
 
 在Wikipedia [Parallel computing](https://infogalactic.com/info/Parallel_computing) 中对此进行了总结: 
 

@@ -76,9 +76,19 @@ If you need to write to a pointer which is shared between threads use either `st
 
 ## Assignment(=): int
 
+在 preshing [Atomic vs. Non-Atomic Operations]( https://preshing.com/20130618/atomic-vs-non-atomic-operations/) 中也进行了讨论。
+
 ### stackoverflow [Are C++ Reads and Writes of an int Atomic?](https://stackoverflow.com/questions/54188/are-c-reads-and-writes-of-an-int-atomic)
 
+[A](https://stackoverflow.com/a/54242)
 
+Boy, what a question. The answer to which is:
+
+> Yes, no, hmmm, well, it depends
+
+It all comes down to the architecture of the system. On an IA32 a correctly aligned address will be an atomic operation. Unaligned writes might be atomic, it depends on the caching system in use. If the memory lies within a single L1 cache line then it is atomic, otherwise it's not. The width of the bus between the CPU and RAM can affect the atomic nature: a correctly aligned 16bit write on an 8086 was atomic whereas the same write on an 8088 wasn't because the 8088 only had an 8 bit bus whereas the 8086 had a 16 bit bus.
+
+Also, if you're using C/C++ don't forget to mark the shared value as volatile, otherwise the optimiser will think the variable is never updated in one of your threads.
 
 ## Assignment(=): bool
 
