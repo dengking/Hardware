@@ -216,7 +216,7 @@ Hopefully, it’s now a bit more clear why the [World’s Simplest Lock-Free Has
 
 
 
-# ***THINKING*** :
+## ***THINKING*** :
 
 [Compare-and-swap](https://en.wikipedia.org/wiki/Compare-and-swap)
 
@@ -228,7 +228,7 @@ Hopefully, it’s now a bit more clear why the [World’s Simplest Lock-Free Has
 
 
 
-## how does compiler ensure alignment
+### how does compiler ensure alignment
 
 [Coding for Performance: Data alignment and structures](https://software.intel.com/en-us/articles/coding-for-performance-data-alignment-and-structures)
 
@@ -238,12 +238,6 @@ Hopefully, it’s now a bit more clear why the [World’s Simplest Lock-Free Has
 
 
 
-### byte aligned vs word aligned
+### relaxed atomic
 
 
-
-## relaxed atomic
-
-
-
-## [Memory ordering](https://en.wikipedia.org/wiki/Memory_ordering)

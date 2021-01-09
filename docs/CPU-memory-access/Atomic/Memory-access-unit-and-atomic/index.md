@@ -90,6 +90,12 @@ It all comes down to the architecture of the system. On an IA32 a correctly alig
 
 Also, if you're using C/C++ don't forget to mark the shared value as volatile, otherwise the optimiser will think the variable is never updated in one of your threads.
 
+### [Why is integer assignment on a naturally aligned variable atomic on x86?](https://stackoverflow.com/questions/36624881/why-is-integer-assignment-on-a-naturally-aligned-variable-atomic-on-x86)
+
+**"Natural" alignment means aligned to it's own type width**. Thus, the load/store will never be split across any kind of boundary wider than itself (e.g. page, cache-line, or an even narrower chunk size used for data transfers between different caches).
+
+CPUs often do things like cache-access, or cache-line transfers between cores, in power-of-2 sized chunks, so alignment boundaries smaller than a cache line do matter. (See @BeeOnRope's comments below). See also [Atomicity on x86](https://stackoverflow.com/questions/38447226/atomicity-on-x86) for more details on how CPUs implement atomic loads or stores internally, and [Can num++ be atomic for 'int num'?](https://stackoverflow.com/questions/39393850/can-num-be-atomic-for-int-num) for more about how atomic RMW operations like `atomic<int>::fetch_add()` / `lock xadd` are implemented internally.
+
 ## Assignment(=): bool
 
 
