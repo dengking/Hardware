@@ -78,6 +78,8 @@ If you need to write to a pointer which is shared between threads use either `st
 
 在 preshing [Atomic vs. Non-Atomic Operations]( https://preshing.com/20130618/atomic-vs-non-atomic-operations/) 中也进行了讨论。
 
+### TODO stackoverflow [Why is integer assignment on a naturally aligned variable atomic on x86?](https://stackoverflow.com/questions/36624881/why-is-integer-assignment-on-a-naturally-aligned-variable-atomic-on-x86)
+
 ### stackoverflow [Are C++ Reads and Writes of an int Atomic?](https://stackoverflow.com/questions/54188/are-c-reads-and-writes-of-an-int-atomic)
 
 [A](https://stackoverflow.com/a/54242)

@@ -17,3 +17,9 @@
 ## Application
 
 non-blocking algorithm。
+
+## Implementation
+
+本章讲述的是通用规则，另外各个CPU的厂商的实现有所不同，参见:
+
+1、Intel: `Instruction-set-architectures\Manufacturer\Intel\x86\Atomicity-on-x86`
