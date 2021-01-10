@@ -14,5 +14,7 @@ X86 MOV 是支持 unalignend address的，但是无法保证atomic；
 
 从下面链接中的内容来看，ARM是可以配置的。
 
-https://developer.arm.com/documentation/dui0472/m/compiler-command-line-options/--unaligned-access----no-unaligned-access
+1、https://developer.arm.com/documentation/dui0472/m/compiler-command-line-options/--unaligned-access----no-unaligned-access
+
+2、stackoverflow [Take advantage of ARM unaligned memory access while writing clean C code](https://stackoverflow.com/questions/32062894/take-advantage-of-arm-unaligned-memory-access-while-writing-clean-c-code)
 
