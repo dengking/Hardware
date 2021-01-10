@@ -1,3 +1,4 @@
 nav:
     - Introduction: index.md
     - Memory-Ordering-at-Compile-Time: Memory-Ordering-at-Compile-Time
+    - How-does-memory-reordering-help-processors-and-compilers: How-does-memory-reordering-help-processors-and-compilers
