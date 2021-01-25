@@ -1,6 +1,10 @@
 # Compare and swap
 
-典型的
+典型的。
+
+在下面文章中，也涉及了这个topic:
+
+1、preshing [An Introduction to Lock-Free Programming](https://preshing.com/20120612/an-introduction-to-lock-free-programming/)
 
 ## wikipedia [Compare-and-swap](https://en.wikipedia.org/wiki/Compare-and-swap)
 
