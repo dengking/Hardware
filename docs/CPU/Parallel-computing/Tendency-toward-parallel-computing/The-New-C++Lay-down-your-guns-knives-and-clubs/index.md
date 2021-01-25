@@ -1,0 +1,1 @@
+# [The New C++: Lay down your guns, knives, and clubs](https://www.theregister.com/2011/06/11/herb_sutter_next_c_plus_plus)
