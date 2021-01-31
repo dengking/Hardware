@@ -1,4 +1,4 @@
 nav:
     - Introduction: index.md
-    - Linux-kernel-memory-barrier: Linux-kernel-memory-barrier.md
+    - Linux-kernel-memory-barrier: Linux-kernel-memory-barrier
     
