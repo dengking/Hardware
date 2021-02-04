@@ -1,6 +1,8 @@
 # Out-of-order execution
 
-简单而又，OoOE是CPU为了performance，不按照In-order execution，即[instruction cycle](https://infogalactic.com/info/Instruction_cycle)，而是采取特殊的执行方式。
+1、简单而言，OoOE是CPU为了performance，不按照In-order execution，即[instruction cycle](https://infogalactic.com/info/Instruction_cycle)，而是采取特殊的执行方式。
+
+2、最最典型的Out-of-order execution是memory  reordering，在 `CPU-memory-access\Memory-ordering` 章节进行了总结。
 
 ## Wikipedia [Out-of-order execution](https://infogalactic.com/info/Out-of-order_execution)
 
