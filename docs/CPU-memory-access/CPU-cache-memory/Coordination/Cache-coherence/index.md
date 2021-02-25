@@ -6,6 +6,18 @@
 
 可以使用multiple model来进行分析。
 
+## 讲述cache coherence的文章
+
+1、"cppreference [std::memory_order](https://en.cppreference.com/w/cpp/atomic/memory_order) # Modification order" 段
+
+2、stackoverflow [Why it's termed read-modify-write but not read-write?](https://stackoverflow.com/questions/49452022/why-its-termed-read-modify-write-but-not-read-write) # [A](https://stackoverflow.com/a/49638936)
+
+3、zhuanlan.zhihu [高并发编程--多处理器编程中的一致性问题(上)](https://zhuanlan.zhihu.com/p/48157076) 
+
+讲得非常好
+
+4、工程programming-language的`aristeia-C++and-the-Perils-of-Double-Checked-Locking` 章节
+
 ## Wikipedia [Cache coherence](https://infogalactic.com/info/Cache_coherence)
 
 In [computer science](https://infogalactic.com/info/Computer_science), **cache coherence** is the **consistency** of shared resource data that ends up stored in multiple [local caches](https://infogalactic.com/info/Cache_(computing)). When clients in a system maintain [caches](https://infogalactic.com/info/CPU_cache) of a common memory resource, problems may arise with inconsistent data, which is particularly the case with CPUs in a [multiprocessing](https://infogalactic.com/info/Multiprocessing) system.
