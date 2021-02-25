@@ -1,6 +1,6 @@
 nav:
     - Introduction: index.md
+    - Tendency-toward-parallel-computing: Tendency-toward-parallel-computing    
     - Multiprocessing: Multiprocessing
     - Multicore-and-multiprocessor: Multicore-and-multiprocessor
-    - Coordination: Coordination
-    - Tendency-toward-parallel-computing: Tendency-toward-parallel-computing
+

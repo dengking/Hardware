@@ -1,6 +1,6 @@
 # 关于本章
 
-本章讨论CPU parallel computing的内容。
+本章讨论CPU的发展。
 
 ## 发展概述: 从[frequency scaling](https://infogalactic.com/info/Frequency_scaling) 到 [parallel scaling](https://infogalactic.com/w/index.php?title=Parallel_scaling&action=edit&redlink=1)
 
@@ -63,3 +63,9 @@ OS需要考虑如何来充分发挥CPU的parallel computing特性，比如:
 在应用层，需要考虑如何重复发挥CPU的parallel computing特性。
 
 分布式计算的兴起。
+
+## 参考
+
+本章收录了一些讨论parallel computing发展趋势的文章:
+
+1、preshing [A Look Back at Single-Threaded CPU Performance](https://preshing.com/20120208/a-look-back-at-single-threaded-cpu-performance/)

@@ -8,8 +8,12 @@
 
 ## Book-计算机组成原理-科学出版社
 
-> NOTE: Hierarchy of computer memory
+> NOTE: 
+>
+> 1、Hierarchy of computer memory
+>
+> 2、构建起完整的认知
 
-![](./Book-计算机组成原理-科学出版社/3.1.jpg)
+![](./../Book-计算机组成原理-科学出版社/3.1.jpg)
 
-![](./Book-计算机组成原理-科学出版社/3.1.2.jpg)
+![](./../Book-计算机组成原理-科学出版社/3.1.2.jpg)

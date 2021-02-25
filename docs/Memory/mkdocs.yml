@@ -5,6 +5,4 @@ nav:
     - Random-access-memory: Random-access-memory
     - Memory-address: Memory-address.md
 
-#################### cache是memory中的重要组成部分，对CPU性能的影响极大####################    
-    - Cache: Cache
     - What-Every-Programmer-Should-Know-About-Memory: What-Every-Programmer-Should-Know-About-Memory

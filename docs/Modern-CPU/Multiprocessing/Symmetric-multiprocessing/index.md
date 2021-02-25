@@ -16,7 +16,7 @@ SMP systems are *tightly coupled multiprocessor systems* with a pool of homogene
 
 Diagram of a symmetric multiprocessing system
 
-
+> NOTE: 这张图非常重要。
 
 ### Design
 

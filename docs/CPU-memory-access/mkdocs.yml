@@ -9,3 +9,4 @@ nav:
     - Memory-ordering: Memory-ordering
     - Memory-disambiguation: Memory-disambiguation
     - Memory-access-instruction: Memory-access-instruction
+    - CPU-cache-memory: CPU-cache-memory
