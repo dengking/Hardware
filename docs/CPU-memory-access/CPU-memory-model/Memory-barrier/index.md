@@ -1,10 +1,22 @@
 # Memory barrier
 
+1、关于Memory barrier介绍地最好的文章是 preshing [Memory Barriers Are Like Source Control Operations](https://preshing.com/20120710/memory-barriers-are-like-source-control-operations/) ，其中有着非常好的描述。
+
+2、需要注意的是，barrier和fence意思是相同的，关于此，参见:
+
+a、stackoverflow [Is memory fence and memory barrier same?](https://stackoverflow.com/questions/59596654/is-memory-fence-and-memory-barrier-same)
+
+b、wikipedia [Memory barrier](https://en.wikipedia.org/wiki/Memory_barrier)
 
 
-## Wikipedia [Memory barrier](https://en.wikipedia.org/wiki/Memory_barrier)
+
+## wikipedia [Memory barrier](https://en.wikipedia.org/wiki/Memory_barrier)
 
 A **memory barrier**, also known as a **membar**, **memory fence** or **fence instruction**, is a type of [barrier](https://en.wikipedia.org/wiki/Barrier_(computer_science)) [instruction](https://en.wikipedia.org/wiki/Instruction_(computer_science)) that causes a [central processing unit](https://en.wikipedia.org/wiki/Central_processing_unit) (CPU) or [compiler](https://en.wikipedia.org/wiki/Compiler) to enforce an [ordering](https://en.wikipedia.org/wiki/Memory_ordering) constraint on [memory](https://en.wikipedia.org/wiki/Random-access_memory) operations issued before and after the barrier instruction. This typically means that operations issued prior to the barrier are guaranteed to be performed before operations issued after the barrier.
+
+> NOTE: 
+>
+> 1、memory barrier 和 memory fence的意思是相同的
 
 **Memory barriers** are necessary because most modern CPUs employ performance optimizations that can result in [out-of-order execution](https://en.wikipedia.org/wiki/Out-of-order_execution). This reordering of memory operations (**loads and stores**) normally goes unnoticed(未注意) within a single [thread of execution](https://en.wikipedia.org/wiki/Thread_(computer_science)), but can cause unpredictable behaviour in [concurrent programs](https://en.wikipedia.org/wiki/Concurrent_computing) and [device drivers](https://en.wikipedia.org/wiki/Device_driver) unless carefully controlled. The exact nature of an **ordering constraint** is hardware dependent and defined by the architecture's [memory ordering model](https://en.wikipedia.org/wiki/Memory_model_(programming)). Some architectures provide multiple barriers for enforcing different ordering constraints.
 
@@ -31,8 +43,6 @@ Memory barriers are typically used when implementing low-level [machine code](ht
 > 3 device drivers that communicate with [computer hardware](https://en.wikipedia.org/wiki/Personal_computer_hardware)
 >
 > 
-
-### An illustrative example
 
 
 
