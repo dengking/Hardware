@@ -1,0 +1,5 @@
+nav:
+    - Introduction: index.md
+    - Memory-ordering: Memory-ordering
+    - Memory-barrier: Memory-barrier
+    - CPU-Memory-Model: CPU-Memory-Model
