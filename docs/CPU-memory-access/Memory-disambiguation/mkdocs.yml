@@ -1,9 +1,3 @@
 nav:
     - Introduction: index.md
-    - Memory-alignment: Memory-alignment
-    #################### 字的概念####################    
-    - Word: Word
-    #################### 大小端的概念####################        
-    - Endianess: Endianess
-    - Memory-ordering: Memory-ordering
-    - Memory-disambiguation: Memory-disambiguation
+    

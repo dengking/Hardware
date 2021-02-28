@@ -5,46 +5,219 @@ google_analytics:
 - UA-27795084-5
 - mkdocs.org
 nav:
-- Introduction: index.md
+- Home: index.md
+- Computer-architecture:
+  - Computer-architecture: Computer-architecture/index.md
+  - Stored-program-computer:
+    - Introduction: Computer-architecture/Stored-program-computer/index.md
+    - Function-and-data-model:
+      - Introduction: Computer-architecture/Stored-program-computer/Function-and-data-model/index.md
+  - Von-Neumann-architecture:
+    - Introduction: Computer-architecture/Von-Neumann-architecture/index.md
+    - Von-Neumann-bottleneck:
+      - Introduction: Computer-architecture/Von-Neumann-architecture/Von-Neumann-bottleneck/index.md
+  - Harvard-architecture:
+    - Harvard-architecture: Computer-architecture/Harvard-architecture/Harvard-architecture.md
+    - Modified-Harvard-architecture: Computer-architecture/Harvard-architecture/Modified-Harvard-architecture.md
+  - Universal-Turing-machine: Computer-architecture/Universal-Turing-machine.md
+- Memory:
+  - Computer-memory: Memory/Computer-memory.md
+  - Random-access-memory:
+    - Introduction: Memory/Random-access-memory/index.md
+  - Memory-address: Memory/Memory-address.md
+- Processor(computing): Processor(computing).md
+- CPU:
+  - Introduction: CPU/index.md
+  - CPU: CPU/CPU.md
+  - Instruction-set-architectures:
+    - Introduction: CPU/Instruction-set-architectures/index.md
+    - Classification:
+      - Introduction: CPU/Instruction-set-architectures/Classification/index.md
+      - "Load\u2013store-architecture":
+        - Introduction: "CPU/Instruction-set-architectures/Classification/Load\u2013\
+            store-architecture/index.md"
+      - Register-memory-architecture:
+        - Introduction: CPU/Instruction-set-architectures/Classification/Register-memory-architecture/index.md
+    - Comparison-of-instruction-set-architectures: CPU/Instruction-set-architectures/Comparison-of-instruction-set-architectures.md
+  - Components:
+    - Control-unit: CPU/Components/Control-unit.md
+    - Processor-register:
+      - Introduction: CPU/Components/Register/index.md
+      - Program-counter: CPU/Components/Register/Program-counter.md
+      - Stack-register: CPU/Components/Register/Stack-register.md
+      - Status-register: CPU/Components/Register/Status-register.md
+  - Execution-of-instruction:
+    - Introduction: CPU/Execution-of-instruction/index.md
+    - "CPU\u7684\u65F6\u5E8F": "CPU/Execution-of-instruction/CPU\u7684\u65F6\u5E8F\
+        .md"
+    - Instruction-cycle: CPU/Execution-of-instruction/Instruction-cycle.md
+    - Out-of-order-execution:
+      - Introduction: CPU/Execution-of-instruction/Out-of-order-execution/index.md
+    - Speculative:
+      - Introduction: CPU/Execution-of-instruction/Speculative/index.md
+      - Branch-predictor:
+        - Introduction: CPU/Execution-of-instruction/Speculative/Branch-predictor/index.md
+      - Memory-dependence-prediction:
+        - Introduction: CPU/Execution-of-instruction/Speculative/Memory-dependence-prediction/index.md
+  - Optimization:
+    - Introduction: CPU/Optimization/index.md
+  - Manufacturer:
+    - Introduction: CPU/Manufacturer/index.md
+    - Intel:
+      - Introduction: CPU/Manufacturer/Intel/index.md
+      - doc:
+        - Introduction: CPU/Manufacturer/Intel/doc/index.md
+      - x86:
+        - x86: CPU/Manufacturer/Intel/x86/x86.md
+        - Instruction:
+          - Introduction: CPU/Manufacturer/Intel/x86/Instruction/index.md
+          - x86: CPU/Manufacturer/Intel/x86/Instruction/x86.md
+          - x86-64: CPU/Manufacturer/Intel/x86/Instruction/x86-64.md
+          - x86-instruction-listings: CPU/Manufacturer/Intel/x86/Instruction/x86-instruction-listings.md
+          - INT: CPU/Manufacturer/Intel/x86/Instruction/INT.md
+          - BOUND: CPU/Manufacturer/Intel/x86/Instruction/BOUND.md
+        - x86-memory-segmentation: CPU/Manufacturer/Intel/x86/x86-memory-segmentation.md
+        - Book-x86-assembly:
+          - Introduction: CPU/Manufacturer/Intel/x86/Book-x86-assembly/index.md
+        - Book-x86-disassembly:
+          - Introduction: CPU/Manufacturer/Intel/x86/Book-x86-disassembly/index.md
+        - Atomicity-on-x86:
+          - Introduction: CPU/Manufacturer/Intel/x86/Atomicity-on-x86/index.md
+      - Register:
+        - Introduction: CPU/Manufacturer/Intel/Register/index.md
+        - FLAGS-register: CPU/Manufacturer/Intel/Register/FLAGS-register.md
+    - ARM:
+      - ARM-architecture: CPU/Manufacturer/ARM/ARM-architecture.md
+      - ARM-Assembly-Basics: CPU/Manufacturer/ARM/ARM-Assembly-Basics.md
+- Modern-CPU:
+  - Introduction: Modern-CPU/index.md
+  - Tendency-toward-parallel-computing:
+    - Introduction: Modern-CPU/Tendency-toward-parallel-computing/index.md
+    - gotw-The-Free-Lunch-Is-Over-A-Fundamental-Turn-Toward-Concurrency-in-Software:
+      - Introduction: Modern-CPU/Tendency-toward-parallel-computing/gotw-The-Free-Lunch-Is-Over-A-Fundamental-Turn-Toward-Concurrency-in-Software/index.md
+    - theregister-The-New-C++Lay-down-your-guns-knives-and-clubs:
+      - Introduction: Modern-CPU/Tendency-toward-parallel-computing/theregister-The-New-C++Lay-down-your-guns-knives-and-clubs/index.md
+  - Multiprocessing:
+    - Introduction: Modern-CPU/Multiprocessing/index.md
+    - Symmetric-multiprocessing:
+      - Introduction: Modern-CPU/Multiprocessing/Symmetric-multiprocessing/index.md
+  - Multicore-and-multiprocessor:
+    - Multi-core-processor: Modern-CPU/Multicore-and-multiprocessor/Multi-core-processor.md
+    - Multicore-VS-Multiprocessor: Modern-CPU/Multicore-and-multiprocessor/Multicore-VS-Multiprocessor.md
+- CPU-memory-access:
+  - Introduction: CPU-memory-access/index.md
+  - What-Every-Programmer-Should-Know-About-Memory:
+    - Introduction: CPU-memory-access/What-Every-Programmer-Should-Know-About-Memory/index.md
+  - Word:
+    - Word(computer-architecture): CPU-memory-access/Word/Word(computer-architecture).md
+  - Memory-alignment:
+    - Introduction: CPU-memory-access/Memory-alignment/index.md
+    - developer.ibm-Data-alignment-Straighten-up-and-fly-right:
+      - Introduction: CPU-memory-access/Memory-alignment/developer.ibm-Data-alignment-Straighten-up-and-fly-right/index.md
+    - Purpose-of-memory-alignment:
+      - Introduction: CPU-memory-access/Memory-alignment/Purpose-of-memory-alignment/index.md
+  - Endianess:
+    - Endianness: CPU-memory-access/Endianess/Endianness.md
+    - Endianness-operation: CPU-memory-access/Endianess/Endianness-operation.md
+  - Memory-disambiguation:
+    - Introduction: CPU-memory-access/Memory-disambiguation/index.md
+  - Memory-access-instruction:
+    - Introduction: CPU-memory-access/Memory-access-instruction/index.md
+    - Atomic:
+      - Introduction: CPU-memory-access/Memory-access-instruction/Atomic/index.md
+      - Memory-access-unit-and-atomic:
+        - Introduction: CPU-memory-access/Memory-access-instruction/Atomic/Memory-access-unit-and-atomic/index.md
+        - Byte-granular-memory-access:
+          - Introduction: CPU-memory-access/Memory-access-instruction/Atomic/Memory-access-unit-and-atomic/Byte-granular-memory-access/index.md
+      - Atomic-instruction:
+        - Introduction: CPU-memory-access/Memory-access-instruction/Atomic/Atomic-instruction/index.md
+        - "Read\u2013modify\u2013write":
+          - Introduction: "CPU-memory-access/Memory-access-instruction/Atomic/Atomic-instruction/Read\u2013\
+              modify\u2013write/index.md"
+          - Compare-and-swap:
+            - Introduction: "CPU-memory-access/Memory-access-instruction/Atomic/Atomic-instruction/Read\u2013\
+                modify\u2013write/Compare-and-swap/index.md"
+            - Intel-x86-cmpxchg:
+              - Introduction: "CPU-memory-access/Memory-access-instruction/Atomic/Atomic-instruction/Read\u2013\
+                  modify\u2013write/Compare-and-swap/Intel-x86-cmpxchg/index.md"
+            - CAS-loop-and-spin:
+              - Introduction: "CPU-memory-access/Memory-access-instruction/Atomic/Atomic-instruction/Read\u2013\
+                  modify\u2013write/Compare-and-swap/CAS-loop-and-spin/index.md"
+          - Fetch-and-add:
+            - Introduction: "CPU-memory-access/Memory-access-instruction/Atomic/Atomic-instruction/Read\u2013\
+                modify\u2013write/Fetch-and-add/index.md"
+          - Test-and-set:
+            - Introduction: "CPU-memory-access/Memory-access-instruction/Atomic/Atomic-instruction/Read\u2013\
+                modify\u2013write/Test-and-set/index.md"
+        - Conditional-Put-and-Delete: CPU-memory-access/Memory-access-instruction/Atomic/Atomic-instruction/Conditional-Put-and-Delete.md
+  - CPU-cache-memory:
+    - Introduction: CPU-memory-access/CPU-cache-memory/index.md
+    - Cache:
+      - Cache: CPU-memory-access/CPU-cache-memory/Cache/index.md
+      - Cache-line:
+        - Introduction: CPU-memory-access/CPU-cache-memory/Cache/Cache-line/index.md
+      - Cache-miss:
+        - Introduction: CPU-memory-access/CPU-cache-memory/Cache/Cache-miss/index.md
+      - Locality: CPU-memory-access/CPU-cache-memory/Cache/Locality.md
+    - Coordination:
+      - Introduction: CPU-memory-access/CPU-cache-memory/Coordination/index.md
+      - Memory-coherence:
+        - Introduction: CPU-memory-access/CPU-cache-memory/Coordination/Memory-coherence/index.md
+      - Cache-coherence:
+        - Introduction: CPU-memory-access/CPU-cache-memory/Coordination/Cache-coherence/index.md
+        - Protocol:
+          - Introduction: CPU-memory-access/CPU-cache-memory/Coordination/Cache-coherence/Protocol/index.md
+          - MSI-protocol:
+            - Introduction: CPU-memory-access/CPU-cache-memory/Coordination/Cache-coherence/Protocol/MSI-protocol/index.md
+          - MOESI-protocol:
+            - Introduction: CPU-memory-access/CPU-cache-memory/Coordination/Cache-coherence/Protocol/MOESI-protocol/index.md
+        - Cache-invalidation: CPU-memory-access/CPU-cache-memory/Coordination/Cache-coherence/Cache-invalidation.md
+    - False-sharing:
+      - Introduction: CPU-memory-access/CPU-cache-memory/False-sharing/index.md
+    - "TODO-zhihu-\u9AD8\u5E76\u53D1\u7F16\u7A0B-\u591A\u5904\u7406\u5668\u7F16\u7A0B\u4E2D\u7684\u4E00\u81F4\u6027\u95EE\u9898":
+      - 1: "CPU-memory-access/CPU-cache-memory/TODO-zhihu-\u9AD8\u5E76\u53D1\u7F16\
+          \u7A0B-\u591A\u5904\u7406\u5668\u7F16\u7A0B\u4E2D\u7684\u4E00\u81F4\u6027\
+          \u95EE\u9898/1.md"
+      - 2: "CPU-memory-access/CPU-cache-memory/TODO-zhihu-\u9AD8\u5E76\u53D1\u7F16\
+          \u7A0B-\u591A\u5904\u7406\u5668\u7F16\u7A0B\u4E2D\u7684\u4E00\u81F4\u6027\
+          \u95EE\u9898/2.md"
+    - Align-to-cache-line-optimization:
+      - Introduction: CPU-memory-access/CPU-cache-memory/Align-to-cache-line-optimization/index.md
+  - CPU-memory-model:
+    - Introduction: CPU-memory-access/CPU-memory-model/index.md
+    - Memory-ordering:
+      - Introduction: CPU-memory-access/CPU-memory-model/Memory-ordering/index.md
+      - Memory-Ordering-at-Compile-Time:
+        - Introduction: CPU-memory-access/CPU-memory-model/Memory-ordering/Memory-Ordering-at-Compile-Time/index.md
+      - How-does-memory-reordering-help-processors-and-compilers:
+        - Introduction: CPU-memory-access/CPU-memory-model/Memory-ordering/How-does-memory-reordering-help-processors-and-compilers/index.md
+    - Memory-barrier:
+      - Introduction: CPU-memory-access/CPU-memory-model/Memory-barrier/index.md
+      - Linux-kernel-memory-barrier:
+        - Introduction: CPU-memory-access/CPU-memory-model/Memory-barrier/Linux-kernel-memory-barrier/index.md
+      - Compiler-memory-barrier:
+        - Introduction: CPU-memory-access/CPU-memory-model/Memory-barrier/Compiler-memory-barrier/index.md
+    - CPU-Memory-Model:
+      - Introduction: CPU-memory-access/CPU-memory-model/CPU-Memory-Model/index.md
+- Assembly-language:
+  - Assembly-language: Assembly-language/index.md
+- TODO:
+  - x-86: TODO/x-86.md
+- Expert-Ulrich-Drepper:
+  - Introduction: Expert-Ulrich-Drepper/index.md
 - "Book-\u8BA1\u7B97\u673A\u7EC4\u6210\u539F\u7406-\u79D1\u5B66\u51FA\u7248\u793E":
   - "\u7B2C\u4E00\u7AE0-\u8BA1\u7B97\u673A\u7CFB\u7EDF\u6982\u8FF0":
     - "1.2-\u8BA1\u7B97\u673A\u7684\u53D1\u5C55\u7B80\u53F2": "Book-\u8BA1\u7B97\u673A\
         \u7EC4\u6210\u539F\u7406-\u79D1\u5B66\u51FA\u7248\u793E/\u7B2C\u4E00\u7AE0\
         -\u8BA1\u7B97\u673A\u7CFB\u7EDF\u6982\u8FF0/1.2-\u8BA1\u7B97\u673A\u7684\u53D1\
         \u5C55\u7B80\u53F2.md"
+    - "1.2-\u8BA1\u7B97\u673A\u7684\u6027\u80FD\u6307\u6807": "Book-\u8BA1\u7B97\u673A\
+        \u7EC4\u6210\u539F\u7406-\u79D1\u5B66\u51FA\u7248\u793E/\u7B2C\u4E00\u7AE0\
+        -\u8BA1\u7B97\u673A\u7CFB\u7EDF\u6982\u8FF0/1.2-\u8BA1\u7B97\u673A\u7684\u6027\
+        \u80FD\u6307\u6807.md"
     - "1.3-\u8BA1\u7B97\u673A\u786C\u4EF6": "Book-\u8BA1\u7B97\u673A\u7EC4\u6210\u539F\
         \u7406-\u79D1\u5B66\u51FA\u7248\u793E/\u7B2C\u4E00\u7AE0-\u8BA1\u7B97\u673A\
         \u7CFB\u7EDF\u6982\u8FF0/1.3-\u8BA1\u7B97\u673A\u786C\u4EF6.md"
-- CPU:
-  - Processor(computing): CPU/Processor(computing).md
-  - Central-processing-unit: CPU/Central-processing-unit.md
-  - Instruction-set-architectures:
-    - Instruction-set-architecture: CPU/Instruction-set-architectures/Instruction-set-architecture.md
-    - Machine-code: CPU/Instruction-set-architectures/Machine-code.md
-  - Components:
-    - Control-unit: CPU/Components/Control-unit.md
-    - Processor-register:
-      - Program-counter: CPU/Components/Register/Program-counter.md
-      - Stack-register: CPU/Components/Register/Stack-register.md
-  - Memory-access:
-    - Introduction: CPU/Memory-access/index.md
-    - "Memory\u2013access": "CPU/Memory-access/Memory\u2013access.md"
-    - Memory-alignment:
-      - Introduction: CPU/Memory-access/Memory-alignment/index.md
-      - Data-alignment-Straighten-up-and-fly-right: CPU/Memory-access/Memory-alignment/Data-alignment-Straighten-up-and-fly-right.md
-      - Memory-alignment: CPU/Memory-access/Memory-alignment/Memory-alignment.md
-  - Instruction-cycle: CPU/Instruction-cycle.md
-  - Word:
-    - Word(computer-architecture): CPU/Word/Word(computer-architecture).md
-  - Assembly-language:
-    - Assembly-language: CPU/Assembly-language/Assembly-language.md
-  - Intel:
-    - Introduction: CPU/Intel/index.md
-    - X86-instruction:
-      - Introduction: CPU/Intel/X86-instruction/index.md
-      - INT: CPU/Intel/X86-instruction/INT.md
-      - Book-X86-assembly:
-        - Introduction: CPU/Intel/X86-instruction/Book-X86-assembly/index.md
 plugins:
 - search
 repo_url: https://github.com/dengking/Hardware

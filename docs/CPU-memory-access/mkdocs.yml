@@ -1,6 +1,6 @@
 nav:
     - Introduction: index.md
-    - Primer-What-Every-Programmer-Should-Know-About-Memory: Primer-What-Every-Programmer-Should-Know-About-Memory
+    - What-Every-Programmer-Should-Know-About-Memory: What-Every-Programmer-Should-Know-About-Memory
     #################### 字的概念####################    
     - Word: Word    
     #################### 大小端的概念####################        

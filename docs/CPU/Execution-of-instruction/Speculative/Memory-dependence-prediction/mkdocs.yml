@@ -1,4 +1,3 @@
 nav:
     - Introduction: index.md
-    - Branch-predictor: Branch-predictor
-    - Memory-dependence-prediction: Memory-dependence-prediction
+    
