@@ -71,7 +71,6 @@ nav:
         - x86: CPU/Manufacturer/Intel/x86/x86.md
         - Instruction:
           - Introduction: CPU/Manufacturer/Intel/x86/Instruction/index.md
-          - x86: CPU/Manufacturer/Intel/x86/Instruction/x86.md
           - x86-64: CPU/Manufacturer/Intel/x86/Instruction/x86-64.md
           - x86-instruction-listings: CPU/Manufacturer/Intel/x86/Instruction/x86-instruction-listings.md
           - INT: CPU/Manufacturer/Intel/x86/Instruction/INT.md
@@ -109,7 +108,7 @@ nav:
   - What-Every-Programmer-Should-Know-About-Memory:
     - Introduction: CPU-memory-access/What-Every-Programmer-Should-Know-About-Memory/index.md
   - Word:
-    - Word(computer-architecture): CPU-memory-access/Word/Word(computer-architecture).md
+    - Introduction: CPU-memory-access/Word/index.md
   - Memory-alignment:
     - Introduction: CPU-memory-access/Memory-alignment/index.md
     - developer.ibm-Data-alignment-Straighten-up-and-fly-right:
