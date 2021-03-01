@@ -4,7 +4,7 @@
 
 ## wikipedia [Instruction cycle](https://en.wikipedia.org/wiki/Instruction_cycle)
 
-The **instruction cycle** (also known as the **fetch¨Cdecode¨Cexecute cycle** or simply the **fetch-execute cycle**) is the cycle which the [central processing unit](https://en.wikipedia.org/wiki/Central_processing_unit) (CPU) follows from [boot-up](https://en.wikipedia.org/wiki/Booting) until the computer has shut down in order to process instructions. It is composed of three main stages: the fetch stage, the decode stage, and the execute stage.
+The **instruction cycle** (also known as the **fetchâ€“decodeâ€“execute cycle** or simply the **fetch-execute cycle**) is the cycle which the [central processing unit](https://en.wikipedia.org/wiki/Central_processing_unit) (CPU) follows from [boot-up](https://en.wikipedia.org/wiki/Booting) until the computer has shut down in order to process instructions. It is composed of three main stages: the fetch stage, the decode stage, and the execute stage.
 
 
 
