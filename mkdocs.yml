@@ -44,6 +44,8 @@ nav:
     - Harvard-architecture: Computer-architecture/Harvard-architecture/Harvard-architecture.md
     - Modified-Harvard-architecture: Computer-architecture/Harvard-architecture/Modified-Harvard-architecture.md
   - Universal-Turing-machine: Computer-architecture/Universal-Turing-machine.md
+  - TODO-Turing-machine-VS-Von-Neuman-machine: Computer-architecture/TODO-Turing-machine-VS-Von-Neuman-machine.md
+  - TODO-Von-neumann-architecture-VS-Harvard-architecture: Computer-architecture/TODO-Von-neumann-architecture-VS-Harvard-architecture.md
 - Memory:
   - Computer-memory: Memory/Computer-memory.md
   - Random-access-memory:
