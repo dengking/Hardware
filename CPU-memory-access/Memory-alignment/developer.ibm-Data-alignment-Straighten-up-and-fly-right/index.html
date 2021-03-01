@@ -1,0 +1,4388 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Project documentation with Markdown.">
+      
+      
+      
+        <meta name="author" content="DengKing">
+      
+      
+        <link rel="canonical" href="https://dengking.github.io/Hardware/CPU-memory-access/Memory-alignment/developer.ibm-Data-alignment-Straighten-up-and-fly-right/">
+      
+      <link rel="shortcut icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.0.3">
+    
+    
+      
+        <title>Introduction - Hardware</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.1655a90d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.7fa14f5b.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../../css/extra.css">
+    
+    
+      
+        
+<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-27795084-5","mkdocs.org"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){var e;this.value&&(e=document.location.pathname,ga("send","pageview",e+"?q="+this.value))}),"undefined"!=typeof location$&&location$.subscribe(function(e){ga("send","pageview",e.pathname)})})</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#developeribm#data#alignment#straighten#up#and#fly#right" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="https://dengking.github.io/Hardware" title="Hardware" class="md-header__button md-logo" aria-label="Hardware">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Hardware
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Introduction
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="md-header__options">
+      
+    </div>
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/dengking/Hardware" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://dengking.github.io/Hardware" title="Hardware" class="md-nav__button md-logo" aria-label="Hardware">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Hardware
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/dengking/Hardware" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        Computer-architecture
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Computer-architecture" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Computer-architecture
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Computer-architecture/" class="md-nav__link">
+        Computer-architecture
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
+      
+      <label class="md-nav__link" for="__nav_2_2">
+        Stored-program-computer
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Stored-program-computer" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Stored-program-computer
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Computer-architecture/Stored-program-computer/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2_2" type="checkbox" id="__nav_2_2_2" >
+      
+      <label class="md-nav__link" for="__nav_2_2_2">
+        Function-and-data-model
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Function-and-data-model" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Function-and-data-model
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Computer-architecture/Stored-program-computer/Function-and-data-model/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
+      
+      <label class="md-nav__link" for="__nav_2_3">
+        Von-Neumann-architecture
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Von-Neumann-architecture" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Von-Neumann-architecture
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Computer-architecture/Von-Neumann-architecture/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_2" type="checkbox" id="__nav_2_3_2" >
+      
+      <label class="md-nav__link" for="__nav_2_3_2">
+        Von-Neumann-bottleneck
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Von-Neumann-bottleneck" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Von-Neumann-bottleneck
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Computer-architecture/Von-Neumann-architecture/Von-Neumann-bottleneck/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" type="checkbox" id="__nav_2_4" >
+      
+      <label class="md-nav__link" for="__nav_2_4">
+        Harvard-architecture
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Harvard-architecture" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          Harvard-architecture
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Computer-architecture/Harvard-architecture/Harvard-architecture/" class="md-nav__link">
+        Harvard-architecture
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Computer-architecture/Harvard-architecture/Modified-Harvard-architecture/" class="md-nav__link">
+        Modified-Harvard-architecture
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Computer-architecture/Universal-Turing-machine/" class="md-nav__link">
+        Universal-Turing-machine
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        Memory
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Memory" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Memory
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Memory/Computer-memory/" class="md-nav__link">
+        Computer-memory
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      <label class="md-nav__link" for="__nav_3_2">
+        Random-access-memory
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Random-access-memory" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Random-access-memory
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Memory/Random-access-memory/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Memory/Memory-address/" class="md-nav__link">
+        Memory-address
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Processor%28computing%29/" class="md-nav__link">
+        Processor(computing)
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      <label class="md-nav__link" for="__nav_5">
+        CPU
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="CPU" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          CPU
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CPU/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CPU/CPU/" class="md-nav__link">
+        CPU
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3" type="checkbox" id="__nav_5_3" >
+      
+      <label class="md-nav__link" for="__nav_5_3">
+        Instruction-set-architectures
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Instruction-set-architectures" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_3">
+          <span class="md-nav__icon md-icon"></span>
+          Instruction-set-architectures
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CPU/Instruction-set-architectures/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3_2" type="checkbox" id="__nav_5_3_2" >
+      
+      <label class="md-nav__link" for="__nav_5_3_2">
+        Classification
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Classification" data-md-level="3">
+        <label class="md-nav__title" for="__nav_5_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Classification
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CPU/Instruction-set-architectures/Classification/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3_2_2" type="checkbox" id="__nav_5_3_2_2" >
+      
+      <label class="md-nav__link" for="__nav_5_3_2_2">
+        Load–store-architecture
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Load–store-architecture" data-md-level="4">
+        <label class="md-nav__title" for="__nav_5_3_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Load–store-architecture
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CPU/Instruction-set-architectures/Classification/Load%E2%80%93store-architecture/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3_2_3" type="checkbox" id="__nav_5_3_2_3" >
+      
+      <label class="md-nav__link" for="__nav_5_3_2_3">
+        Register-memory-architecture
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Register-memory-architecture" data-md-level="4">
+        <label class="md-nav__title" for="__nav_5_3_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Register-memory-architecture
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CPU/Instruction-set-architectures/Classification/Register-memory-architecture/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CPU/Instruction-set-architectures/Comparison-of-instruction-set-architectures/" class="md-nav__link">
+        Comparison-of-instruction-set-architectures
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_4" type="checkbox" id="__nav_5_4" >
+      
+      <label class="md-nav__link" for="__nav_5_4">
+        Components
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Components" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_4">
+          <span class="md-nav__icon md-icon"></span>
+          Components
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CPU/Components/Control-unit/" class="md-nav__link">
+        Control-unit
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_4_2" type="checkbox" id="__nav_5_4_2" >
+      
+      <label class="md-nav__link" for="__nav_5_4_2">
+        Processor-register
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Processor-register" data-md-level="3">
+        <label class="md-nav__title" for="__nav_5_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          Processor-register
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CPU/Components/Register/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CPU/Components/Register/Program-counter/" class="md-nav__link">
+        Program-counter
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CPU/Components/Register/Stack-register/" class="md-nav__link">
+        Stack-register
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CPU/Components/Register/Status-register/" class="md-nav__link">
+        Status-register
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_5" type="checkbox" id="__nav_5_5" >
+      
+      <label class="md-nav__link" for="__nav_5_5">
+        Execution-of-instruction
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Execution-of-instruction" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_5">
+          <span class="md-nav__icon md-icon"></span>
+          Execution-of-instruction
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CPU/Execution-of-instruction/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CPU/Execution-of-instruction/CPU%E7%9A%84%E6%97%B6%E5%BA%8F/" class="md-nav__link">
+        CPU的时序
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CPU/Execution-of-instruction/Instruction-cycle/" class="md-nav__link">
+        Instruction-cycle
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_5_4" type="checkbox" id="__nav_5_5_4" >
+      
+      <label class="md-nav__link" for="__nav_5_5_4">
+        Out-of-order-execution
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Out-of-order-execution" data-md-level="3">
+        <label class="md-nav__title" for="__nav_5_5_4">
+          <span class="md-nav__icon md-icon"></span>
+          Out-of-order-execution
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CPU/Execution-of-instruction/Out-of-order-execution/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_5_5" type="checkbox" id="__nav_5_5_5" >
+      
+      <label class="md-nav__link" for="__nav_5_5_5">
+        Speculative
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Speculative" data-md-level="3">
+        <label class="md-nav__title" for="__nav_5_5_5">
+          <span class="md-nav__icon md-icon"></span>
+          Speculative
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CPU/Execution-of-instruction/Speculative/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_5_5_2" type="checkbox" id="__nav_5_5_5_2" >
+      
+      <label class="md-nav__link" for="__nav_5_5_5_2">
+        Branch-predictor
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Branch-predictor" data-md-level="4">
+        <label class="md-nav__title" for="__nav_5_5_5_2">
+          <span class="md-nav__icon md-icon"></span>
+          Branch-predictor
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CPU/Execution-of-instruction/Speculative/Branch-predictor/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_5_5_3" type="checkbox" id="__nav_5_5_5_3" >
+      
+      <label class="md-nav__link" for="__nav_5_5_5_3">
+        Memory-dependence-prediction
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Memory-dependence-prediction" data-md-level="4">
+        <label class="md-nav__title" for="__nav_5_5_5_3">
+          <span class="md-nav__icon md-icon"></span>
+          Memory-dependence-prediction
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CPU/Execution-of-instruction/Speculative/Memory-dependence-prediction/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_6" type="checkbox" id="__nav_5_6" >
+      
+      <label class="md-nav__link" for="__nav_5_6">
+        Optimization
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Optimization" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_6">
+          <span class="md-nav__icon md-icon"></span>
+          Optimization
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CPU/Optimization/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_7" type="checkbox" id="__nav_5_7" >
+      
+      <label class="md-nav__link" for="__nav_5_7">
+        Manufacturer
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Manufacturer" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_7">
+          <span class="md-nav__icon md-icon"></span>
+          Manufacturer
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CPU/Manufacturer/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_7_2" type="checkbox" id="__nav_5_7_2" >
+      
+      <label class="md-nav__link" for="__nav_5_7_2">
+        Intel
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Intel" data-md-level="3">
+        <label class="md-nav__title" for="__nav_5_7_2">
+          <span class="md-nav__icon md-icon"></span>
+          Intel
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CPU/Manufacturer/Intel/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_7_2_2" type="checkbox" id="__nav_5_7_2_2" >
+      
+      <label class="md-nav__link" for="__nav_5_7_2_2">
+        doc
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="doc" data-md-level="4">
+        <label class="md-nav__title" for="__nav_5_7_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          doc
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CPU/Manufacturer/Intel/doc/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_7_2_3" type="checkbox" id="__nav_5_7_2_3" >
+      
+      <label class="md-nav__link" for="__nav_5_7_2_3">
+        x86
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="x86" data-md-level="4">
+        <label class="md-nav__title" for="__nav_5_7_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          x86
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CPU/Manufacturer/Intel/x86/x86/" class="md-nav__link">
+        x86
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_7_2_3_2" type="checkbox" id="__nav_5_7_2_3_2" >
+      
+      <label class="md-nav__link" for="__nav_5_7_2_3_2">
+        Instruction
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Instruction" data-md-level="5">
+        <label class="md-nav__title" for="__nav_5_7_2_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Instruction
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CPU/Manufacturer/Intel/x86/Instruction/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CPU/Manufacturer/Intel/x86/Instruction/x86-64/" class="md-nav__link">
+        x86-64
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CPU/Manufacturer/Intel/x86/Instruction/x86-instruction-listings/" class="md-nav__link">
+        x86-instruction-listings
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CPU/Manufacturer/Intel/x86/Instruction/INT/" class="md-nav__link">
+        INT
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CPU/Manufacturer/Intel/x86/Instruction/BOUND.md" class="md-nav__link">
+        BOUND
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CPU/Manufacturer/Intel/x86/x86-memory-segmentation/" class="md-nav__link">
+        x86-memory-segmentation
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_7_2_3_4" type="checkbox" id="__nav_5_7_2_3_4" >
+      
+      <label class="md-nav__link" for="__nav_5_7_2_3_4">
+        Book-x86-assembly
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Book-x86-assembly" data-md-level="5">
+        <label class="md-nav__title" for="__nav_5_7_2_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          Book-x86-assembly
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CPU/Manufacturer/Intel/x86/Book-x86-assembly/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_7_2_3_5" type="checkbox" id="__nav_5_7_2_3_5" >
+      
+      <label class="md-nav__link" for="__nav_5_7_2_3_5">
+        Book-x86-disassembly
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Book-x86-disassembly" data-md-level="5">
+        <label class="md-nav__title" for="__nav_5_7_2_3_5">
+          <span class="md-nav__icon md-icon"></span>
+          Book-x86-disassembly
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CPU/Manufacturer/Intel/x86/Book-x86-disassembly/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_7_2_3_6" type="checkbox" id="__nav_5_7_2_3_6" >
+      
+      <label class="md-nav__link" for="__nav_5_7_2_3_6">
+        Atomicity-on-x86
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Atomicity-on-x86" data-md-level="5">
+        <label class="md-nav__title" for="__nav_5_7_2_3_6">
+          <span class="md-nav__icon md-icon"></span>
+          Atomicity-on-x86
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CPU/Manufacturer/Intel/x86/Atomicity-on-x86/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_7_2_4" type="checkbox" id="__nav_5_7_2_4" >
+      
+      <label class="md-nav__link" for="__nav_5_7_2_4">
+        Register
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Register" data-md-level="4">
+        <label class="md-nav__title" for="__nav_5_7_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          Register
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CPU/Manufacturer/Intel/Register/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CPU/Manufacturer/Intel/Register/FLAGS-register/" class="md-nav__link">
+        FLAGS-register
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_7_3" type="checkbox" id="__nav_5_7_3" >
+      
+      <label class="md-nav__link" for="__nav_5_7_3">
+        ARM
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="ARM" data-md-level="3">
+        <label class="md-nav__title" for="__nav_5_7_3">
+          <span class="md-nav__icon md-icon"></span>
+          ARM
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CPU/Manufacturer/ARM/ARM-architecture/" class="md-nav__link">
+        ARM-architecture
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CPU/Manufacturer/ARM/ARM-Assembly-Basics/" class="md-nav__link">
+        ARM-Assembly-Basics
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      <label class="md-nav__link" for="__nav_6">
+        Modern-CPU
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Modern-CPU" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Modern-CPU
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Modern-CPU/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_2" type="checkbox" id="__nav_6_2" >
+      
+      <label class="md-nav__link" for="__nav_6_2">
+        Tendency-toward-parallel-computing
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Tendency-toward-parallel-computing" data-md-level="2">
+        <label class="md-nav__title" for="__nav_6_2">
+          <span class="md-nav__icon md-icon"></span>
+          Tendency-toward-parallel-computing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Modern-CPU/Tendency-toward-parallel-computing/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_2_2" type="checkbox" id="__nav_6_2_2" >
+      
+      <label class="md-nav__link" for="__nav_6_2_2">
+        gotw-The-Free-Lunch-Is-Over-A-Fundamental-Turn-Toward-Concurrency-in-Software
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="gotw-The-Free-Lunch-Is-Over-A-Fundamental-Turn-Toward-Concurrency-in-Software" data-md-level="3">
+        <label class="md-nav__title" for="__nav_6_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          gotw-The-Free-Lunch-Is-Over-A-Fundamental-Turn-Toward-Concurrency-in-Software
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Modern-CPU/Tendency-toward-parallel-computing/gotw-The-Free-Lunch-Is-Over-A-Fundamental-Turn-Toward-Concurrency-in-Software/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_2_3" type="checkbox" id="__nav_6_2_3" >
+      
+      <label class="md-nav__link" for="__nav_6_2_3">
+        theregister-The-New-C++Lay-down-your-guns-knives-and-clubs
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="theregister-The-New-C++Lay-down-your-guns-knives-and-clubs" data-md-level="3">
+        <label class="md-nav__title" for="__nav_6_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          theregister-The-New-C++Lay-down-your-guns-knives-and-clubs
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Modern-CPU/Tendency-toward-parallel-computing/theregister-The-New-C%2B%2BLay-down-your-guns-knives-and-clubs/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_3" type="checkbox" id="__nav_6_3" >
+      
+      <label class="md-nav__link" for="__nav_6_3">
+        Multiprocessing
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Multiprocessing" data-md-level="2">
+        <label class="md-nav__title" for="__nav_6_3">
+          <span class="md-nav__icon md-icon"></span>
+          Multiprocessing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Modern-CPU/Multiprocessing/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_3_2" type="checkbox" id="__nav_6_3_2" >
+      
+      <label class="md-nav__link" for="__nav_6_3_2">
+        Symmetric-multiprocessing
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Symmetric-multiprocessing" data-md-level="3">
+        <label class="md-nav__title" for="__nav_6_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Symmetric-multiprocessing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Modern-CPU/Multiprocessing/Symmetric-multiprocessing/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_4" type="checkbox" id="__nav_6_4" >
+      
+      <label class="md-nav__link" for="__nav_6_4">
+        Multicore-and-multiprocessor
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Multicore-and-multiprocessor" data-md-level="2">
+        <label class="md-nav__title" for="__nav_6_4">
+          <span class="md-nav__icon md-icon"></span>
+          Multicore-and-multiprocessor
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Modern-CPU/Multicore-and-multiprocessor/Multi-core-processor/" class="md-nav__link">
+        Multi-core-processor
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Modern-CPU/Multicore-and-multiprocessor/Multicore-VS-Multiprocessor/" class="md-nav__link">
+        Multicore-VS-Multiprocessor
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" checked>
+      
+      <label class="md-nav__link" for="__nav_7">
+        CPU-memory-access
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="CPU-memory-access" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          CPU-memory-access
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_2" type="checkbox" id="__nav_7_2" >
+      
+      <label class="md-nav__link" for="__nav_7_2">
+        What-Every-Programmer-Should-Know-About-Memory
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="What-Every-Programmer-Should-Know-About-Memory" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_2">
+          <span class="md-nav__icon md-icon"></span>
+          What-Every-Programmer-Should-Know-About-Memory
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../What-Every-Programmer-Should-Know-About-Memory/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_3" type="checkbox" id="__nav_7_3" >
+      
+      <label class="md-nav__link" for="__nav_7_3">
+        Word
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Word" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_3">
+          <span class="md-nav__icon md-icon"></span>
+          Word
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Word/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_4" type="checkbox" id="__nav_7_4" checked>
+      
+      <label class="md-nav__link" for="__nav_7_4">
+        Memory-alignment
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Memory-alignment" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_4">
+          <span class="md-nav__icon md-icon"></span>
+          Memory-alignment
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_4_2" type="checkbox" id="__nav_7_4_2" checked>
+      
+      <label class="md-nav__link" for="__nav_7_4_2">
+        developer.ibm-Data-alignment-Straighten-up-and-fly-right
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="developer.ibm-Data-alignment-Straighten-up-and-fly-right" data-md-level="3">
+        <label class="md-nav__title" for="__nav_7_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          developer.ibm-Data-alignment-Straighten-up-and-fly-right
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Introduction
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Introduction
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#memory#access#granularity" class="md-nav__link">
+    Memory access granularity
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#alignment#fundamentals" class="md-nav__link">
+    Alignment fundamentals
+  </a>
+  
+    <nav class="md-nav" aria-label="Alignment fundamentals">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#single-byte#memory#access#granularity" class="md-nav__link">
+    Single-byte memory access granularity
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#double-byte#memory#access#granularity" class="md-nav__link">
+    Double-byte memory access granularity
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quad-byte#memory#access#granularity" class="md-nav__link">
+    Quad-byte memory access granularity
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazy#processors" class="md-nav__link">
+    Lazy processors
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#speed" class="md-nav__link">
+    Speed
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#atomicity" class="md-nav__link">
+    Atomicity
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#altivec" class="md-nav__link">
+    Altivec
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#structure#alignment" class="md-nav__link">
+    Structure alignment
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    Conclusion
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#credits" class="md-nav__link">
+    Credits
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_4_3" type="checkbox" id="__nav_7_4_3" >
+      
+      <label class="md-nav__link" for="__nav_7_4_3">
+        Purpose-of-memory-alignment
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Purpose-of-memory-alignment" data-md-level="3">
+        <label class="md-nav__title" for="__nav_7_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          Purpose-of-memory-alignment
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Purpose-of-memory-alignment/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_5" type="checkbox" id="__nav_7_5" >
+      
+      <label class="md-nav__link" for="__nav_7_5">
+        Endianess
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Endianess" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_5">
+          <span class="md-nav__icon md-icon"></span>
+          Endianess
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Endianess/Endianness/" class="md-nav__link">
+        Endianness
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Endianess/Endianness-operation/" class="md-nav__link">
+        Endianness-operation
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_6" type="checkbox" id="__nav_7_6" >
+      
+      <label class="md-nav__link" for="__nav_7_6">
+        Memory-disambiguation
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Memory-disambiguation" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_6">
+          <span class="md-nav__icon md-icon"></span>
+          Memory-disambiguation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Memory-disambiguation/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_7" type="checkbox" id="__nav_7_7" >
+      
+      <label class="md-nav__link" for="__nav_7_7">
+        Memory-access-instruction
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Memory-access-instruction" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_7">
+          <span class="md-nav__icon md-icon"></span>
+          Memory-access-instruction
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Memory-access-instruction/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_7_2" type="checkbox" id="__nav_7_7_2" >
+      
+      <label class="md-nav__link" for="__nav_7_7_2">
+        Atomic
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Atomic" data-md-level="3">
+        <label class="md-nav__title" for="__nav_7_7_2">
+          <span class="md-nav__icon md-icon"></span>
+          Atomic
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Memory-access-instruction/Atomic/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_7_2_2" type="checkbox" id="__nav_7_7_2_2" >
+      
+      <label class="md-nav__link" for="__nav_7_7_2_2">
+        Memory-access-unit-and-atomic
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Memory-access-unit-and-atomic" data-md-level="4">
+        <label class="md-nav__title" for="__nav_7_7_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Memory-access-unit-and-atomic
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Memory-access-instruction/Atomic/Memory-access-unit-and-atomic/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_7_2_2_2" type="checkbox" id="__nav_7_7_2_2_2" >
+      
+      <label class="md-nav__link" for="__nav_7_7_2_2_2">
+        Byte-granular-memory-access
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Byte-granular-memory-access" data-md-level="5">
+        <label class="md-nav__title" for="__nav_7_7_2_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Byte-granular-memory-access
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Memory-access-instruction/Atomic/Memory-access-unit-and-atomic/Byte-granular-memory-access/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_7_2_3" type="checkbox" id="__nav_7_7_2_3" >
+      
+      <label class="md-nav__link" for="__nav_7_7_2_3">
+        Atomic-instruction
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Atomic-instruction" data-md-level="4">
+        <label class="md-nav__title" for="__nav_7_7_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Atomic-instruction
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Memory-access-instruction/Atomic/Atomic-instruction/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_7_2_3_2" type="checkbox" id="__nav_7_7_2_3_2" >
+      
+      <label class="md-nav__link" for="__nav_7_7_2_3_2">
+        Read–modify–write
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Read–modify–write" data-md-level="5">
+        <label class="md-nav__title" for="__nav_7_7_2_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Read–modify–write
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Memory-access-instruction/Atomic/Atomic-instruction/Read%E2%80%93modify%E2%80%93write/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_7_2_3_2_2" type="checkbox" id="__nav_7_7_2_3_2_2" >
+      
+      <label class="md-nav__link" for="__nav_7_7_2_3_2_2">
+        Compare-and-swap
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Compare-and-swap" data-md-level="6">
+        <label class="md-nav__title" for="__nav_7_7_2_3_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Compare-and-swap
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Memory-access-instruction/Atomic/Atomic-instruction/Read%E2%80%93modify%E2%80%93write/Compare-and-swap/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_7_2_3_2_2_2" type="checkbox" id="__nav_7_7_2_3_2_2_2" >
+      
+      <label class="md-nav__link" for="__nav_7_7_2_3_2_2_2">
+        Intel-x86-cmpxchg
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Intel-x86-cmpxchg" data-md-level="7">
+        <label class="md-nav__title" for="__nav_7_7_2_3_2_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Intel-x86-cmpxchg
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Memory-access-instruction/Atomic/Atomic-instruction/Read%E2%80%93modify%E2%80%93write/Compare-and-swap/Intel-x86-cmpxchg/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_7_2_3_2_2_3" type="checkbox" id="__nav_7_7_2_3_2_2_3" >
+      
+      <label class="md-nav__link" for="__nav_7_7_2_3_2_2_3">
+        CAS-loop-and-spin
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="CAS-loop-and-spin" data-md-level="7">
+        <label class="md-nav__title" for="__nav_7_7_2_3_2_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          CAS-loop-and-spin
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Memory-access-instruction/Atomic/Atomic-instruction/Read%E2%80%93modify%E2%80%93write/Compare-and-swap/CAS-loop-and-spin/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_7_2_3_2_3" type="checkbox" id="__nav_7_7_2_3_2_3" >
+      
+      <label class="md-nav__link" for="__nav_7_7_2_3_2_3">
+        Fetch-and-add
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Fetch-and-add" data-md-level="6">
+        <label class="md-nav__title" for="__nav_7_7_2_3_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Fetch-and-add
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Memory-access-instruction/Atomic/Atomic-instruction/Read%E2%80%93modify%E2%80%93write/Fetch-and-add/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_7_2_3_2_4" type="checkbox" id="__nav_7_7_2_3_2_4" >
+      
+      <label class="md-nav__link" for="__nav_7_7_2_3_2_4">
+        Test-and-set
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Test-and-set" data-md-level="6">
+        <label class="md-nav__title" for="__nav_7_7_2_3_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          Test-and-set
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Memory-access-instruction/Atomic/Atomic-instruction/Read%E2%80%93modify%E2%80%93write/Test-and-set/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Memory-access-instruction/Atomic/Atomic-instruction/Conditional-Put-and-Delete/" class="md-nav__link">
+        Conditional-Put-and-Delete
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_8" type="checkbox" id="__nav_7_8" >
+      
+      <label class="md-nav__link" for="__nav_7_8">
+        CPU-cache-memory
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="CPU-cache-memory" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_8">
+          <span class="md-nav__icon md-icon"></span>
+          CPU-cache-memory
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CPU-cache-memory/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_8_2" type="checkbox" id="__nav_7_8_2" >
+      
+      <label class="md-nav__link" for="__nav_7_8_2">
+        Cache
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Cache" data-md-level="3">
+        <label class="md-nav__title" for="__nav_7_8_2">
+          <span class="md-nav__icon md-icon"></span>
+          Cache
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CPU-cache-memory/Cache/" class="md-nav__link">
+        Cache
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_8_2_2" type="checkbox" id="__nav_7_8_2_2" >
+      
+      <label class="md-nav__link" for="__nav_7_8_2_2">
+        Cache-line
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Cache-line" data-md-level="4">
+        <label class="md-nav__title" for="__nav_7_8_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Cache-line
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CPU-cache-memory/Cache/Cache-line/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_8_2_3" type="checkbox" id="__nav_7_8_2_3" >
+      
+      <label class="md-nav__link" for="__nav_7_8_2_3">
+        Cache-miss
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Cache-miss" data-md-level="4">
+        <label class="md-nav__title" for="__nav_7_8_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Cache-miss
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CPU-cache-memory/Cache/Cache-miss/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CPU-cache-memory/Cache/Locality/" class="md-nav__link">
+        Locality
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_8_3" type="checkbox" id="__nav_7_8_3" >
+      
+      <label class="md-nav__link" for="__nav_7_8_3">
+        Coordination
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Coordination" data-md-level="3">
+        <label class="md-nav__title" for="__nav_7_8_3">
+          <span class="md-nav__icon md-icon"></span>
+          Coordination
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CPU-cache-memory/Coordination/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_8_3_2" type="checkbox" id="__nav_7_8_3_2" >
+      
+      <label class="md-nav__link" for="__nav_7_8_3_2">
+        Memory-coherence
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Memory-coherence" data-md-level="4">
+        <label class="md-nav__title" for="__nav_7_8_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Memory-coherence
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CPU-cache-memory/Coordination/Memory-coherence/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_8_3_3" type="checkbox" id="__nav_7_8_3_3" >
+      
+      <label class="md-nav__link" for="__nav_7_8_3_3">
+        Cache-coherence
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Cache-coherence" data-md-level="4">
+        <label class="md-nav__title" for="__nav_7_8_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Cache-coherence
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CPU-cache-memory/Coordination/Cache-coherence/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_8_3_3_2" type="checkbox" id="__nav_7_8_3_3_2" >
+      
+      <label class="md-nav__link" for="__nav_7_8_3_3_2">
+        Protocol
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Protocol" data-md-level="5">
+        <label class="md-nav__title" for="__nav_7_8_3_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Protocol
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CPU-cache-memory/Coordination/Cache-coherence/Protocol/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_8_3_3_2_2" type="checkbox" id="__nav_7_8_3_3_2_2" >
+      
+      <label class="md-nav__link" for="__nav_7_8_3_3_2_2">
+        MSI-protocol
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="MSI-protocol" data-md-level="6">
+        <label class="md-nav__title" for="__nav_7_8_3_3_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          MSI-protocol
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CPU-cache-memory/Coordination/Cache-coherence/Protocol/MSI-protocol/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_8_3_3_2_3" type="checkbox" id="__nav_7_8_3_3_2_3" >
+      
+      <label class="md-nav__link" for="__nav_7_8_3_3_2_3">
+        MOESI-protocol
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="MOESI-protocol" data-md-level="6">
+        <label class="md-nav__title" for="__nav_7_8_3_3_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          MOESI-protocol
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CPU-cache-memory/Coordination/Cache-coherence/Protocol/MOESI-protocol/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CPU-cache-memory/Coordination/Cache-coherence/Cache-invalidation/" class="md-nav__link">
+        Cache-invalidation
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_8_4" type="checkbox" id="__nav_7_8_4" >
+      
+      <label class="md-nav__link" for="__nav_7_8_4">
+        False-sharing
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="False-sharing" data-md-level="3">
+        <label class="md-nav__title" for="__nav_7_8_4">
+          <span class="md-nav__icon md-icon"></span>
+          False-sharing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CPU-cache-memory/False-sharing/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_8_5" type="checkbox" id="__nav_7_8_5" >
+      
+      <label class="md-nav__link" for="__nav_7_8_5">
+        TODO-zhihu-高并发编程-多处理器编程中的一致性问题
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="TODO-zhihu-高并发编程-多处理器编程中的一致性问题" data-md-level="3">
+        <label class="md-nav__title" for="__nav_7_8_5">
+          <span class="md-nav__icon md-icon"></span>
+          TODO-zhihu-高并发编程-多处理器编程中的一致性问题
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CPU-cache-memory/TODO-zhihu-%E9%AB%98%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B-%E5%A4%9A%E5%A4%84%E7%90%86%E5%99%A8%E7%BC%96%E7%A8%8B%E4%B8%AD%E7%9A%84%E4%B8%80%E8%87%B4%E6%80%A7%E9%97%AE%E9%A2%98/1/" class="md-nav__link">
+        1
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CPU-cache-memory/TODO-zhihu-%E9%AB%98%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B-%E5%A4%9A%E5%A4%84%E7%90%86%E5%99%A8%E7%BC%96%E7%A8%8B%E4%B8%AD%E7%9A%84%E4%B8%80%E8%87%B4%E6%80%A7%E9%97%AE%E9%A2%98/2/" class="md-nav__link">
+        2
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_8_6" type="checkbox" id="__nav_7_8_6" >
+      
+      <label class="md-nav__link" for="__nav_7_8_6">
+        Align-to-cache-line-optimization
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Align-to-cache-line-optimization" data-md-level="3">
+        <label class="md-nav__title" for="__nav_7_8_6">
+          <span class="md-nav__icon md-icon"></span>
+          Align-to-cache-line-optimization
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CPU-cache-memory/Align-to-cache-line-optimization/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_9" type="checkbox" id="__nav_7_9" >
+      
+      <label class="md-nav__link" for="__nav_7_9">
+        CPU-memory-model
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="CPU-memory-model" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_9">
+          <span class="md-nav__icon md-icon"></span>
+          CPU-memory-model
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CPU-memory-model/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_9_2" type="checkbox" id="__nav_7_9_2" >
+      
+      <label class="md-nav__link" for="__nav_7_9_2">
+        Memory-ordering
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Memory-ordering" data-md-level="3">
+        <label class="md-nav__title" for="__nav_7_9_2">
+          <span class="md-nav__icon md-icon"></span>
+          Memory-ordering
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CPU-memory-model/Memory-ordering/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_9_2_2" type="checkbox" id="__nav_7_9_2_2" >
+      
+      <label class="md-nav__link" for="__nav_7_9_2_2">
+        Memory-Ordering-at-Compile-Time
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Memory-Ordering-at-Compile-Time" data-md-level="4">
+        <label class="md-nav__title" for="__nav_7_9_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Memory-Ordering-at-Compile-Time
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CPU-memory-model/Memory-ordering/Memory-Ordering-at-Compile-Time/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_9_2_3" type="checkbox" id="__nav_7_9_2_3" >
+      
+      <label class="md-nav__link" for="__nav_7_9_2_3">
+        How-does-memory-reordering-help-processors-and-compilers
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="How-does-memory-reordering-help-processors-and-compilers" data-md-level="4">
+        <label class="md-nav__title" for="__nav_7_9_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          How-does-memory-reordering-help-processors-and-compilers
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CPU-memory-model/Memory-ordering/How-does-memory-reordering-help-processors-and-compilers/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_9_3" type="checkbox" id="__nav_7_9_3" >
+      
+      <label class="md-nav__link" for="__nav_7_9_3">
+        Memory-barrier
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Memory-barrier" data-md-level="3">
+        <label class="md-nav__title" for="__nav_7_9_3">
+          <span class="md-nav__icon md-icon"></span>
+          Memory-barrier
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CPU-memory-model/Memory-barrier/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_9_3_2" type="checkbox" id="__nav_7_9_3_2" >
+      
+      <label class="md-nav__link" for="__nav_7_9_3_2">
+        Linux-kernel-memory-barrier
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Linux-kernel-memory-barrier" data-md-level="4">
+        <label class="md-nav__title" for="__nav_7_9_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Linux-kernel-memory-barrier
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CPU-memory-model/Memory-barrier/Linux-kernel-memory-barrier/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_9_3_3" type="checkbox" id="__nav_7_9_3_3" >
+      
+      <label class="md-nav__link" for="__nav_7_9_3_3">
+        Compiler-memory-barrier
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Compiler-memory-barrier" data-md-level="4">
+        <label class="md-nav__title" for="__nav_7_9_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Compiler-memory-barrier
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CPU-memory-model/Memory-barrier/Compiler-memory-barrier/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_9_4" type="checkbox" id="__nav_7_9_4" >
+      
+      <label class="md-nav__link" for="__nav_7_9_4">
+        CPU-Memory-Model
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="CPU-Memory-Model" data-md-level="3">
+        <label class="md-nav__title" for="__nav_7_9_4">
+          <span class="md-nav__icon md-icon"></span>
+          CPU-Memory-Model
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CPU-memory-model/CPU-Memory-Model/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      <label class="md-nav__link" for="__nav_8">
+        Assembly-language
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Assembly-language" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Assembly-language
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Assembly-language/" class="md-nav__link">
+        Assembly-language
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      <label class="md-nav__link" for="__nav_9">
+        TODO
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="TODO" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          TODO
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../TODO/x-86/" class="md-nav__link">
+        x-86
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" >
+      
+      <label class="md-nav__link" for="__nav_10">
+        Expert-Ulrich-Drepper
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Expert-Ulrich-Drepper" data-md-level="1">
+        <label class="md-nav__title" for="__nav_10">
+          <span class="md-nav__icon md-icon"></span>
+          Expert-Ulrich-Drepper
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Expert-Ulrich-Drepper/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11" type="checkbox" id="__nav_11" >
+      
+      <label class="md-nav__link" for="__nav_11">
+        Book-计算机组成原理-科学出版社
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Book-计算机组成原理-科学出版社" data-md-level="1">
+        <label class="md-nav__title" for="__nav_11">
+          <span class="md-nav__icon md-icon"></span>
+          Book-计算机组成原理-科学出版社
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11_1" type="checkbox" id="__nav_11_1" >
+      
+      <label class="md-nav__link" for="__nav_11_1">
+        第一章-计算机系统概述
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="第一章-计算机系统概述" data-md-level="2">
+        <label class="md-nav__title" for="__nav_11_1">
+          <span class="md-nav__icon md-icon"></span>
+          第一章-计算机系统概述
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Book-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86-%E7%A7%91%E5%AD%A6%E5%87%BA%E7%89%88%E7%A4%BE/%E7%AC%AC%E4%B8%80%E7%AB%A0-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/1.2-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9A%84%E5%8F%91%E5%B1%95%E7%AE%80%E5%8F%B2/" class="md-nav__link">
+        1.2-计算机的发展简史
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Book-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86-%E7%A7%91%E5%AD%A6%E5%87%BA%E7%89%88%E7%A4%BE/%E7%AC%AC%E4%B8%80%E7%AB%A0-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/1.2-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9A%84%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87/" class="md-nav__link">
+        1.2-计算机的性能指标
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Book-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86-%E7%A7%91%E5%AD%A6%E5%87%BA%E7%89%88%E7%A4%BE/%E7%AC%AC%E4%B8%80%E7%AB%A0-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/1.3-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A1%AC%E4%BB%B6/" class="md-nav__link">
+        1.3-计算机硬件
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#memory#access#granularity" class="md-nav__link">
+    Memory access granularity
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#alignment#fundamentals" class="md-nav__link">
+    Alignment fundamentals
+  </a>
+  
+    <nav class="md-nav" aria-label="Alignment fundamentals">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#single-byte#memory#access#granularity" class="md-nav__link">
+    Single-byte memory access granularity
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#double-byte#memory#access#granularity" class="md-nav__link">
+    Double-byte memory access granularity
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quad-byte#memory#access#granularity" class="md-nav__link">
+    Quad-byte memory access granularity
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazy#processors" class="md-nav__link">
+    Lazy processors
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#speed" class="md-nav__link">
+    Speed
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#atomicity" class="md-nav__link">
+    Atomicity
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#altivec" class="md-nav__link">
+    Altivec
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#structure#alignment" class="md-nav__link">
+    Structure alignment
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    Conclusion
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#credits" class="md-nav__link">
+    Credits
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="developeribm#data#alignment#straighten#up#and#fly#right">developer.ibm <a href="https://developer.ibm.com/articles/pa-dalign/">Data alignment: Straighten up and fly right</a></h1>
+<blockquote>
+<p>NOTE: 本文给出了memory access详细细节以及相关问题。其中的*memory access granularity*概念尤其重要，结合前面章节的内容，在此可以预告读者目前大多数CPU的*memory access granularity*取<a href="https://en.wikipedia.org/wiki/Word_(computer_architecture)">word size</a>。</p>
+</blockquote>
+<h2 id="memory#access#granularity">Memory access granularity</h2>
+<p>Programmers are conditioned to think of memory as a simple array of bytes. Among C and its descendants, <code>char*</code> is ubiquitous(普遍存在的) as meaning “a block of memory”, and even Java™ has its <code>byte[]</code> type to represent raw memory.</p>
+<p>Figure 1. How programmers see memory</p>
+<p><img alt="How Programmers See Memory" src="https://developer.ibm.com/developer/articles/pa-dalign/images/howProgrammersSeeMemory.jpg" /></p>
+<p>However, your computer’s processor does not read from and write to memory in byte-sized chunks. Instead, it accesses memory in two-, four-, eight- 16- or even 32-byte chunks. We’ll call the size in which a <strong>processor</strong> accesses memory its <em>memory access granularity</em>.</p>
+<blockquote>
+<p>NOTE: 需要理解granularity的含义，它的中文意思是**粒度**，可以把它看做是**单位**的意思，它具有**原子性**(不可分的)。<strong>memory access granularity**是CPU从memory中读取数据的**单位</strong>，所以CPU无法从memory中读取半个单位的数据，只能够读取一个单位的数据。下面的Figure 2就非常直观地展示了CPU视角的memory。通过前面的这些分析，我们应该知道的是，CPU只能够从位置<code>0</code>、<code>4</code>、<code>8</code>等位置开始读取数据，这些位置我们通常将它们称为memory access boundary（在后续章节会介绍），显然CPU access boundary是**memory access granularity**的整数倍，如果一个数据的存储位置是memory access boundary，则称为**align to memory access granularity**（对齐），使用aligned来形容这样的地址，否则就是unaligned。通过后面的章节，我们会看到，aligned address相比于unaligned address有着诸多优势。</p>
+</blockquote>
+<p>Figure 2. How processors see memory</p>
+<p><img alt="How Some Processors See Memory" src="E:\github\Hardware\docs\CPU-memory-access\Memory-alignment\developer.ibm-Data-alignment-Straighten-up-and-fly-right\howProcessorsSeeMemory.jpg" /></p>
+<p>If you don’t understand and address alignment issues in your software, the following scenarios, in increasing order of severity, are all possible:</p>
+<ul>
+<li>Your software will run slower.</li>
+<li>Your application will lock up.</li>
+<li>Your operating system will crash.</li>
+<li>Your software will silently fail, yielding incorrect results.</li>
+</ul>
+<h2 id="alignment#fundamentals">Alignment fundamentals</h2>
+<p>To illustrate the principles behind alignment, examine a constant task, and how it’s affected by a processor’s <strong>memory access granularity</strong>. The task is simple: first read four bytes from address 0 into the processor’s register. Then read four bytes from address 1 into the same register.</p>
+<h3 id="single-byte#memory#access#granularity">Single-byte memory access granularity</h3>
+<p>First examine what would happen on a processor with a one-byte memory access granularity:</p>
+<p>Figure 3. Single-byte memory access granularity</p>
+<p><img alt="Single-byte memory access granularity" src="E:\github\Hardware\docs\CPU-memory-access\Memory-alignment\developer.ibm-Data-alignment-Straighten-up-and-fly-right\singleByteAccess.jpg" /></p>
+<p>This fits in with the naive programmer’s model of how memory works: it takes the same four memory accesses to read from address 0 as it does from address 1. Now see what would happen on a processor with two-byte granularity, like the original 68000:</p>
+<h3 id="double-byte#memory#access#granularity">Double-byte memory access granularity</h3>
+<p>Figure 4. Double-byte memory access granularity</p>
+<p><img alt="Double-byte memory access granularity" src="https://developer.ibm.com/developer/articles/pa-dalign/images/doubleByteAccess.jpg" /></p>
+<p>When reading from address 0, a processor with two-byte granularity takes half the number of memory accesses as a processor with one-byte granularity. Because each memory access entails a fixed amount overhead, minimizing the number of accesses can really help performance.</p>
+<blockquote>
+<p>NOTE: 这句话的意思是a processor with two-byte granularity读取4个字节花费的时间比a processor with one-byte granularity花费的时间要少一半；</p>
+</blockquote>
+<p>However, notice what happens when reading from address 1. Because the address doesn’t fall evenly on the processor’s <strong>memory access boundary</strong>, the processor has extra work to do. Such an address is known as an <em>unaligned address</em>. Because address 1 is <strong>unaligned</strong>, a processor with two-byte granularity must perform an extra memory access, slowing down the operation</p>
+<p>Finally, examine what would happen on a processor with four-byte memory access granularity, like the 68030 or PowerPC® 601:</p>
+<h3 id="quad-byte#memory#access#granularity">Quad-byte memory access granularity</h3>
+<p>Figure 5. Quad-byte memory access granularity</p>
+<p><img alt="Quad-byte memory access granularity" src="https://developer.ibm.com/developer/articles/pa-dalign/images/quadByteAccess.jpg" /></p>
+<p>A processor with four-byte granularity can slurp(大口吃) up four bytes from an aligned address with one read. Also note that reading from an <strong>unaligned address</strong> doubles the access count.</p>
+<p>Now that you understand the fundamentals behind <strong>aligned data access</strong>, you can explore some of the issues related to alignment.   </p>
+<h2 id="lazy#processors">Lazy processors</h2>
+<p>A processor has to perform some tricks when instructed to access an <strong>unaligned address</strong>. Going back to the example of reading four bytes from address 1 on a processor with <strong>four-byte granularity</strong>, you can work out exactly what needs to be done:</p>
+<p>Figure 6. How processors handle unaligned memory access</p>
+<p><img alt="How processors handle unaligned memory access" src="https://developer.ibm.com/developer/articles/pa-dalign/images/unalignedAccess.jpg" /></p>
+<p>The processor needs to read the first chunk of the unaligned address and shift out the “unwanted” bytes from the first chunk. Then it needs to read the second chunk of the unaligned address and shift out some of its information. Finally, the two are merged together for placement in the register. It’s a lot of work.</p>
+<p>Some processors just aren’t willing to do all of that work for you.</p>
+<p>The original 68000 was a processor with two-byte granularity and lacked the circuitry to cope with <strong>unaligned addresses</strong>. When presented with such an address, the processor would throw an exception. The original Mac OS didn’t take very kindly to this exception, and would usually demand the user restart the machine. Ouch.</p>
+<p>Later processors in the 680×0 series, such as the 68020, lifted this restriction and performed the necessary work for you. This explains why some old software that works on the 68020 crashes on the 68000. It also explains why, way back when, some old Mac coders initialized pointers with odd addresses. On the original Mac, if the pointer was accessed without being reassigned to a valid address, the Mac would immediately drop into the debugger. Often they could then examine the calling chain stack and figure out where the mistake was.</p>
+<p>All processors have a finite number of transistors to get work done. Adding <strong>unaligned address access</strong> support cuts into this “transistor budget.” These transistors could otherwise be used to make other portions of the processor work faster, or add new functionality altogether.</p>
+<p>An example of a processor that sacrifices <strong>unaligned address access support</strong> in the name of <strong>speed</strong> is MIPS. MIPS is a great example of a processor that does away with almost all frivolity in the name of getting real work done faster.</p>
+<p>The PowerPC takes a hybrid approach. Every PowerPC processor to date has hardware support for unaligned 32-bit integer access. While you still pay a performance penalty for unaligned access, it tends to be small.</p>
+<p>On the other hand, modern PowerPC processors lack hardware support for unaligned 64-bit floating-point access. When asked to load an unaligned floating-point number from memory, modern PowerPC processors will throw an exception and have the operating system perform the alignment chores <em>in software</em>. Performing alignment in software is <em>much</em> slower than performing it in hardware.</p>
+<blockquote>
+<p>NOTE : 有的processor压根就不支持unaligned address access </p>
+</blockquote>
+<h2 id="speed">Speed</h2>
+<p>Writing some tests illustrates the performance penalties of <strong>unaligned memory access</strong>. The test is simple: you read, negate, and write back the numbers in a ten-megabyte buffer. These tests have two variables:</p>
+<p>1、<strong>The size, in bytes, in which you process the buffer.</strong> First you’ll process the buffer one byte at a time. Then you’ll move onto two-, four- and eight-bytes at a time.</p>
+<p>2、<strong>The alignment of the buffer.</strong> You’ll stagger the alignment of the buffer by incrementing the pointer to the buffer and running each test again.</p>
+<p>These tests were performed on a 800 MHz PowerBook G4. To help normalize performance fluctuations from interrupt processing, each test was run ten times, keeping the average of the runs. First up is the test that operates on a single byte at a time:</p>
+<p>Listing 1. Munging data one byte at a time</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">Munge8</span><span class="p">(</span> <span class="kt">void</span> <span class="err">∗</span><span class="n">data</span><span class="p">,</span> <span class="kt">uint32_t</span> <span class="n">size</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="kt">uint8_t</span> <span class="err">∗</span><span class="n">data8</span> <span class="o">=</span> <span class="p">(</span><span class="kt">uint8_t</span><span class="err">∗</span><span class="p">)</span> <span class="n">data</span><span class="p">;</span>
+    <span class="kt">uint8_t</span> <span class="err">∗</span><span class="n">data8End</span> <span class="o">=</span> <span class="n">data8</span> <span class="o">+</span> <span class="n">size</span><span class="p">;</span>
+
+    <span class="k">while</span><span class="p">(</span> <span class="n">data8</span> <span class="o">!=</span> <span class="n">data8End</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="err">∗</span><span class="n">data8</span><span class="o">++</span> <span class="o">=</span> <span class="err">‑∗</span><span class="n">data8</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>It took an average of 67,364 microseconds to execute this function. Now modify it to work on two bytes at a time instead of one byte at a time — which will halve the number of memory accesses:</p>
+<p>Listing 2. Munging data two bytes at a time</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">Munge16</span><span class="p">(</span> <span class="kt">void</span> <span class="err">∗</span><span class="n">data</span><span class="p">,</span> <span class="kt">uint32_t</span> <span class="n">size</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="kt">uint16_t</span> <span class="err">∗</span><span class="n">data16</span> <span class="o">=</span> <span class="p">(</span><span class="kt">uint16_t</span><span class="err">∗</span><span class="p">)</span> <span class="n">data</span><span class="p">;</span>
+    <span class="kt">uint16_t</span> <span class="err">∗</span><span class="n">data16End</span> <span class="o">=</span> <span class="n">data16</span> <span class="o">+</span> <span class="p">(</span><span class="n">size</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">);</span> <span class="o">/</span><span class="err">∗</span> <span class="n">Divide</span> <span class="n">size</span> <span class="n">by</span> <span class="mf">2.</span> <span class="err">∗</span><span class="o">/</span>
+    <span class="kt">uint8_t</span> <span class="err">∗</span><span class="n">data8</span> <span class="o">=</span> <span class="p">(</span><span class="kt">uint8_t</span><span class="err">∗</span><span class="p">)</span> <span class="n">data16End</span><span class="p">;</span>
+    <span class="kt">uint8_t</span> <span class="err">∗</span><span class="n">data8End</span> <span class="o">=</span> <span class="n">data8</span> <span class="o">+</span> <span class="p">(</span><span class="n">size</span> <span class="o">&amp;</span> <span class="mh">0x00000001</span><span class="p">);</span> <span class="o">/</span><span class="err">∗</span> <span class="n">Strip</span> <span class="n">upper</span> <span class="mi">31</span> <span class="n">bits</span><span class="p">.</span> <span class="err">∗</span><span class="o">/</span>
+
+    <span class="k">while</span><span class="p">(</span> <span class="n">data16</span> <span class="o">!=</span> <span class="n">data16End</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="err">∗</span><span class="n">data16</span><span class="o">++</span> <span class="o">=</span> <span class="err">‑∗</span><span class="n">data16</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">while</span><span class="p">(</span> <span class="n">data8</span> <span class="o">!=</span> <span class="n">data8End</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="err">∗</span><span class="n">data8</span><span class="o">++</span> <span class="o">=</span> <span class="err">‑∗</span><span class="n">data8</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>This function took 48,765 microseconds to process the same ten-megabyte buffer — 38% faster than <code>Munge8</code>. However, that buffer was aligned. If the buffer is unaligned, the time required increases to 66,385 microseconds — about a 27% speed penalty. The following chart illustrates the performance pattern of aligned memory accesses versus unaligned accesses:</p>
+<p>Figure 7. Single-byte access versus double-byte access</p>
+<p><img alt="Single-byte access versus double-byte access" src="https://developer.ibm.com/developer/articles/pa-dalign/images/doubleChart.jpg" /></p>
+<p>The first thing you notice is that accessing memory one byte at a time is uniformly slow. The second item of interest is that when accessing memory two bytes at a time, whenever the address is not evenly divisible by two, that 27% speed penalty rears its ugly head.</p>
+<p>Now up the ante, and process the buffer four bytes at a time:</p>
+<p>Listing 3. Munging data four bytes at a time</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">Munge32</span><span class="p">(</span> <span class="kt">void</span> <span class="err">∗</span><span class="n">data</span><span class="p">,</span> <span class="kt">uint32_t</span> <span class="n">size</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="kt">uint32_t</span> <span class="err">∗</span><span class="n">data32</span> <span class="o">=</span> <span class="p">(</span><span class="kt">uint32_t</span><span class="err">∗</span><span class="p">)</span> <span class="n">data</span><span class="p">;</span>
+    <span class="kt">uint32_t</span> <span class="err">∗</span><span class="n">data32End</span> <span class="o">=</span> <span class="n">data32</span> <span class="o">+</span> <span class="p">(</span><span class="n">size</span> <span class="o">&gt;&gt;</span> <span class="mi">2</span><span class="p">);</span> <span class="o">/</span><span class="err">∗</span> <span class="n">Divide</span> <span class="n">size</span> <span class="n">by</span> <span class="mf">4.</span> <span class="err">∗</span><span class="o">/</span>
+    <span class="kt">uint8_t</span> <span class="err">∗</span><span class="n">data8</span> <span class="o">=</span> <span class="p">(</span><span class="kt">uint8_t</span><span class="err">∗</span><span class="p">)</span> <span class="n">data32End</span><span class="p">;</span>
+    <span class="kt">uint8_t</span> <span class="err">∗</span><span class="n">data8End</span> <span class="o">=</span> <span class="n">data8</span> <span class="o">+</span> <span class="p">(</span><span class="n">size</span> <span class="o">&amp;</span> <span class="mh">0x00000003</span><span class="p">);</span> <span class="o">/</span><span class="err">∗</span> <span class="n">Strip</span> <span class="n">upper</span> <span class="mi">30</span> <span class="n">bits</span><span class="p">.</span> <span class="err">∗</span><span class="o">/</span>
+
+    <span class="k">while</span><span class="p">(</span> <span class="n">data32</span> <span class="o">!=</span> <span class="n">data32End</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="err">∗</span><span class="n">data32</span><span class="o">++</span> <span class="o">=</span> <span class="err">‑∗</span><span class="n">data32</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">while</span><span class="p">(</span> <span class="n">data8</span> <span class="o">!=</span> <span class="n">data8End</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="err">∗</span><span class="n">data8</span><span class="o">++</span> <span class="o">=</span> <span class="err">‑∗</span><span class="n">data8</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>This function processes an aligned buffer in 43,043 microseconds and an unaligned buffer in 55,775 microseconds, respectively. Thus, on this test machine, accessing unaligned memory four bytes at a time is <em>slower</em> than accessing aligned memory two bytes at a time:</p>
+<p>Figure 8. Single- versus double- versus quad-byte access</p>
+<p><img alt="Single- versus double- versus quad-byte access" src="https://developer.ibm.com/developer/articles/pa-dalign/images/quadChart.jpg" /></p>
+<p>Now for the horror story: processing the buffer eight bytes at a time.</p>
+<p>Listing 4. Munging data eight bytes at a time</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">Munge64</span><span class="p">(</span> <span class="kt">void</span> <span class="err">∗</span><span class="n">data</span><span class="p">,</span> <span class="kt">uint32_t</span> <span class="n">size</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="kt">double</span> <span class="err">∗</span><span class="n">data64</span> <span class="o">=</span> <span class="p">(</span><span class="kt">double</span><span class="err">∗</span><span class="p">)</span> <span class="n">data</span><span class="p">;</span>
+    <span class="kt">double</span> <span class="err">∗</span><span class="n">data64End</span> <span class="o">=</span> <span class="n">data64</span> <span class="o">+</span> <span class="p">(</span><span class="n">size</span> <span class="o">&gt;&gt;</span> <span class="mi">3</span><span class="p">);</span> <span class="o">/</span><span class="err">∗</span> <span class="n">Divide</span> <span class="n">size</span> <span class="n">by</span> <span class="mf">8.</span> <span class="err">∗</span><span class="o">/</span>
+    <span class="kt">uint8_t</span> <span class="err">∗</span><span class="n">data8</span> <span class="o">=</span> <span class="p">(</span><span class="kt">uint8_t</span><span class="err">∗</span><span class="p">)</span> <span class="n">data64End</span><span class="p">;</span>
+    <span class="kt">uint8_t</span> <span class="err">∗</span><span class="n">data8End</span> <span class="o">=</span> <span class="n">data8</span> <span class="o">+</span> <span class="p">(</span><span class="n">size</span> <span class="o">&amp;</span> <span class="mh">0x00000007</span><span class="p">);</span> <span class="o">/</span><span class="err">∗</span> <span class="n">Strip</span> <span class="n">upper</span> <span class="mi">29</span> <span class="n">bits</span><span class="p">.</span> <span class="err">∗</span><span class="o">/</span>
+
+    <span class="k">while</span><span class="p">(</span> <span class="n">data64</span> <span class="o">!=</span> <span class="n">data64End</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="err">∗</span><span class="n">data64</span><span class="o">++</span> <span class="o">=</span> <span class="err">‑∗</span><span class="n">data64</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">while</span><span class="p">(</span> <span class="n">data8</span> <span class="o">!=</span> <span class="n">data8End</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="err">∗</span><span class="n">data8</span><span class="o">++</span> <span class="o">=</span> <span class="err">‑∗</span><span class="n">data8</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><code>Munge64</code> processes an aligned buffer in 39,085 microseconds — about 10% faster than processing the buffer four bytes at a time. However, processing an unaligned buffer takes an amazing 1,841,155 microseconds — two orders of magnitude slower than aligned access, an outstanding 4,610% performance penalty!</p>
+<p>What happened? Because modern PowerPC processors lack hardware support for unaligned floating-point access, the processor throws an exception <em>for each unaligned access.</em> The operating system catches this exception and performs the alignment in software. Here’s a chart illustrating the penalty, and when it occurs:</p>
+<p>Figure 9. Multiple-byte access comparison</p>
+<p><img alt="Multiple-byte access comparison" src="https://developer.ibm.com/developer/articles/pa-dalign/images/horrorChartWhole.jpg" /></p>
+<p>The penalties for one-, two- and four-byte unaligned access are dwarfed by the horrendous unaligned eight-byte penalty. Maybe this chart, removing the top (and thus the tremendous gulf between the two numbers), will be clearer:</p>
+<p>Figure 10. Multiple-byte access comparison <a class="gh-link gh-issue" href="https://github.com/mkdocs/mkdocs/issues/2" title="GitHub Issue mkdocs/mkdocs #2">#2</a></p>
+<p><img alt="Multiple-byte access comparison #2" src="https://developer.ibm.com/developer/articles/pa-dalign/images/horrorChartHeadless.jpg" /></p>
+<p>There’s another subtle insight hidden in this data. Compare eight-byte access speeds on four-byte boundaries:</p>
+<p>Figure 11. Multiple-byte access comparison <a class="gh-link gh-issue" href="https://github.com/mkdocs/mkdocs/issues/3" title="GitHub Issue mkdocs/mkdocs #3">#3</a></p>
+<p><img alt="Multiple-byte access comparison #3" src="https://developer.ibm.com/developer/articles/pa-dalign/images/horrorChartHeadlessHilited.jpg" /></p>
+<p>Notice accessing memory eight bytes at a time on four- and twelve- byte boundaries <em>is slower</em> than reading the same memory four or even two bytes at a time. While PowerPCs have hardware support for four-byte aligned eight-byte doubles, you still pay a performance penalty if you use that support. Granted, it’s no where near the 4,610% penalty, but it’s certainly noticeable. Moral of the story: accessing memory in large chunks can be slower than accessing memory in small chunks, if that access is not aligned.</p>
+<h2 id="atomicity">Atomicity</h2>
+<p>All modern processors offer <strong>atomic instructions</strong>. These special instructions are crucial for synchronizing two or more concurrent tasks. As the name implies, atomic instructions must be <em>indivisible</em> — that’s why they’re so handy for synchronization: they can’t be preempted.</p>
+<p>It turns out that in order for atomic instructions to perform correctly, the addresses you pass them must be at least four-byte aligned. This is because of a subtle interaction between <strong>atomic instructions</strong> and <strong>virtual memory</strong>.</p>
+<p>If an address is unaligned, it requires at least two memory accesses. But what happens if the desired data spans <strong>two pages</strong> of <strong>virtual memory</strong>? This could lead to a situation where the first page is resident while the last page is not. Upon access, in the middle of the instruction, a <strong>page fault</strong> would be generated, executing the virtual memory management swap-in code, destroying the <strong>atomicity of the instruction</strong>. To keep things simple and correct, both the 68K and PowerPC require that atomically manipulated addresses always be at least four-byte aligned.</p>
+<p>Unfortunately, the PowerPC does not throw an exception when atomically storing to an unaligned address. Instead, the store simply always fails. This is bad because most atomic functions are written to retry upon a failed store, under the assumption they were preempted. These two circumstances combine to where your program will go into an infinite loop if you attempt to atomically store to an unaligned address. Oops.</p>
+<h2 id="altivec">Altivec</h2>
+<p>Altivec is all about speed. <strong>Unaligned memory access</strong> slows down the processor and costs precious transistors. Thus, the Altivec engineers took a page from the MIPS playbook and simply don’t support unaligned memory access. Because Altivec works with sixteen-byte chunks at a time, all addresses passed to Altivec must be sixteen-byte aligned. What’s scary is what happens if your address is not aligned.</p>
+<p>Altivec won’t throw an exception to warn you about the unaligned address. Instead, Altivec simply ignores the lower four bits of the address and charges ahead, <em>operating on the wrong address</em>. This means your program may silently corrupt memory or return incorrect results if you don’t explicitly make sure all your data is aligned.</p>
+<p>There is an advantage to Altivec’s bit-stripping ways. Because you don’t need to explicitly truncate (align-down) an address, this behavior can save you an instruction or two when handing addresses to the processor.</p>
+<p>This is not to say Altivec can’t process unaligned memory. You can find detailed instructions how to do so on the <em>Altivec Programming Environments Manual</em> (see resources on the right). It requires more work, but because memory is so slow compared to the processor, the overhead for such shenanigans is surprisingly low.</p>
+<h2 id="structure#alignment">Structure alignment</h2>
+<p>Examine the following structure:</p>
+<p>Listing 5. An innocent structure</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">Munge64</span><span class="p">(</span> <span class="kt">void</span> <span class="err">∗</span><span class="n">data</span><span class="p">,</span> <span class="kt">uint32_t</span> <span class="n">size</span> <span class="p">)</span> <span class="p">{</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="p">{</span>
+    <span class="kt">char</span>    <span class="n">a</span><span class="p">;</span>
+    <span class="kt">long</span>    <span class="n">b</span><span class="p">;</span>
+    <span class="kt">char</span>    <span class="n">c</span><span class="p">;</span>
+<span class="p">}</span>   <span class="n">Struct</span><span class="p">;</span>
+</code></pre></div>
+<p>What is the size of this structure in bytes? Many programmers will answer “6 bytes.” It makes sense: one byte for <code>a</code>, four bytes for <code>b</code> and another byte for <code>c</code>. 1 + 4 + 1 equals 6. Here’s how it would lay out in memory:</p>
+<p>Table 1. Structure size in bytes</p>
+<table>
+<thead>
+<tr>
+<th align="left">Field Type</th>
+<th align="left">Field Name</th>
+<th align="left">Field Offset</th>
+<th align="left">Field Size</th>
+<th align="left">Field End</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>char</code></td>
+<td align="left"><code>a</code></td>
+<td align="left">0</td>
+<td align="left">1</td>
+<td align="left">1</td>
+</tr>
+<tr>
+<td align="left"><code>long</code></td>
+<td align="left"><code>b</code></td>
+<td align="left">1</td>
+<td align="left">4</td>
+<td align="left">5</td>
+</tr>
+<tr>
+<td align="left"><code>char</code></td>
+<td align="left"><code>c</code></td>
+<td align="left">5</td>
+<td align="left">1</td>
+<td align="left">6</td>
+</tr>
+<tr>
+<td align="left">Total size in bytes:</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">6</td>
+</tr>
+</tbody>
+</table>
+<p>However, if you were to ask your compiler to <code>sizeof( Struct )</code>, chances are the answer you’d get back would be greater than six, perhaps eight or even twenty-four. There’s two reasons for this: backwards compatibility and efficiency.</p>
+<p>First, backwards compatibility. Remember the 68000 was a processor with two-byte memory access granularity, and would throw an exception upon encountering an odd address. If you were to read from or write to field <code>b</code>, you’d attempt to access an odd address. If a debugger weren’t installed, the old Mac OS would throw up a System Error dialog box with one button: Restart. Yikes!</p>
+<p>So, instead of laying out your fields just the way you wrote them, the compiler <em>padded</em> the structure so that <code>b</code> and <code>c</code> would reside at even addresses:</p>
+<p>Table 2. Structure with compiler padding</p>
+<table>
+<thead>
+<tr>
+<th align="left">Field Type</th>
+<th align="left">Field Name</th>
+<th align="left">Field Offset</th>
+<th align="left">Field Size</th>
+<th align="left">Field End</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>char</code></td>
+<td align="left"><code>a</code></td>
+<td align="left">0</td>
+<td align="left">1</td>
+<td align="left">1</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"><em>padding</em></td>
+<td align="left">1</td>
+<td align="left">1</td>
+<td align="left">2</td>
+</tr>
+<tr>
+<td align="left"><code>long</code></td>
+<td align="left"><code>b</code></td>
+<td align="left">2</td>
+<td align="left">4</td>
+<td align="left">6</td>
+</tr>
+<tr>
+<td align="left"><code>char</code></td>
+<td align="left"><code>c</code></td>
+<td align="left">6</td>
+<td align="left">1</td>
+<td align="left">7</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"><em>padding</em></td>
+<td align="left">7</td>
+<td align="left">1</td>
+<td align="left">8</td>
+</tr>
+<tr>
+<td align="left">Total Size in Bytes:</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">8</td>
+</tr>
+</tbody>
+</table>
+<p>Padding is the act of adding otherwise unused space to a structure to make fields line up in a desired way. Now, when the 68020 came out with built-in hardware support for unaligned memory access, this padding was unnecessary. However, it didn’t hurt anything, and it even helped a little in performance.</p>
+<p>The second reason is efficiency. Nowadays, on PowerPC machines, two-byte alignment is nice, but four-byte or eight-byte is better. You probably don’t care anymore that the original 68000 choked on unaligned structures, but you probably care about potential 4,610% performance penalties, which can happen if a <code>double</code> field doesn’t sit aligned in a structure of your devising.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>If you don’t understand and explicitly code for data alignment:</p>
+<ul>
+<li>Your software may hit performance-killing unaligned memory access exceptions, which invoke <em>very</em> expensive alignment exception handlers.</li>
+<li>Your application may attempt to atomically store to an unaligned address, causing your application to lock up.</li>
+<li>Your application may attempt to pass an unaligned address to Altivec, resulting in Altivec reading from and/or writing to the wrong part of memory, silently corrupting data or yielding incorrect results.</li>
+</ul>
+<h2 id="credits">Credits</h2>
+<p>Thanks to Alex Rosenberg and Ian Ollmann for feedback, Matt Slot for his FastTimes timing library, and Duane Hayes for providing a bevy of testing machines.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Introduction
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../Purpose-of-memory-alignment/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Introduction
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../../assets/javascripts/workers/search.fb4a9340.min.js", "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.ca5457b8.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

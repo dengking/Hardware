@@ -1,0 +1,4 @@
+nav:
+    - Introduction: index.md
+    - Intel-x86-cmpxchg: Intel-x86-cmpxchg
+    - CAS-loop-and-spin: CAS-loop-and-spin

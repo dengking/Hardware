@@ -1,0 +1,5 @@
+nav:
+    - Introduction: index.md
+    - doc: doc
+    - x86: x86
+    - Register: Register

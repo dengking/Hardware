@@ -1,0 +1,7 @@
+nav:
+    - x86: x86.md
+    - Instruction: Instruction
+    - x86-memory-segmentation: x86-memory-segmentation.md
+    - Book-x86-assembly: Book-x86-assembly
+    - Book-x86-disassembly: Book-x86-disassembly
+    - Atomicity-on-x86: Atomicity-on-x86

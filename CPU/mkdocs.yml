@@ -1,10 +1,13 @@
 nav:
-    - Processor(computing): Processor(computing).md
-    - Central-processing-unit: Central-processing-unit.md
+    - Introduction: index.md
+    #################### CPU####################    
+    - CPU: CPU.md
+    #################### 指令集的概念####################    
     - Instruction-set-architectures: Instruction-set-architectures
+    #################### CPU的组成###################    
     - Components: Components
-    - Memory-access: Memory-access
-    - Instruction-cycle: Instruction-cycle.md
-    - Word: Word
-    - Assembly-language: Assembly-language
-    - Intel: Intel
+
+#################### 指令周期的概念####################    
+    - Execution-of-instruction: Execution-of-instruction
+    - Optimization: Optimization
+    - Manufacturer: Manufacturer

@@ -1,0 +1,7 @@
+nav:
+#################### 建立起CPU memory的框架####################
+    - Computer-memory: Computer-memory.md
+    
+    - Random-access-memory: Random-access-memory
+    - Memory-address: Memory-address.md
+
