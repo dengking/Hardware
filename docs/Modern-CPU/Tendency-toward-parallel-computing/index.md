@@ -64,8 +64,12 @@ OS需要考虑如何来充分发挥CPU的parallel computing特性，比如:
 
 分布式计算的兴起。
 
-## 参考
+## 素材
 
 本章收录了一些讨论parallel computing发展趋势的文章:
 
 1、preshing [A Look Back at Single-Threaded CPU Performance](https://preshing.com/20120208/a-look-back-at-single-threaded-cpu-performance/)
+
+2、zhihu [如何理解 C++11 的六种 memory order？](https://www.zhihu.com/question/24301047) # [A](https://www.zhihu.com/question/24301047/answer/85844428) 
+
+> 简单来说，你可以理解当代CPU不仅是多核心，而且每个核心还是多任务（多指令）并行的。计算机课本上的那种一个时钟一条指令的，早就是老黄历了 （当然，宏观来看基本原理并没有改变）
