@@ -129,6 +129,9 @@ nav:
   - Multicore-and-multiprocessor:
     - Multi-core-processor: Modern-CPU/Multicore-and-multiprocessor/Multi-core-processor.md
     - Multicore-VS-Multiprocessor: Modern-CPU/Multicore-and-multiprocessor/Multicore-VS-Multiprocessor.md
+  - "\u6D41\u6C34\u7EBF-\u8D85\u6807\u91CF-\u5FAE\u7801-\u591A\u53D1\u5C04\u7B80\u4ECB":
+    - Introduction: "Modern-CPU/\u6D41\u6C34\u7EBF-\u8D85\u6807\u91CF-\u5FAE\u7801\
+        -\u591A\u53D1\u5C04\u7B80\u4ECB/index.md"
 - CPU-memory-access:
   - Introduction: CPU-memory-access/index.md
   - What-Every-Programmer-Should-Know-About-Memory:
