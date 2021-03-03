@@ -247,3 +247,8 @@ In [computer science](https://en.wikipedia.org/wiki/Computer_science), **false s
 >
 > a、"the size of the smallest resource block managed by the caching mechanism" 对应的是 size of cache line，其实就是unit
 
+
+
+## TODO
+
+*Intel*. [Avoiding and Identifying False Sharing Among Threads](https://software.intel.com/en-us/articles/avoiding-and-identifying-false-sharing-among-threads).
