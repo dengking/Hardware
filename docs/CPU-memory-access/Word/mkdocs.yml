@@ -1,2 +1,3 @@
 nav:
     - Introduction: index.md
+    - Get-word-length: Get-word-length

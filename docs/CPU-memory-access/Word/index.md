@@ -28,11 +28,17 @@ Holders for [floating point](https://en.wikipedia.org/wiki/Floating_point) numer
 
 Holders for memory addresses must be of a size capable of expressing the needed range of values but not be excessively large, so often the size used is the word though it can also be a multiple or fraction of the word size.
 
-> NOTE: 即指针类型的长度
+> NOTE: 
+>
+> 1、即指针类型的长度(pointer)
 
 ### **Registers**
 
 [Processor registers](https://en.wikipedia.org/wiki/Processor_register) are designed with a size appropriate for the type of data they hold, e.g. integers, floating-point numbers, or addresses. Many computer architectures use [general-purpose registers](https://en.wikipedia.org/wiki/General_purpose_register) that are capable of storing data in multiple representations. These registers must be sized to hold the largest of the available types. Historically, this determined the word size of the architecture.
+
+> NOTE: 
+>
+> 1、 [general-purpose registers](https://en.wikipedia.org/wiki/General_purpose_register) 的长度和Word的长度相等
 
 ### **Memory–processor transfer**
 
