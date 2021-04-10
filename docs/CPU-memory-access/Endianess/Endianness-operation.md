@@ -5,7 +5,7 @@
 下面罗列了需要考虑的典型场景：
 
 - 计算hash值（参见 quarkslab [Unaligned accesses in C/C++: what, why and solutions to do it properly](https://blog.quarkslab.com/unaligned-accesses-in-cc-what-why-and-solutions-to-do-it-properly.html)）
-- 网络传输：网络数据采用的是big endian，发送时，需要将其转换为big endian，接收时，需要将其从big endian转换为主句的endian。
+- 网络传输：网络数据采用的是big endian，发送时，需要将其转换为big endian，接收时，需要将其从big endian转换为主机的endian。
 
 下面罗列了不需要考虑的典型场景：
 
@@ -183,6 +183,14 @@ You'll use them in basically the same way as the macros. Instead of `LITTLE_ENDI
 
 
 
+### compile-time endianness swap
+
+bit arithmetic: compile-time endianness swap based on 
+
+http://stackoverflow.com/a/36937049 
+
+https://en.cppreference.com/w/cpp/language/fold
+
 ## Query 
 
 ### Compile time
@@ -202,6 +210,8 @@ static uint64_t load64_le(uint8_t const* V)
   return Ret;
 }
 ```
+
+
 
 
 
