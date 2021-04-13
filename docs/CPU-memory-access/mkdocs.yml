@@ -8,6 +8,6 @@ nav:
     - Endianess: Endianess
 
     - Memory-disambiguation: Memory-disambiguation
-    - Memory-access-instruction: Memory-access-instruction
     - CPU-cache-memory: CPU-cache-memory
-    - CPU-memory-model: CPU-memory-model
+    - CPU-memory-model: CPU-memory-model    
+    - Memory-access-instruction: Memory-access-instruction

@@ -82,3 +82,7 @@ stackoverflow [compare and swap vs test and set](https://stackoverflow.com/quest
 [A](https://stackoverflow.com/a/40101529):
 
 > **Test and set operates on a bit, compare and swap operates on a 32-bit field.**
+
+
+
+## TODO: 原子操作：blog [CAS、TAS、TTAS、FAA浅析](https://blog.csdn.net/u011461385/article/details/107282221)

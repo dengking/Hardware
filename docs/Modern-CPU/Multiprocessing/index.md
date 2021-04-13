@@ -66,3 +66,9 @@ SMP or NUMA architecture
 | **Multiple data streams** | [SIMD](https://infogalactic.com/info/SIMD) | [MIMD](https://infogalactic.com/info/MIMD) | [SPMD](https://infogalactic.com/info/SPMD) | [MPMD](https://infogalactic.com/info/MPMD) |
 
 > NOTE: **data stream**和**instruction stream**
+
+
+
+## 素材
+
+### csdn [聊聊高并发（五）理解缓存一致性协议以及对并发编程的影响](https://blog.csdn.net/iter_zc/article/details/40342695)

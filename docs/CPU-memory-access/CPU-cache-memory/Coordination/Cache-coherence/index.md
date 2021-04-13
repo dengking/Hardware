@@ -18,6 +18,8 @@
 
 4、工程programming-language的`aristeia-C++and-the-Perils-of-Double-Checked-Locking` 章节
 
+5、tutorialspoint [Cache Coherence and Synchronization](https://www.tutorialspoint.com/parallel_computer_architecture/parallel_computer_architecture_cache_coherence_synchronization.htm)
+
 ## Wikipedia [Cache coherence](https://infogalactic.com/info/Cache_coherence)
 
 In [computer science](https://infogalactic.com/info/Computer_science), **cache coherence** is the **consistency** of shared resource data that ends up stored in multiple [local caches](https://infogalactic.com/info/Cache_(computing)). When clients in a system maintain [caches](https://infogalactic.com/info/CPU_cache) of a common memory resource, problems may arise with inconsistent data, which is particularly the case with CPUs in a [multiprocessing](https://infogalactic.com/info/Multiprocessing) system.
@@ -97,3 +99,9 @@ When a write operation is observed to a location that a cache has a copy of, the
 -- Write-update
 
 When a write operation is observed to a location that a cache has a copy of, the cache controller updates its own copy of the snooped memory location with the new data.
+
+
+
+## How Cache Coherency Impacts Power Performance
+
+参见 `How-Cache-Coherency-Impacts-Power-Performance` 章节。
