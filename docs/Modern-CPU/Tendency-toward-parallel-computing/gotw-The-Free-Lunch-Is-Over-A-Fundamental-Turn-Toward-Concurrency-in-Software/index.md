@@ -1,6 +1,16 @@
 # gotw [The Free Lunch Is Over: A Fundamental Turn Toward Concurrency in Software](http://www.gotw.ca/publications/concurrency-ddj.htm)
 
-> NOTE: 是在阅读 preshing [A Look Back at Single-Threaded CPU Performance](https://preshing.com/20120208/a-look-back-at-single-threaded-cpu-performance/) 时，发现的这篇文章
+> NOTE: 
+>
+> 1、是在阅读 preshing [A Look Back at Single-Threaded CPU Performance](https://preshing.com/20120208/a-look-back-at-single-threaded-cpu-performance/) 时，发现的这篇文章
+>
+> 2、在 [更好的内存管理-jemalloc (redis 默认使用的)](https://blog.csdn.net/weixin_34357436/article/details/92090661) 中，对这篇文章的核心观点进行了非常好的解读:
+>
+> > 2005年发表了一篇文章“[免费午餐的时代结束了](http://www.gotw.ca/publications/concurrency-ddj.htm)”。在之前，程序就算不用费脑子，随着cpu时钟速度增加，程序性能自己就会上去。但现在不同，现在cpu时钟趋于稳定，而核数不断地增加。程序员需要适应这样的多线程多进程的环境，并要开发出适合的程序。文章讲的大概是这样的内容。
+> >
+> > 6年之后的如今，这篇文章完全变成现实了。事实上cpu时钟停留在3GHz，而核不断上升。现在程序要适应多线程多进程的分布式计算，速度才能上升。但是这样的程序很难。
+>
+> 
 
 
 
