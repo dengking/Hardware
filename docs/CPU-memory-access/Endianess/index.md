@@ -251,4 +251,3 @@ While the high-level network protocols usually consider the byte (mostly meant a
 
 Apart from serialization, the terms *bit endianness* and *bit-level endianness* are seldom used, as computer architectures where each individual bit has a unique address are rare. Individual bits or [bit fields](https://en.wikipedia.org/wiki/Bit_field) are accessed via their numerical value or, in high-level programming languages, assigned names, the effects of which, however, may be machine dependent or lack [software portability](https://en.wikipedia.org/wiki/Software_portability). The natural numbering is that the [arithmetic left shift](https://en.wikipedia.org/wiki/Arithmetic_left_shift) `1 << *n*` yields a mask for the bit of position *n*, a rule which exhibits the machine's (byte) endianness at least if `*n* >= 8`, e.g. if used for indexing a sufficiently large bit array. Other numberings do occur in various documentations.
 
-
