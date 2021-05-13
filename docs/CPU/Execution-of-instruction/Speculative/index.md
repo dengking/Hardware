@@ -61,3 +61,10 @@ Common forms of this include [branch predictors](https://en.wikipedia.org/wiki/B
 *Main article:* [Lazy evaluation](https://en.wikipedia.org/wiki/Lazy_evaluation)
 
 Lazy execution is the opposite of eager execution, and does not involve speculation.
+
+
+
+## 经典例子
+
+最能够体现CPU [Speculative execution](https://en.wikipedia.org/wiki/Speculative_execution) 的例子就是: stackoverflow [Why is processing a sorted array faster than processing an unsorted array?](https://stackoverflow.com/questions/11227809/why-is-processing-a-sorted-array-faster-than-processing-an-unsorted-array) ，它被收录于`Branch-predictor`章节。
+

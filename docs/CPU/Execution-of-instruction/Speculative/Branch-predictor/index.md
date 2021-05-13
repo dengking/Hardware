@@ -18,6 +18,8 @@ The first time a conditional operation is seen, the branch predictor does not ha
 
 In [computer architecture](https://en.wikipedia.org/wiki/Computer_architecture), a **branch predictor**[[1\]](https://en.wikipedia.org/wiki/Branch_predictor#cite_note-dbp-class-report-1)[[2\]](https://en.wikipedia.org/wiki/Branch_predictor#cite_note-schemes-and-performances-2)[[3\]](https://en.wikipedia.org/wiki/Branch_predictor#cite_note-3)[[4\]](https://en.wikipedia.org/wiki/Branch_predictor#cite_note-4)[[5\]](https://en.wikipedia.org/wiki/Branch_predictor#cite_note-5) is a [digital circuit](https://en.wikipedia.org/wiki/Digital_electronics) that tries to guess which way a [branch](https://en.wikipedia.org/wiki/Branch_(computer_science)) (e.g., an [if–then–else structure](https://en.wikipedia.org/wiki/Conditional_(programming))) will go before this is known definitively. The purpose of the branch predictor is to improve the flow in the [instruction pipeline](https://en.wikipedia.org/wiki/Instruction_pipeline). Branch predictors play a critical role in achieving high effective [performance](https://en.wikipedia.org/wiki/Computer_performance) in many modern [pipelined](https://en.wikipedia.org/wiki/Pipeline_(computing)) [microprocessor](https://en.wikipedia.org/wiki/Microprocessor) architectures[[6\]](https://en.wikipedia.org/wiki/Branch_predictor#cite_note-BPdynSurvey-6) such as [x86](https://en.wikipedia.org/wiki/X86).
 
+
+
 ## stackoverflow [Why is processing a sorted array faster than processing an unsorted array?](https://stackoverflow.com/questions/11227809/why-is-processing-a-sorted-array-faster-than-processing-an-unsorted-array)
 
 Here is a piece of C++ code that shows some very peculiar behavior. For some strange reason, sorting the data miraculously makes the code almost six times faster:
@@ -62,8 +64,9 @@ int main()
 
 ```
 
-- Without `std::sort(data, data + arraySize);`, the code runs in 11.54 seconds.
-- With the sorted data, the code runs in 1.93 seconds.
+1、Without `std::sort(data, data + arraySize);`, the code runs in 11.54 seconds.
+
+2、With the sorted data, the code runs in 1.93 seconds.
 
 ------
 
