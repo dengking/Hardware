@@ -1,5 +1,6 @@
 nav:
     - Introduction: index.md
+    - Cache-invalidation: Cache-invalidation.md    
     - MSI-protocol: MSI-protocol
     - MOESI-protocol: MOESI-protocol
     

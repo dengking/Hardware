@@ -50,6 +50,10 @@ Changes to the data in any cache must be propagated to other copies (of that cac
 
 Reads/Writes to a single memory location must be seen by all processors in the same order.
 
+> NOTE: 
+>
+> 1、可以通过CPU的memory model来进行控制
+
 Theoretically, coherence can be performed at the load/store [granularity](https://en.wikipedia.org/wiki/Granularity). However, in practice it is generally performed at the granularity of cache blocks.[[3\]](https://en.wikipedia.org/wiki/Cache_coherence#cite_note-:2-3)
 
 > NOTE: unit
@@ -95,6 +99,10 @@ In a **directory-based system**, the data being shared is placed in a **common d
 -- Write-invalidate
 
 When a write operation is observed to a location that a cache has a copy of, the cache controller invalidates its own copy of the snooped memory location, which forces a read from main memory of the new value on its next access.[[4\]](https://en.wikipedia.org/wiki/Cache_coherence#cite_note-:3-4)
+
+> NOTE: 
+>
+> 1、Cache invalidation
 
 -- Write-update
 

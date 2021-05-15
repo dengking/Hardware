@@ -1,5 +1,4 @@
 nav:
     - Introduction: index.md
     - Protocol: Protocol
-    - How-Cache-Coherency-Impacts-Power-Performance: How-Cache-Coherency-Impacts-Power-Performance
-    - Cache-invalidation: Cache-invalidation.md
+    - Cache-performance-optimization: Cache-performance-optimization
