@@ -1,4 +1,14 @@
-# How Cache Coherency Impacts Power Performance
+# Cache performance optimization
+
+1、cache performance 影响方方面面，它是optimization重要方向；
+
+2、concurrency
+
+3、当代的发展趋势: 多核
+
+
+
+## How Cache Coherency Impacts Power Performance
 
 1、Cache Coherency是有代价的，它会对Power、Performance等产生重要影响
 
@@ -8,4 +18,4 @@
 
 3、本章的标题源自 semiengineering [How Cache Coherency Impacts Power, Performance](https://semiengineering.com/how-cache-coherency-impacts-power-performance/)
 
-## semiengineering [How Cache Coherency Impacts Power, Performance](https://semiengineering.com/how-cache-coherency-impacts-power-performance/)
+### semiengineering [How Cache Coherency Impacts Power, Performance](https://semiengineering.com/how-cache-coherency-impacts-power-performance/)
