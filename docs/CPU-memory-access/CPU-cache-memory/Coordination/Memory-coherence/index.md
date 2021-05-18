@@ -1,6 +1,8 @@
 # Memory coherence
 
-"coherence"的意思是"一致性"。
+1、"coherence"的意思是"一致性"。
+
+2、讲得其实就是cache coherence
 
 ## Wikipedia [Memory coherence](https://infogalactic.com/info/Memory_coherence)
 

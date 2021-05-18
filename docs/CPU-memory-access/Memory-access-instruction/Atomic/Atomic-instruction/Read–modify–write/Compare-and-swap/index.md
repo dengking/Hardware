@@ -75,3 +75,31 @@ function add(p : pointer to int, a : int) returns int
 > 1、如果 p 和 value相等(说明这段时间内没有其他的transaction发生)，则将value + p 递交；否则不递交，终止。
 
 In this algorithm, if the value of `*p` changes after (or while!) it is fetched and before the CAS does the store, CAS will notice and report this fact, causing the algorithm to retry.[[5\]](https://en.wanweibaike.com/wiki-Compare-And-Swap#cite_note-5)
+
+
+
+## 劣势 和 局限性
+
+### 1、zhihu [【BAT面试题系列】面试官：你了解乐观锁和悲观锁吗？](https://zhuanlan.zhihu.com/p/74372722)
+
+下面是CAS一些不那么完美的地方：
+
+#### 1、ABA问题
+
+在`AtomicInteger`的例子中，ABA似乎没有什么危害。但是在某些场景下，ABA却会带来隐患，例如栈顶问题：一个栈的栈顶经过两次(或多次)变化又恢复了原值，但是栈可能已发生了变化。
+
+对于ABA问题，比较有效的方案是引入版本号，内存中的值每发生一次变化，版本号都+1；在进行CAS操作时，不仅比较内存中的值，也会比较版本号，只有当二者都没有变化时，CAS才能执行成功。Java中的`AtomicStampedReference`类便是使用版本号来解决ABA问题的。
+
+#### 2、高竞争下的开销问题
+
+在并发冲突概率大的高竞争环境下，如果CAS一直失败，会一直重试，CPU开销较大。针对这个问题的一个思路是引入退出机制，如重试次数超过一定阈值后失败退出。当然，更重要的是避免在高竞争环境下使用乐观锁。
+
+#### 3、功能限制
+
+CAS的功能是比较受限的，例如CAS只能保证单个变量（或者说单个内存值）操作的原子性，这意味着：(1)原子性不一定能保证线程安全，例如在Java中需要与volatile配合来保证线程安全；(2)当涉及到多个变量(内存值)时，CAS也无能为力。
+
+> NOTE: 
+>
+> 1、多个CAS  optimistic lock无法工作
+
+除此之外，CAS的实现需要硬件层面处理器的支持，在Java中普通用户无法直接使用，只能借助atomic包下的原子类使用，灵活性受到限制。

@@ -111,7 +111,21 @@ int main()
 
 
 
+
+
 ## Workarounds总结
+
+
+
+### zhuanlan [【BAT面试题系列】面试官：你了解乐观锁和悲观锁吗？](https://zhuanlan.zhihu.com/p/74372722)
+
+> NOTE: 
+>
+> 1、使用版本号来解决ABA问题
+
+对于ABA问题，比较有效的方案是引入版本号，内存中的值每发生一次变化，版本号都+1；在进行CAS操作时，不仅比较内存中的值，也会比较版本号，只有当二者都没有变化时，CAS才能执行成功。Java中的`AtomicStampedReference`类便是使用版本号来解决ABA问题的。
+
+
 
 ### Herb Sutter [Lock-Free Programming or, How to Juggle Razor Blades](http://www.alfasoft.com/files/herb/40-LockFree.pdf) 
 
