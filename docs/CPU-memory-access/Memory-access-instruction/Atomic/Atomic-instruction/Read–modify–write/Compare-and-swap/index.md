@@ -1,8 +1,26 @@
 # Compare and swap
 
-在下面文章中，也涉及了这个topic:
+一、在下面文章中，也涉及了这个topic:
 
 1、preshing [An Introduction to Lock-Free Programming](https://preshing.com/20120612/an-introduction-to-lock-free-programming/)
+
+二、在阅读了 
+
+1、wikipedia [Optimistic concurrency control](https://en.wikipedia.org/wiki/Optimistic_concurrency_control) 
+
+其中的一个核心观点就是: transaction 是 optimistic concurrency control
+
+2、zhuanlan [【BAT面试题系列】面试官：你了解乐观锁和悲观锁吗？后，我觉得使用](https://zhuanlan.zhihu.com/p/74372722) 
+
+使用CAS、MVCC来实现optimistic concurrency control，这两种方式本质上是有些类似的。
+
+
+
+后，我对compare-and-swap的认知是: 
+
+使用transaction来理解compare-and-swap: 
+
+通过"compare"来判断在这段时间内是否发生了状态改变，如果状态改变了，则终止transaction，否则commit修改。
 
 ## wikipedia [Compare-and-swap](https://en.wikipedia.org/wiki/Compare-and-swap)
 
@@ -32,3 +50,28 @@ This operation is used to implement [synchronization primitives](https://en.wiki
 
 Algorithms built around CAS typically read some key memory location and remember the old value. Based on that old value, they compute some new value. Then they try to swap in the new value using CAS, where the comparison checks for the location still being equal to the old value. If CAS indicates that the attempt has failed, it has to be repeated from the beginning: the location is re-read, a new value is re-computed and the CAS is tried again. Instead of immediately retrying after a CAS operation fails, researchers have found that total system performance can be improved in multiprocessor systems—where many threads constantly update some particular shared variable—if threads that see their CAS fail use [exponential backoff](https://en.wikipedia.org/wiki/Exponential_backoff)—in other words, wait a little before retrying the CAS.[[4\]](https://en.wikipedia.org/wiki/Compare-and-swap#cite_note-dice-4)
 
+### Example application: atomic adder
+
+
+
+```C++
+function add(p : pointer to int, a : int) returns int
+{
+	done ← false
+	while not done
+	{
+		value ← *p  // Even this operation doesn't need to be atomic.
+		done ← cas(p, value, value + a)
+	}
+	return value + a
+}
+
+```
+
+
+
+> NOTE: 
+>
+> 1、如果 p 和 value相等(说明这段时间内没有其他的transaction发生)，则将value + p 递交；否则不递交，终止。
+
+In this algorithm, if the value of `*p` changes after (or while!) it is fetched and before the CAS does the store, CAS will notice and report this fact, causing the algorithm to retry.[[5\]](https://en.wanweibaike.com/wiki-Compare-And-Swap#cite_note-5)
