@@ -8,7 +8,7 @@ Programmers are conditioned to think of memory as a simple array of bytes. Among
 
 Figure 1. How programmers see memory
 
-![How Programmers See Memory](https://developer.ibm.com/developer/articles/pa-dalign/images/howProgrammersSeeMemory.jpg)
+![How Programmers See Memory](./howProgrammersSeeMemory.jpg)
 
 However, your computer’s processor does not read from and write to memory in byte-sized chunks. Instead, it accesses memory in two-, four-, eight- 16- or even 32-byte chunks. We’ll call the size in which a **processor** accesses memory its *memory access granularity*.
 
@@ -16,7 +16,7 @@ However, your computer’s processor does not read from and write to memory in b
 
 Figure 2. How processors see memory
 
-![How Some Processors See Memory](E:\github\Hardware\docs\CPU-memory-access\Memory-alignment\developer.ibm-Data-alignment-Straighten-up-and-fly-right\howProcessorsSeeMemory.jpg)
+![How Some Processors See Memory](howProcessorsSeeMemory.jpg)
 
 If you don’t understand and address alignment issues in your software, the following scenarios, in increasing order of severity, are all possible:
 
@@ -35,7 +35,7 @@ First examine what would happen on a processor with a one-byte memory access gra
 
 Figure 3. Single-byte memory access granularity
 
-![Single-byte memory access granularity](E:\github\Hardware\docs\CPU-memory-access\Memory-alignment\developer.ibm-Data-alignment-Straighten-up-and-fly-right\singleByteAccess.jpg)
+![Single-byte memory access granularity](./singleByteAccess.jpg)
 
 This fits in with the naive programmer’s model of how memory works: it takes the same four memory accesses to read from address 0 as it does from address 1. Now see what would happen on a processor with two-byte granularity, like the original 68000:
 
@@ -43,7 +43,7 @@ This fits in with the naive programmer’s model of how memory works: it takes t
 
 Figure 4. Double-byte memory access granularity
 
-![Double-byte memory access granularity](https://developer.ibm.com/developer/articles/pa-dalign/images/doubleByteAccess.jpg)
+![Double-byte memory access granularity](doubleByteAccess.jpg)
 
 When reading from address 0, a processor with two-byte granularity takes half the number of memory accesses as a processor with one-byte granularity. Because each memory access entails a fixed amount overhead, minimizing the number of accesses can really help performance.
 
@@ -57,7 +57,7 @@ Finally, examine what would happen on a processor with four-byte memory access g
 
 Figure 5. Quad-byte memory access granularity
 
-![Quad-byte memory access granularity](https://developer.ibm.com/developer/articles/pa-dalign/images/quadByteAccess.jpg)
+![Quad-byte memory access granularity](quadByteAccess.jpg)
 
 A processor with four-byte granularity can slurp(大口吃) up four bytes from an aligned address with one read. Also note that reading from an **unaligned address** doubles the access count.
 
@@ -69,7 +69,7 @@ A processor has to perform some tricks when instructed to access an **unaligned 
 
 Figure 6. How processors handle unaligned memory access
 
-![How processors handle unaligned memory access](https://developer.ibm.com/developer/articles/pa-dalign/images/unalignedAccess.jpg)
+![How processors handle unaligned memory access](unalignedAccess.jpg)
 
 The processor needs to read the first chunk of the unaligned address and shift out the “unwanted” bytes from the first chunk. Then it needs to read the second chunk of the unaligned address and shift out some of its information. Finally, the two are merged together for placement in the register. It’s a lot of work.
 
@@ -136,7 +136,7 @@ This function took 48,765 microseconds to process the same ten-megabyte buffer �
 
 Figure 7. Single-byte access versus double-byte access
 
-![Single-byte access versus double-byte access](https://developer.ibm.com/developer/articles/pa-dalign/images/doubleChart.jpg)
+![Single-byte access versus double-byte access](doubleChart.jpg)
 
 The first thing you notice is that accessing memory one byte at a time is uniformly slow. The second item of interest is that when accessing memory two bytes at a time, whenever the address is not evenly divisible by two, that 27% speed penalty rears its ugly head.
 
@@ -164,7 +164,7 @@ This function processes an aligned buffer in 43,043 microseconds and an unaligne
 
 Figure 8. Single- versus double- versus quad-byte access
 
-![Single- versus double- versus quad-byte access](https://developer.ibm.com/developer/articles/pa-dalign/images/quadChart.jpg)
+![Single- versus double- versus quad-byte access](quadChart.jpg)
 
 Now for the horror story: processing the buffer eight bytes at a time.
 
@@ -192,19 +192,19 @@ What happened? Because modern PowerPC processors lack hardware support for unali
 
 Figure 9. Multiple-byte access comparison
 
-![Multiple-byte access comparison](https://developer.ibm.com/developer/articles/pa-dalign/images/horrorChartWhole.jpg)
+![Multiple-byte access comparison](horrorChartWhole.jpg)
 
 The penalties for one-, two- and four-byte unaligned access are dwarfed by the horrendous unaligned eight-byte penalty. Maybe this chart, removing the top (and thus the tremendous gulf between the two numbers), will be clearer:
 
 Figure 10. Multiple-byte access comparison #2
 
-![Multiple-byte access comparison #2](https://developer.ibm.com/developer/articles/pa-dalign/images/horrorChartHeadless.jpg)
+![Multiple-byte access comparison #2](horrorChartHeadless.jpg)
 
 There’s another subtle insight hidden in this data. Compare eight-byte access speeds on four-byte boundaries:
 
 Figure 11. Multiple-byte access comparison #3
 
-![Multiple-byte access comparison #3](https://developer.ibm.com/developer/articles/pa-dalign/images/horrorChartHeadlessHilited.jpg)
+![Multiple-byte access comparison #3](horrorChartHeadlessHilited.jpg)
 
 Notice accessing memory eight bytes at a time on four- and twelve- byte boundaries *is slower* than reading the same memory four or even two bytes at a time. While PowerPCs have hardware support for four-byte aligned eight-byte doubles, you still pay a performance penalty if you use that support. Granted, it’s no where near the 4,610% penalty, but it’s certainly noticeable. Moral of the story: accessing memory in large chunks can be slower than accessing memory in small chunks, if that access is not aligned.
 
