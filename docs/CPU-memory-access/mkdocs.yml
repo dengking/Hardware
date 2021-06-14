@@ -1,13 +1,18 @@
 nav:
     - Introduction: index.md
+    
     - What-Every-Programmer-Should-Know-About-Memory: What-Every-Programmer-Should-Know-About-Memory
     #################### 字的概念####################    
     - Word: Word    
     #################### 大小端的概念####################        
     - Memory-alignment: Memory-alignment    
+    
     - Endianess: Endianess
 
     - Memory-disambiguation: Memory-disambiguation
+    
     - CPU-cache-memory: CPU-cache-memory
+    
     - CPU-memory-model: CPU-memory-model    
+    
     - Memory-access-instruction: Memory-access-instruction
