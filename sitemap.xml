@@ -172,6 +172,10 @@
      <lastmod>2021-06-18</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
+     <loc>https://dengking.github.io/Hardware/CPU/Manufacturer/Intel/x86/Instruction/Bound/</loc>
+     <lastmod>2021-06-18</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
      <loc>https://dengking.github.io/Hardware/CPU/Manufacturer/Intel/x86/x86-memory-segmentation/</loc>
      <lastmod>2021-06-18</lastmod>
      <changefreq>daily</changefreq>
@@ -252,6 +256,10 @@
      <lastmod>2021-06-18</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
+     <loc>https://dengking.github.io/Hardware/CPU-memory-access/Word/Get-word-length/</loc>
+     <lastmod>2021-06-18</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
      <loc>https://dengking.github.io/Hardware/CPU-memory-access/Memory-alignment/</loc>
      <lastmod>2021-06-18</lastmod>
      <changefreq>daily</changefreq>
@@ -264,11 +272,139 @@
      <lastmod>2021-06-18</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
+     <loc>https://dengking.github.io/Hardware/CPU-memory-access/Endianess/</loc>
+     <lastmod>2021-06-18</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
      <loc>https://dengking.github.io/Hardware/CPU-memory-access/Endianess/Endianness-operation/</loc>
      <lastmod>2021-06-18</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://dengking.github.io/Hardware/CPU-memory-access/Memory-disambiguation/</loc>
+     <lastmod>2021-06-18</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://dengking.github.io/Hardware/CPU-memory-access/CPU-cache-memory/</loc>
+     <lastmod>2021-06-18</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://dengking.github.io/Hardware/CPU-memory-access/CPU-cache-memory/Cache/</loc>
+     <lastmod>2021-06-18</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://dengking.github.io/Hardware/CPU-memory-access/CPU-cache-memory/Cache/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86-%E7%A7%91%E5%AD%A6%E5%87%BA%E7%89%88%E7%A4%BE-cache/</loc>
+     <lastmod>2021-06-18</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://dengking.github.io/Hardware/CPU-memory-access/CPU-cache-memory/Cache/wikipedia-Cache-computing/</loc>
+     <lastmod>2021-06-18</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://dengking.github.io/Hardware/CPU-memory-access/CPU-cache-memory/Cache/Cache-line/</loc>
+     <lastmod>2021-06-18</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://dengking.github.io/Hardware/CPU-memory-access/CPU-cache-memory/Cache/Cache-miss/</loc>
+     <lastmod>2021-06-18</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://dengking.github.io/Hardware/CPU-memory-access/CPU-cache-memory/Cache/Locality/</loc>
+     <lastmod>2021-06-18</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://dengking.github.io/Hardware/CPU-memory-access/CPU-cache-memory/Cache/Cache-replacement-policy/</loc>
+     <lastmod>2021-06-18</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://dengking.github.io/Hardware/CPU-memory-access/CPU-cache-memory/Cache/Cache-replacement-policy/LRU-cache/</loc>
+     <lastmod>2021-06-18</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://dengking.github.io/Hardware/CPU-memory-access/CPU-cache-memory/Cache/Cache-replacement-policy/LRU-cache/library-mohaps-lrucache/</loc>
+     <lastmod>2021-06-18</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://dengking.github.io/Hardware/CPU-memory-access/CPU-cache-memory/Coordination/</loc>
+     <lastmod>2021-06-18</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://dengking.github.io/Hardware/CPU-memory-access/CPU-cache-memory/Coordination/Memory-coherence/</loc>
+     <lastmod>2021-06-18</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://dengking.github.io/Hardware/CPU-memory-access/CPU-cache-memory/Coordination/Cache-coherence/</loc>
+     <lastmod>2021-06-18</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://dengking.github.io/Hardware/CPU-memory-access/CPU-cache-memory/Coordination/Cache-coherence/Protocol/</loc>
+     <lastmod>2021-06-18</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://dengking.github.io/Hardware/CPU-memory-access/CPU-cache-memory/Coordination/Cache-coherence/Protocol/Cache-invalidation/</loc>
+     <lastmod>2021-06-18</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://dengking.github.io/Hardware/CPU-memory-access/CPU-cache-memory/Coordination/Cache-coherence/Protocol/MSI-protocol/</loc>
+     <lastmod>2021-06-18</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://dengking.github.io/Hardware/CPU-memory-access/CPU-cache-memory/Coordination/Cache-coherence/Protocol/MOESI-protocol/</loc>
+     <lastmod>2021-06-18</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://dengking.github.io/Hardware/CPU-memory-access/CPU-cache-memory/False-sharing/</loc>
+     <lastmod>2021-06-18</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://dengking.github.io/Hardware/CPU-memory-access/CPU-cache-memory/TODO-zhihu-%E9%AB%98%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B-%E5%A4%9A%E5%A4%84%E7%90%86%E5%99%A8%E7%BC%96%E7%A8%8B%E4%B8%AD%E7%9A%84%E4%B8%80%E8%87%B4%E6%80%A7%E9%97%AE%E9%A2%98/1/</loc>
+     <lastmod>2021-06-18</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://dengking.github.io/Hardware/CPU-memory-access/CPU-cache-memory/TODO-zhihu-%E9%AB%98%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B-%E5%A4%9A%E5%A4%84%E7%90%86%E5%99%A8%E7%BC%96%E7%A8%8B%E4%B8%AD%E7%9A%84%E4%B8%80%E8%87%B4%E6%80%A7%E9%97%AE%E9%A2%98/2/</loc>
+     <lastmod>2021-06-18</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://dengking.github.io/Hardware/CPU-memory-access/CPU-cache-memory/Cache-performance-optimization/</loc>
+     <lastmod>2021-06-18</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://dengking.github.io/Hardware/CPU-memory-access/CPU-cache-memory/Cache-performance-optimization/Align-to-cache-line-optimization/</loc>
+     <lastmod>2021-06-18</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://dengking.github.io/Hardware/CPU-memory-access/CPU-cache-memory/Cache-performance-optimization/cnblogs-Geek_Ling-cache-performance-optimization/</loc>
+     <lastmod>2021-06-18</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://dengking.github.io/Hardware/CPU-memory-access/CPU-memory-model/</loc>
+     <lastmod>2021-06-18</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://dengking.github.io/Hardware/CPU-memory-access/CPU-memory-model/Memory-ordering/</loc>
+     <lastmod>2021-06-18</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://dengking.github.io/Hardware/CPU-memory-access/CPU-memory-model/Memory-ordering/Memory-Ordering-at-Compile-Time/</loc>
+     <lastmod>2021-06-18</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://dengking.github.io/Hardware/CPU-memory-access/CPU-memory-model/Memory-ordering/How-does-memory-reordering-help-processors-and-compilers/</loc>
+     <lastmod>2021-06-18</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://dengking.github.io/Hardware/CPU-memory-access/CPU-memory-model/Memory-barrier/</loc>
+     <lastmod>2021-06-18</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://dengking.github.io/Hardware/CPU-memory-access/CPU-memory-model/Memory-barrier/Linux-kernel-memory-barrier/</loc>
+     <lastmod>2021-06-18</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://dengking.github.io/Hardware/CPU-memory-access/CPU-memory-model/Memory-barrier/Compiler-memory-barrier/</loc>
+     <lastmod>2021-06-18</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://dengking.github.io/Hardware/CPU-memory-access/CPU-memory-model/CPU-Memory-Model/</loc>
      <lastmod>2021-06-18</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
@@ -308,6 +444,10 @@
      <lastmod>2021-06-18</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
+     <loc>https://dengking.github.io/Hardware/CPU-memory-access/Memory-access-instruction/Atomic/Atomic-instruction/Read%E2%80%93modify%E2%80%93write/Compare-and-swap/ABA-problem/</loc>
+     <lastmod>2021-06-18</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
      <loc>https://dengking.github.io/Hardware/CPU-memory-access/Memory-access-instruction/Atomic/Atomic-instruction/Read%E2%80%93modify%E2%80%93write/Fetch-and-add/</loc>
      <lastmod>2021-06-18</lastmod>
      <changefreq>daily</changefreq>
@@ -316,95 +456,11 @@
      <lastmod>2021-06-18</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
+     <loc>https://dengking.github.io/Hardware/CPU-memory-access/Memory-access-instruction/Atomic/Atomic-instruction/Read%E2%80%93modify%E2%80%93write/Test-and-test-and-set/</loc>
+     <lastmod>2021-06-18</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
      <loc>https://dengking.github.io/Hardware/CPU-memory-access/Memory-access-instruction/Atomic/Atomic-instruction/Conditional-Put-and-Delete/</loc>
-     <lastmod>2021-06-18</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://dengking.github.io/Hardware/CPU-memory-access/CPU-cache-memory/</loc>
-     <lastmod>2021-06-18</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://dengking.github.io/Hardware/CPU-memory-access/CPU-cache-memory/Cache/</loc>
-     <lastmod>2021-06-18</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://dengking.github.io/Hardware/CPU-memory-access/CPU-cache-memory/Cache/Cache-line/</loc>
-     <lastmod>2021-06-18</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://dengking.github.io/Hardware/CPU-memory-access/CPU-cache-memory/Cache/Cache-miss/</loc>
-     <lastmod>2021-06-18</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://dengking.github.io/Hardware/CPU-memory-access/CPU-cache-memory/Cache/Locality/</loc>
-     <lastmod>2021-06-18</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://dengking.github.io/Hardware/CPU-memory-access/CPU-cache-memory/Coordination/</loc>
-     <lastmod>2021-06-18</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://dengking.github.io/Hardware/CPU-memory-access/CPU-cache-memory/Coordination/Memory-coherence/</loc>
-     <lastmod>2021-06-18</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://dengking.github.io/Hardware/CPU-memory-access/CPU-cache-memory/Coordination/Cache-coherence/</loc>
-     <lastmod>2021-06-18</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://dengking.github.io/Hardware/CPU-memory-access/CPU-cache-memory/Coordination/Cache-coherence/Protocol/</loc>
-     <lastmod>2021-06-18</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://dengking.github.io/Hardware/CPU-memory-access/CPU-cache-memory/Coordination/Cache-coherence/Protocol/MSI-protocol/</loc>
-     <lastmod>2021-06-18</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://dengking.github.io/Hardware/CPU-memory-access/CPU-cache-memory/Coordination/Cache-coherence/Protocol/MOESI-protocol/</loc>
-     <lastmod>2021-06-18</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://dengking.github.io/Hardware/CPU-memory-access/CPU-cache-memory/False-sharing/</loc>
-     <lastmod>2021-06-18</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://dengking.github.io/Hardware/CPU-memory-access/CPU-cache-memory/TODO-zhihu-%E9%AB%98%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B-%E5%A4%9A%E5%A4%84%E7%90%86%E5%99%A8%E7%BC%96%E7%A8%8B%E4%B8%AD%E7%9A%84%E4%B8%80%E8%87%B4%E6%80%A7%E9%97%AE%E9%A2%98/1/</loc>
-     <lastmod>2021-06-18</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://dengking.github.io/Hardware/CPU-memory-access/CPU-cache-memory/TODO-zhihu-%E9%AB%98%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B-%E5%A4%9A%E5%A4%84%E7%90%86%E5%99%A8%E7%BC%96%E7%A8%8B%E4%B8%AD%E7%9A%84%E4%B8%80%E8%87%B4%E6%80%A7%E9%97%AE%E9%A2%98/2/</loc>
-     <lastmod>2021-06-18</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://dengking.github.io/Hardware/CPU-memory-access/CPU-memory-model/</loc>
-     <lastmod>2021-06-18</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://dengking.github.io/Hardware/CPU-memory-access/CPU-memory-model/Memory-ordering/</loc>
-     <lastmod>2021-06-18</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://dengking.github.io/Hardware/CPU-memory-access/CPU-memory-model/Memory-ordering/Memory-Ordering-at-Compile-Time/</loc>
-     <lastmod>2021-06-18</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://dengking.github.io/Hardware/CPU-memory-access/CPU-memory-model/Memory-ordering/How-does-memory-reordering-help-processors-and-compilers/</loc>
-     <lastmod>2021-06-18</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://dengking.github.io/Hardware/CPU-memory-access/CPU-memory-model/Memory-barrier/</loc>
-     <lastmod>2021-06-18</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://dengking.github.io/Hardware/CPU-memory-access/CPU-memory-model/Memory-barrier/Linux-kernel-memory-barrier/</loc>
-     <lastmod>2021-06-18</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://dengking.github.io/Hardware/CPU-memory-access/CPU-memory-model/Memory-barrier/Compiler-memory-barrier/</loc>
-     <lastmod>2021-06-18</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://dengking.github.io/Hardware/CPU-memory-access/CPU-memory-model/CPU-Memory-Model/</loc>
      <lastmod>2021-06-18</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
