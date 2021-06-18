@@ -1961,6 +1961,45 @@
   
 
           
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_5" type="checkbox" id="__nav_6_5" >
+      
+      <label class="md-nav__link" for="__nav_6_5">
+        流水线-超标量-微码-多发射简介
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="流水线-超标量-微码-多发射简介" data-md-level="2">
+        <label class="md-nav__title" for="__nav_6_5">
+          <span class="md-nav__icon md-icon"></span>
+          流水线-超标量-微码-多发射简介
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Modern-CPU/%E6%B5%81%E6%B0%B4%E7%BA%BF-%E8%B6%85%E6%A0%87%E9%87%8F-%E5%BE%AE%E7%A0%81-%E5%A4%9A%E5%8F%91%E5%B0%84%E7%AE%80%E4%BB%8B/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -2226,7 +2265,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Endianess/Endianness/" class="md-nav__link">
+      <a href="../../../Endianess/Endianness.md" class="md-nav__link">
         Endianness
       </a>
     </li>
@@ -3122,7 +3161,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Coordination/Cache-coherence/Cache-invalidation/" class="md-nav__link">
+      <a href="../../Coordination/Cache-coherence/Cache-invalidation.md" class="md-nav__link">
         Cache-invalidation
       </a>
     </li>
@@ -3514,7 +3553,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Align-to-cache-line-optimization/" class="md-nav__link">
+      <a href="../../Align-to-cache-line-optimization/index.md" class="md-nav__link">
         Introduction
       </a>
     </li>
@@ -4332,15 +4371,20 @@
                 
                 
                 <h1 id="zhuanlanzhihu#--">zhuanlan.zhihu <a href="https://zhuanlan.zhihu.com/p/48157076">高并发编程--多处理器编程中的一致性问题(上)</a></h1>
+<blockquote>
+<p>NOTE: </p>
+<p>1、这篇文章写得非常好</p>
+</blockquote>
 <p>"Multithreading is just one damn thing after, before, or simultaneous with another. "[2]</p>
 <h2 id="0"><strong>0 写在前面</strong></h2>
 <p>在分布式存储系统中，为了提高**可靠性**，通常会引入多个副本，多个副本需要向用户表现出一致的内容。这很自然的让人想到如何确保多副本之间的一致性。为此也有了paxos和raft等保证多副本之间一致性的协议。当我们在一个多处理器机器上编程时我们通常会忽略在多处理器环境下的一致性问题，因为系统已经为我们做好了基本的**一致性**保证，当存在一致性问题的时候上层编程语言也提供了具备一致性语意的接口，只是我们在编程中并没有意识到这些**接口**与**一致性**的关系。无论是分布式存储还是多处理器编程都有一个共同点，就是会涉及共享对象的操作。</p>
 <blockquote>
 <p>NOTE: </p>
-<p>"可靠性"，其实就是HA</p>
+<p>1、"可靠性"，其实就是HA</p>
 <p>"多个副本"，其实就是master-slave</p>
 <p>"一致的内容"，其实就是consistency</p>
 <p>"共享对象"其实就是multiple model中的shared data</p>
+<p>2、上述其实可以使用multiple model-shared data来进行描述</p>
 </blockquote>
 <p>一旦出现共享，就会出现正确性的问题，那么如何定义在并发中操作共享对象的正确性，这就是一致性协议的任务了。</p>
 <p>本文主要针对多处理器系统中的一致性问题进行了一些总结，对于分布式中的一致性问题会在后面文章中总结。</p>
@@ -4348,48 +4392,30 @@
 <p>由于水平有限，文中如存在问题，请帮忙提出。</p>
 <h2 id="1"><strong>1 本文主要内容</strong></h2>
 <p>本文主要包括以下内容：</p>
-<ul>
-<li>
-<p>cache coherence</p>
-</li>
-<li>
+<p>1、cache coherence</p>
 <ul>
 <li>cache design</li>
 <li>cache coherence protocol</li>
 <li>store buffer &amp; invalidate message queue</li>
 <li>memory barrier/ fence</li>
 </ul>
-</li>
-<li>
-<p>memory consistency</p>
-</li>
-<li>
+<p>2、memory consistency</p>
 <ul>
 <li>consistency 分类定义</li>
 <li>SC</li>
 <li>x86 TSO</li>
 <li>relaxed memory model</li>
 </ul>
-</li>
-<li>
-<p>C++ memory order</p>
-</li>
-<li>
+<p>3、C++ memory order</p>
 <ul>
 <li>memory model and memory order</li>
 <li>memory order release/acquire</li>
 <li>memory order sequence</li>
 <li>memory order relaxed</li>
 </ul>
-</li>
-<li>
-<p>Synchronize</p>
-</li>
-<li>
+<p>4、Synchronize</p>
 <ul>
 <li>insight lock</li>
-</ul>
-</li>
 </ul>
 <h2 id="2#cache#coherence4"><strong>2 cache coherence[4]</strong></h2>
 <p>一致性的任务就是保证并发操作共享内存的正确性，在讨论内存操作正确性的时候，通常分为两个部分：memory consistency 和 cache coherence[3]。</p>
@@ -4402,11 +4428,11 @@
 </blockquote>
 <h2 id="22#cache"><strong>2.2 cache设计</strong></h2>
 <p>从cache vs buffer的区别中我们可看出，cache的出现其实就是为了缓解CPU与主存之间的速度极度不平衡。因此通常CPU设计中引入了cache，分为L1 cache，L2 cache和L3 cache，其性能指数大致如下[11]：</p>
-<p><img alt="img" src="https://pic3.zhimg.com/80/v2-ebc51ace0133b0e0794e0b50fc8bdd92_720w.jpg" /></p>
+<p><img alt="img" src="../v2-ebc51ace0133b0e0794e0b50fc8bdd92_720w.jpg" /></p>
 <p>通常L1 cache又会分为I cache和D cache，分别存放指令与数据，L1 cache通常是core独占的，L2可以是两个core共享，L3 cache则是所有core共享。</p>
 <h2 id="220#cpu#cache">2.2.0 CPU cache架构</h2>
 <p>如下图[4]， 目前的CPU架构中的cache通常架构如此，这里的cache是L1 cache。我们这里讨论的cache基本都是基于L1 cache的，因为L1 cache通常是core独占的，所以L1 cache的设计及数据一致性是难点也是重点。</p>
-<p><img alt="img" src="https://pic1.zhimg.com/80/v2-747891c1407aa113f3fed33f7a86527c_720w.jpg" /></p>
+<p><img alt="img" src="../v2-747891c1407aa113f3fed33f7a86527c_720w.jpg" /></p>
 <p><strong>cache**中的数据存放单位是**cache line</strong>，通常一个**cache line**长度大概在16-256Bytes之间。CPU访问memory的时候首先会先查看cache中是否已经缓存该address，如果已缓存当前address并且是可用的，那么CPU就会直接从cache读取该值，这样极大的提高performance。如果所要访问的address不在cache中，CPU则要从memory读取，CPU会读取cache line大小的数据，并将其放入cache中这样下次读取的时候可以直接从cache中读。L1 cache通常在32KB大小，当cache被填满之后就需要按照一定策略将元素踢出去，这个策略可以是**LRU**或者**随机**等等。</p>
 <blockquote>
 <p>NOTE: 这让我想到了virtual memory的page swap</p>
@@ -4475,7 +4501,7 @@ writeback包含数据和地址，会将这个地址对应的数据刷到内存�
 <blockquote>
 <p>NOTE: core1执行了修改，因此其他的cache需要更新最新值；</p>
 </blockquote>
-<p><img alt="img" src="https://pic3.zhimg.com/80/v2-3c314d1fc195ec2aeafb96e01f3babca_720w.jpg" /></p>
+<p><img alt="img" src="../v2-3c314d1fc195ec2aeafb96e01f3babca_720w.jpg" /></p>
 <p>有了store buffer之后core1如果执行store操作就不用立刻向core2发送invalidate message了，core1只需要将store值添加到store buffer中即可。但是引入store buffer会带来两个问题。</p>
 <p>1、考虑以下场景：</p>
 <div class="highlight"><pre><span></span><code>  // a, b init to 0.

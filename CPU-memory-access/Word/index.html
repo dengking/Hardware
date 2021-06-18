@@ -1961,6 +1961,45 @@
   
 
           
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_5" type="checkbox" id="__nav_6_5" >
+      
+      <label class="md-nav__link" for="__nav_6_5">
+        流水线-超标量-微码-多发射简介
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="流水线-超标量-微码-多发射简介" data-md-level="2">
+        <label class="md-nav__title" for="__nav_6_5">
+          <span class="md-nav__icon md-icon"></span>
+          流水线-超标量-微码-多发射简介
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Modern-CPU/%E6%B5%81%E6%B0%B4%E7%BA%BF-%E8%B6%85%E6%A0%87%E9%87%8F-%E5%BE%AE%E7%A0%81-%E5%A4%9A%E5%8F%91%E5%B0%84%E7%AE%80%E4%BB%8B/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -2328,7 +2367,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Endianess/Endianness/" class="md-nav__link">
+      <a href="../Endianess/Endianness.md" class="md-nav__link">
         Endianness
       </a>
     </li>
@@ -3222,7 +3261,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../CPU-cache-memory/Coordination/Cache-coherence/Cache-invalidation/" class="md-nav__link">
+      <a href="../CPU-cache-memory/Coordination/Cache-coherence/Cache-invalidation.md" class="md-nav__link">
         Cache-invalidation
       </a>
     </li>
@@ -3357,7 +3396,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../CPU-cache-memory/Align-to-cache-line-optimization/" class="md-nav__link">
+      <a href="../CPU-cache-memory/Align-to-cache-line-optimization/index.md" class="md-nav__link">
         Introduction
       </a>
     </li>
@@ -4037,10 +4076,15 @@
 <h3 id="addresses"><strong>Addresses</strong></h3>
 <p>Holders for memory addresses must be of a size capable of expressing the needed range of values but not be excessively large, so often the size used is the word though it can also be a multiple or fraction of the word size.</p>
 <blockquote>
-<p>NOTE: 即指针类型的长度</p>
+<p>NOTE: </p>
+<p>1、即指针类型的长度(pointer)</p>
 </blockquote>
 <h3 id="registers"><strong>Registers</strong></h3>
 <p><a href="https://en.wikipedia.org/wiki/Processor_register">Processor registers</a> are designed with a size appropriate for the type of data they hold, e.g. integers, floating-point numbers, or addresses. Many computer architectures use <a href="https://en.wikipedia.org/wiki/General_purpose_register">general-purpose registers</a> that are capable of storing data in multiple representations. These registers must be sized to hold the largest of the available types. Historically, this determined the word size of the architecture.</p>
+<blockquote>
+<p>NOTE: </p>
+<p>1、 <a href="https://en.wikipedia.org/wiki/General_purpose_register">general-purpose registers</a> 的长度和Word的长度相等</p>
+</blockquote>
 <h3 id="memoryprocessor#transfer"><strong>Memory–processor transfer</strong></h3>
 <p>When the processor reads from the memory subsystem into a register or writes a register's value to memory, the amount of data transferred is often a <strong>word</strong>. Historically, this amount of bits which could be transferred in one cycle was also called a <em>catena</em> in some environments. In simple memory subsystems, the word is transferred over the memory <a href="https://en.wikipedia.org/wiki/Bus_(computing)">data bus</a>, which typically has a width of a word or half-word. In memory subsystems that use <a href="https://en.wikipedia.org/wiki/CPU_cache">caches</a>, the word-sized transfer is the one between the processor and the first level of cache; at lower levels of the <a href="https://en.wikipedia.org/wiki/Memory_hierarchy">memory hierarchy</a> larger transfers (which are a multiple of the word size) are normally used.</p>
 <blockquote>

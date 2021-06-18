@@ -1961,6 +1961,45 @@
   
 
           
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_5" type="checkbox" id="__nav_6_5" >
+      
+      <label class="md-nav__link" for="__nav_6_5">
+        流水线-超标量-微码-多发射简介
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="流水线-超标量-微码-多发射简介" data-md-level="2">
+        <label class="md-nav__title" for="__nav_6_5">
+          <span class="md-nav__icon md-icon"></span>
+          流水线-超标量-微码-多发射简介
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Modern-CPU/%E6%B5%81%E6%B0%B4%E7%BA%BF-%E8%B6%85%E6%A0%87%E9%87%8F-%E5%BE%AE%E7%A0%81-%E5%A4%9A%E5%8F%91%E5%B0%84%E7%AE%80%E4%BB%8B/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -2351,7 +2390,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Endianess/Endianness/" class="md-nav__link">
+      <a href="../../Endianess/Endianness.md" class="md-nav__link">
         Endianness
       </a>
     </li>
@@ -3245,7 +3284,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../CPU-cache-memory/Coordination/Cache-coherence/Cache-invalidation/" class="md-nav__link">
+      <a href="../../CPU-cache-memory/Coordination/Cache-coherence/Cache-invalidation.md" class="md-nav__link">
         Cache-invalidation
       </a>
     </li>
@@ -3380,7 +3419,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../CPU-cache-memory/Align-to-cache-line-optimization/" class="md-nav__link">
+      <a href="../../CPU-cache-memory/Align-to-cache-line-optimization/index.md" class="md-nav__link">
         Introduction
       </a>
     </li>
@@ -4070,13 +4109,13 @@
 <h2 id="memory#access#granularity">Memory access granularity</h2>
 <p>Programmers are conditioned to think of memory as a simple array of bytes. Among C and its descendants, <code>char*</code> is ubiquitous(普遍存在的) as meaning “a block of memory”, and even Java™ has its <code>byte[]</code> type to represent raw memory.</p>
 <p>Figure 1. How programmers see memory</p>
-<p><img alt="How Programmers See Memory" src="https://developer.ibm.com/developer/articles/pa-dalign/images/howProgrammersSeeMemory.jpg" /></p>
+<p><img alt="How Programmers See Memory" src="howProgrammersSeeMemory.jpg" /></p>
 <p>However, your computer’s processor does not read from and write to memory in byte-sized chunks. Instead, it accesses memory in two-, four-, eight- 16- or even 32-byte chunks. We’ll call the size in which a <strong>processor</strong> accesses memory its <em>memory access granularity</em>.</p>
 <blockquote>
 <p>NOTE: 需要理解granularity的含义，它的中文意思是**粒度**，可以把它看做是**单位**的意思，它具有**原子性**(不可分的)。<strong>memory access granularity**是CPU从memory中读取数据的**单位</strong>，所以CPU无法从memory中读取半个单位的数据，只能够读取一个单位的数据。下面的Figure 2就非常直观地展示了CPU视角的memory。通过前面的这些分析，我们应该知道的是，CPU只能够从位置<code>0</code>、<code>4</code>、<code>8</code>等位置开始读取数据，这些位置我们通常将它们称为memory access boundary（在后续章节会介绍），显然CPU access boundary是**memory access granularity**的整数倍，如果一个数据的存储位置是memory access boundary，则称为**align to memory access granularity**（对齐），使用aligned来形容这样的地址，否则就是unaligned。通过后面的章节，我们会看到，aligned address相比于unaligned address有着诸多优势。</p>
 </blockquote>
 <p>Figure 2. How processors see memory</p>
-<p><img alt="How Some Processors See Memory" src="E:\github\Hardware\docs\CPU-memory-access\Memory-alignment\developer.ibm-Data-alignment-Straighten-up-and-fly-right\howProcessorsSeeMemory.jpg" /></p>
+<p><img alt="How Some Processors See Memory" src="howProcessorsSeeMemory.jpg" /></p>
 <p>If you don’t understand and address alignment issues in your software, the following scenarios, in increasing order of severity, are all possible:</p>
 <ul>
 <li>Your software will run slower.</li>
@@ -4089,11 +4128,11 @@
 <h3 id="single-byte#memory#access#granularity">Single-byte memory access granularity</h3>
 <p>First examine what would happen on a processor with a one-byte memory access granularity:</p>
 <p>Figure 3. Single-byte memory access granularity</p>
-<p><img alt="Single-byte memory access granularity" src="E:\github\Hardware\docs\CPU-memory-access\Memory-alignment\developer.ibm-Data-alignment-Straighten-up-and-fly-right\singleByteAccess.jpg" /></p>
+<p><img alt="Single-byte memory access granularity" src="singleByteAccess.jpg" /></p>
 <p>This fits in with the naive programmer’s model of how memory works: it takes the same four memory accesses to read from address 0 as it does from address 1. Now see what would happen on a processor with two-byte granularity, like the original 68000:</p>
 <h3 id="double-byte#memory#access#granularity">Double-byte memory access granularity</h3>
 <p>Figure 4. Double-byte memory access granularity</p>
-<p><img alt="Double-byte memory access granularity" src="https://developer.ibm.com/developer/articles/pa-dalign/images/doubleByteAccess.jpg" /></p>
+<p><img alt="Double-byte memory access granularity" src="doubleByteAccess.jpg" /></p>
 <p>When reading from address 0, a processor with two-byte granularity takes half the number of memory accesses as a processor with one-byte granularity. Because each memory access entails a fixed amount overhead, minimizing the number of accesses can really help performance.</p>
 <blockquote>
 <p>NOTE: 这句话的意思是a processor with two-byte granularity读取4个字节花费的时间比a processor with one-byte granularity花费的时间要少一半；</p>
@@ -4102,13 +4141,13 @@
 <p>Finally, examine what would happen on a processor with four-byte memory access granularity, like the 68030 or PowerPC® 601:</p>
 <h3 id="quad-byte#memory#access#granularity">Quad-byte memory access granularity</h3>
 <p>Figure 5. Quad-byte memory access granularity</p>
-<p><img alt="Quad-byte memory access granularity" src="https://developer.ibm.com/developer/articles/pa-dalign/images/quadByteAccess.jpg" /></p>
+<p><img alt="Quad-byte memory access granularity" src="quadByteAccess.jpg" /></p>
 <p>A processor with four-byte granularity can slurp(大口吃) up four bytes from an aligned address with one read. Also note that reading from an <strong>unaligned address</strong> doubles the access count.</p>
 <p>Now that you understand the fundamentals behind <strong>aligned data access</strong>, you can explore some of the issues related to alignment.   </p>
 <h2 id="lazy#processors">Lazy processors</h2>
 <p>A processor has to perform some tricks when instructed to access an <strong>unaligned address</strong>. Going back to the example of reading four bytes from address 1 on a processor with <strong>four-byte granularity</strong>, you can work out exactly what needs to be done:</p>
 <p>Figure 6. How processors handle unaligned memory access</p>
-<p><img alt="How processors handle unaligned memory access" src="https://developer.ibm.com/developer/articles/pa-dalign/images/unalignedAccess.jpg" /></p>
+<p><img alt="How processors handle unaligned memory access" src="unalignedAccess.jpg" /></p>
 <p>The processor needs to read the first chunk of the unaligned address and shift out the “unwanted” bytes from the first chunk. Then it needs to read the second chunk of the unaligned address and shift out some of its information. Finally, the two are merged together for placement in the register. It’s a lot of work.</p>
 <p>Some processors just aren’t willing to do all of that work for you.</p>
 <p>The original 68000 was a processor with two-byte granularity and lacked the circuitry to cope with <strong>unaligned addresses</strong>. When presented with such an address, the processor would throw an exception. The original Mac OS didn’t take very kindly to this exception, and would usually demand the user restart the machine. Ouch.</p>
@@ -4153,7 +4192,7 @@
 </code></pre></div>
 <p>This function took 48,765 microseconds to process the same ten-megabyte buffer — 38% faster than <code>Munge8</code>. However, that buffer was aligned. If the buffer is unaligned, the time required increases to 66,385 microseconds — about a 27% speed penalty. The following chart illustrates the performance pattern of aligned memory accesses versus unaligned accesses:</p>
 <p>Figure 7. Single-byte access versus double-byte access</p>
-<p><img alt="Single-byte access versus double-byte access" src="https://developer.ibm.com/developer/articles/pa-dalign/images/doubleChart.jpg" /></p>
+<p><img alt="Single-byte access versus double-byte access" src="doubleChart.jpg" /></p>
 <p>The first thing you notice is that accessing memory one byte at a time is uniformly slow. The second item of interest is that when accessing memory two bytes at a time, whenever the address is not evenly divisible by two, that 27% speed penalty rears its ugly head.</p>
 <p>Now up the ante, and process the buffer four bytes at a time:</p>
 <p>Listing 3. Munging data four bytes at a time</p>
@@ -4173,7 +4212,7 @@
 </code></pre></div>
 <p>This function processes an aligned buffer in 43,043 microseconds and an unaligned buffer in 55,775 microseconds, respectively. Thus, on this test machine, accessing unaligned memory four bytes at a time is <em>slower</em> than accessing aligned memory two bytes at a time:</p>
 <p>Figure 8. Single- versus double- versus quad-byte access</p>
-<p><img alt="Single- versus double- versus quad-byte access" src="https://developer.ibm.com/developer/articles/pa-dalign/images/quadChart.jpg" /></p>
+<p><img alt="Single- versus double- versus quad-byte access" src="quadChart.jpg" /></p>
 <p>Now for the horror story: processing the buffer eight bytes at a time.</p>
 <p>Listing 4. Munging data eight bytes at a time</p>
 <div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">Munge64</span><span class="p">(</span> <span class="kt">void</span> <span class="err">∗</span><span class="n">data</span><span class="p">,</span> <span class="kt">uint32_t</span> <span class="n">size</span> <span class="p">)</span> <span class="p">{</span>
@@ -4193,13 +4232,13 @@
 <p><code>Munge64</code> processes an aligned buffer in 39,085 microseconds — about 10% faster than processing the buffer four bytes at a time. However, processing an unaligned buffer takes an amazing 1,841,155 microseconds — two orders of magnitude slower than aligned access, an outstanding 4,610% performance penalty!</p>
 <p>What happened? Because modern PowerPC processors lack hardware support for unaligned floating-point access, the processor throws an exception <em>for each unaligned access.</em> The operating system catches this exception and performs the alignment in software. Here’s a chart illustrating the penalty, and when it occurs:</p>
 <p>Figure 9. Multiple-byte access comparison</p>
-<p><img alt="Multiple-byte access comparison" src="https://developer.ibm.com/developer/articles/pa-dalign/images/horrorChartWhole.jpg" /></p>
+<p><img alt="Multiple-byte access comparison" src="horrorChartWhole.jpg" /></p>
 <p>The penalties for one-, two- and four-byte unaligned access are dwarfed by the horrendous unaligned eight-byte penalty. Maybe this chart, removing the top (and thus the tremendous gulf between the two numbers), will be clearer:</p>
 <p>Figure 10. Multiple-byte access comparison <a class="gh-link gh-issue" href="https://github.com/mkdocs/mkdocs/issues/2" title="GitHub Issue mkdocs/mkdocs #2">#2</a></p>
-<p><img alt="Multiple-byte access comparison #2" src="https://developer.ibm.com/developer/articles/pa-dalign/images/horrorChartHeadless.jpg" /></p>
+<p><img alt="Multiple-byte access comparison #2" src="horrorChartHeadless.jpg" /></p>
 <p>There’s another subtle insight hidden in this data. Compare eight-byte access speeds on four-byte boundaries:</p>
 <p>Figure 11. Multiple-byte access comparison <a class="gh-link gh-issue" href="https://github.com/mkdocs/mkdocs/issues/3" title="GitHub Issue mkdocs/mkdocs #3">#3</a></p>
-<p><img alt="Multiple-byte access comparison #3" src="https://developer.ibm.com/developer/articles/pa-dalign/images/horrorChartHeadlessHilited.jpg" /></p>
+<p><img alt="Multiple-byte access comparison #3" src="horrorChartHeadlessHilited.jpg" /></p>
 <p>Notice accessing memory eight bytes at a time on four- and twelve- byte boundaries <em>is slower</em> than reading the same memory four or even two bytes at a time. While PowerPCs have hardware support for four-byte aligned eight-byte doubles, you still pay a performance penalty if you use that support. Granted, it’s no where near the 4,610% penalty, but it’s certainly noticeable. Moral of the story: accessing memory in large chunks can be slower than accessing memory in small chunks, if that access is not aligned.</p>
 <h2 id="atomicity">Atomicity</h2>
 <p>All modern processors offer <strong>atomic instructions</strong>. These special instructions are crucial for synchronizing two or more concurrent tasks. As the name implies, atomic instructions must be <em>indivisible</em> — that’s why they’re so handy for synchronization: they can’t be preempted.</p>

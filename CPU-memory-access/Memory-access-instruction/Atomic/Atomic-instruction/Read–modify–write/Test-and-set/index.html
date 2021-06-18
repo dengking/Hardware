@@ -1961,6 +1961,45 @@
   
 
           
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_5" type="checkbox" id="__nav_6_5" >
+      
+      <label class="md-nav__link" for="__nav_6_5">
+        流水线-超标量-微码-多发射简介
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="流水线-超标量-微码-多发射简介" data-md-level="2">
+        <label class="md-nav__title" for="__nav_6_5">
+          <span class="md-nav__icon md-icon"></span>
+          流水线-超标量-微码-多发射简介
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../Modern-CPU/%E6%B5%81%E6%B0%B4%E7%BA%BF-%E8%B6%85%E6%A0%87%E9%87%8F-%E5%BE%AE%E7%A0%81-%E5%A4%9A%E5%8F%91%E5%B0%84%E7%AE%80%E4%BB%8B/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -2226,7 +2265,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../Endianess/Endianness/" class="md-nav__link">
+      <a href="../../../../../Endianess/Endianness.md" class="md-nav__link">
         Endianness
       </a>
     </li>
@@ -2727,6 +2766,39 @@
     wikipedia Test-and-set
   </a>
   
+    <nav class="md-nav" aria-label="wikipedia Test-and-set">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mutual#exclusion#using#test-and-set" class="md-nav__link">
+    Mutual exclusion using test-and-set
+  </a>
+  
+    <nav class="md-nav" aria-label="Mutual exclusion using test-and-set">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pseudo-c#implementation" class="md-nav__link">
+    Pseudo-C implementation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance#evaluation#of#test-and-set#locks" class="md-nav__link">
+    Performance evaluation of test-and-set locks
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -3175,7 +3247,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../CPU-cache-memory/Coordination/Cache-coherence/Cache-invalidation/" class="md-nav__link">
+      <a href="../../../../../CPU-cache-memory/Coordination/Cache-coherence/Cache-invalidation.md" class="md-nav__link">
         Cache-invalidation
       </a>
     </li>
@@ -3310,7 +3382,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../CPU-cache-memory/Align-to-cache-line-optimization/" class="md-nav__link">
+      <a href="../../../../../CPU-cache-memory/Align-to-cache-line-optimization/index.md" class="md-nav__link">
         Introduction
       </a>
     </li>
@@ -3895,6 +3967,39 @@
     wikipedia Test-and-set
   </a>
   
+    <nav class="md-nav" aria-label="wikipedia Test-and-set">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mutual#exclusion#using#test-and-set" class="md-nav__link">
+    Mutual exclusion using test-and-set
+  </a>
+  
+    <nav class="md-nav" aria-label="Mutual exclusion using test-and-set">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pseudo-c#implementation" class="md-nav__link">
+    Pseudo-C implementation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance#evaluation#of#test-and-set#locks" class="md-nav__link">
+    Performance evaluation of test-and-set locks
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -3919,7 +4024,27 @@
                 
                 <h1 id="test-and-set">Test-and-set</h1>
 <h2 id="wikipedia#test-and-set">wikipedia <a href="http://en.wikipedia.org/wiki/Test-and-set">Test-and-set</a></h2>
-<p>In computer science, the test-and-set instruction is an instruction used to write 1 (set) to a memory location and return its old value as a single atomic (i.e., non-interruptible) operation. If multiple processes may access the same memory location, and if a process is currently performing a test-and-set, no other process may begin another test-and-set until the first process's test-and-set is finished. A CPU may use a test-and-set instruction offered by another electronic component, such as dual-port RAM; a CPU itself may also offer a test-and-set instruction.</p>
+<p>In computer science, the test-and-set instruction is an instruction used to write <code>1</code> (set) to a memory location and return its old value as a single atomic (i.e., non-interruptible) operation. If multiple processes may access the same memory location, and if a process is currently performing a test-and-set, no other process may begin another test-and-set until the first process's test-and-set is finished. A CPU may use a test-and-set instruction offered by another electronic component, such as dual-port RAM; a CPU itself may also offer a test-and-set instruction.</p>
+<blockquote>
+<p>NOTE: </p>
+<p>1、shared data会不断地被写入，会导致cache coherence flood、high interconnect contention</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="n">function</span> <span class="nf">Lock</span><span class="p">(</span><span class="n">boolean</span> <span class="o">*</span><span class="n">lock</span><span class="p">)</span> <span class="p">{</span> 
+    <span class="k">while</span> <span class="p">(</span><span class="n">test_and_set</span><span class="p">(</span><span class="n">lock</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">);</span> 
+<span class="p">}</span>
+</code></pre></div>
+<p>The calling process obtains the lock if the old value was 0, otherwise the while-loop spins waiting to acquire the lock. This is called a <a href="https://en.wikipedia.org/wiki/Spinlock">spinlock</a>. "<a href="https://en.wikipedia.org/wiki/Test_and_test-and-set">Test and Test-and-set</a>" is another example.</p>
+<h3 id="mutual#exclusion#using#test-and-set">Mutual exclusion using test-and-set</h3>
+<h4 id="pseudo-c#implementation">Pseudo-C implementation</h4>
+<div class="highlight"><pre><span></span><code><span class="k">volatile</span> <span class="kt">int</span> <span class="n">lock</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="nf">critical</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">test_and_set</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="n">critical</span> <span class="n">section</span>  <span class="c1">// only one process can be in this section at a time</span>
+    <span class="n">lock</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1">// release lock when finished with the critical section</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="performance#evaluation#of#test-and-set#locks">Performance evaluation of test-and-set locks</h3>
 <h2 id="example">Example</h2>
 <p><a href="https://en.cppreference.com/w/cpp/atomic/atomic_flag">std::atomic_flag</a></p>
                 

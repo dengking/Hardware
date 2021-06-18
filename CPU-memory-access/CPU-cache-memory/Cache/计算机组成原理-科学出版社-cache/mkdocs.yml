@@ -1,0 +1,7 @@
+nav:
+    - Cache: index.md
+    - 计算机组成原理-科学出版社-cache: 计算机组成原理-科学出版社-cache
+    - Cache-line: Cache-line
+    - Cache-miss: Cache-miss
+    - Locality: Locality.md
+    

@@ -1100,6 +1100,40 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    素材
+  </a>
+  
+    <nav class="md-nav" aria-label="素材">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#zhihu#c11#memory#order#a" class="md-nav__link">
+    zhihu 如何理解 C++11 的六种 memory order？ # A
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#processor#technologies#out-of-order" class="md-nav__link">
+    Processor technologies # Out-of-order
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#umdedu#multiple#issue#processors#i" class="md-nav__link">
+    umd.edu Multiple Issue Processors I
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2038,6 +2072,45 @@
   
 
           
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_5" type="checkbox" id="__nav_6_5" >
+      
+      <label class="md-nav__link" for="__nav_6_5">
+        流水线-超标量-微码-多发射简介
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="流水线-超标量-微码-多发射简介" data-md-level="2">
+        <label class="md-nav__title" for="__nav_6_5">
+          <span class="md-nav__icon md-icon"></span>
+          流水线-超标量-微码-多发射简介
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Modern-CPU/%E6%B5%81%E6%B0%B4%E7%BA%BF-%E8%B6%85%E6%A0%87%E9%87%8F-%E5%BE%AE%E7%A0%81-%E5%A4%9A%E5%8F%91%E5%B0%84%E7%AE%80%E4%BB%8B/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -2301,7 +2374,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../CPU-memory-access/Endianess/Endianness/" class="md-nav__link">
+      <a href="../../../CPU-memory-access/Endianess/Endianness.md" class="md-nav__link">
         Endianness
       </a>
     </li>
@@ -3195,7 +3268,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../CPU-memory-access/CPU-cache-memory/Coordination/Cache-coherence/Cache-invalidation/" class="md-nav__link">
+      <a href="../../../CPU-memory-access/CPU-cache-memory/Coordination/Cache-coherence/Cache-invalidation.md" class="md-nav__link">
         Cache-invalidation
       </a>
     </li>
@@ -3330,7 +3403,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../CPU-memory-access/CPU-cache-memory/Align-to-cache-line-optimization/" class="md-nav__link">
+      <a href="../../../CPU-memory-access/CPU-cache-memory/Align-to-cache-line-optimization/index.md" class="md-nav__link">
         Introduction
       </a>
     </li>
@@ -3950,6 +4023,40 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    素材
+  </a>
+  
+    <nav class="md-nav" aria-label="素材">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#zhihu#c11#memory#order#a" class="md-nav__link">
+    zhihu 如何理解 C++11 的六种 memory order？ # A
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#processor#technologies#out-of-order" class="md-nav__link">
+    Processor technologies # Out-of-order
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#umdedu#multiple#issue#processors#i" class="md-nav__link">
+    umd.edu Multiple Issue Processors I
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3980,6 +4087,26 @@
 </blockquote>
 <p>The key concept of OoOE processing is to allow the processor to avoid a class of stalls that occur when the data needed to perform an operation are unavailable.</p>
 <p>The benefit of OoOE processing grows as the <a href="https://infogalactic.com/info/Instruction_pipeline">instruction pipeline</a> deepens and the speed difference between <a href="https://infogalactic.com/info/Main_memory">main memory</a> (or <a href="https://infogalactic.com/info/Cache_memory">cache memory</a>) and the processor widens. On modern machines, the processor runs many times faster than the memory, so during the time an in-order processor spends waiting for data to arrive, it could have processed a large number of instructions.</p>
+<h2 id="_1">素材</h2>
+<h3 id="zhihu#c11#memory#order#a">zhihu <a href="https://www.zhihu.com/question/24301047">如何理解 C++11 的六种 memory order？</a> # <a href="https://www.zhihu.com/question/24301047/answer/1193956492">A</a></h3>
+<blockquote>
+<p>啥？...还真的是这样。原因在于当代CPU内部也有指令重排。也就是说，CPU执行指令的顺序，也不见得是完全严格按照机器码的顺序。特别是，当代CPU的IPC（每时钟执行指令数）一般都远大于1，也就是所谓的**多发射**，很多命令都是同时执行的。比如，当代CPU当中（一个核心）一般会有2套以上的整数ALU（加法器），2套以上的浮点ALU（加法器），往往还有独立的乘法器，以及，独立的Load和Store执行器。Load和Store模块往往还有8个以上的队列，也就是可以同时进行8个以上内存地址（cache line）的读写交换。</p>
+<p>是不是有些晕？简单来说，你可以理解当代CPU不仅是多核心，而且每个核心还是多任务（多指令）并行的。计算机课本上的那种一个时钟一条指令的，早就是老黄历了 （当然，宏观来看基本原理并没有改变）</p>
+</blockquote>
+<h3 id="processor#technologies#out-of-order"><a href="https://en.wikipedia.org/wiki/Processor_(computing)">Processor technologies</a> # <a href="https://en.wikipedia.org/wiki/Out-of-order_execution">Out-of-order</a></h3>
+<p>其中总结了一些out of order的内容。</p>
+<p>1、<a href="https://en.wikipedia.org/wiki/Wide-issue">Wide-issue</a></p>
+<p>"wide issue"应该就是"multiple issue"，即多发射。</p>
+<h3 id="umdedu#multiple#issue#processors#i">umd.edu <a href="https://www.cs.umd.edu/~meesh/411/CA-online/chapter/multiple-issue-processors-i/index.html">Multiple Issue Processors I</a></h3>
+<blockquote>
+<p>NOTE:</p>
+<p>1、介绍地比较详细</p>
+</blockquote>
+<p><strong>Types of Multiple Issue Processors:</strong> There are basically two variations in multiple issue processors – Superscalar processors and VLIW (Very Long Instruction Word) processors. There are two types of superscalar processors that issue varying numbers of instructions per clock. They are</p>
+<ul>
+<li><strong>statically scheduled superscalars</strong> that use in-order execution</li>
+<li><strong>dynamically scheduled superscalars</strong> that use out-of-order execution</li>
+</ul>
                 
               
               

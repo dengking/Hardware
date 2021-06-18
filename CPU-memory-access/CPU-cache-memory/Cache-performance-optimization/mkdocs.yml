@@ -1,0 +1,4 @@
+nav:
+    - Introduction: index.md
+    - Align-to-cache-line-optimization: Align-to-cache-line-optimization    
+    - cnblogs-Geek_Ling-cache-performance-optimization: cnblogs-Geek_Ling-cache-performance-optimization

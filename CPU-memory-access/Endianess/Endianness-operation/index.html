@@ -1961,6 +1961,45 @@
   
 
           
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_5" type="checkbox" id="__nav_6_5" >
+      
+      <label class="md-nav__link" for="__nav_6_5">
+        流水线-超标量-微码-多发射简介
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="流水线-超标量-微码-多发射简介" data-md-level="2">
+        <label class="md-nav__title" for="__nav_6_5">
+          <span class="md-nav__icon md-icon"></span>
+          流水线-超标量-微码-多发射简介
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Modern-CPU/%E6%B5%81%E6%B0%B4%E7%BA%BF-%E8%B6%85%E6%A0%87%E9%87%8F-%E5%BE%AE%E7%A0%81-%E5%A4%9A%E5%8F%91%E5%B0%84%E7%AE%80%E4%BB%8B/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -2228,7 +2267,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Endianness/" class="md-nav__link">
+      <a href="../Endianness.md" class="md-nav__link">
         Endianness
       </a>
     </li>
@@ -2308,6 +2347,13 @@
           <li class="md-nav__item">
   <a href="#stackoverflow#convert#little#endian#to#big#endian" class="md-nav__link">
     stackoverflow Convert Little Endian to Big Endian
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compile-time#endianness#swap" class="md-nav__link">
+    compile-time endianness swap
   </a>
   
 </li>
@@ -3227,7 +3273,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../CPU-cache-memory/Coordination/Cache-coherence/Cache-invalidation/" class="md-nav__link">
+      <a href="../../CPU-cache-memory/Coordination/Cache-coherence/Cache-invalidation.md" class="md-nav__link">
         Cache-invalidation
       </a>
     </li>
@@ -3362,7 +3408,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../CPU-cache-memory/Align-to-cache-line-optimization/" class="md-nav__link">
+      <a href="../../CPU-cache-memory/Align-to-cache-line-optimization/index.md" class="md-nav__link">
         Introduction
       </a>
     </li>
@@ -3984,6 +4030,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#compile-time#endianness#swap" class="md-nav__link">
+    compile-time endianness swap
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -4034,7 +4087,7 @@
 <p>下面罗列了需要考虑的典型场景：</p>
 <ul>
 <li>计算hash值（参见 quarkslab <a href="https://blog.quarkslab.com/unaligned-accesses-in-cc-what-why-and-solutions-to-do-it-properly.html">Unaligned accesses in C/C++: what, why and solutions to do it properly</a>）</li>
-<li>网络传输：网络数据采用的是big endian，发送时，需要将其转换为big endian，接收时，需要将其从big endian转换为主句的endian。</li>
+<li>网络传输：网络数据采用的是big endian，发送时，需要将其转换为big endian，接收时，需要将其从big endian转换为主机的endian。</li>
 </ul>
 <p>下面罗列了不需要考虑的典型场景：</p>
 <ul>
@@ -4181,6 +4234,10 @@
 <p>You'll use them in basically the same way as the macros. Instead of <code>LITTLE_ENDIAN_SHORT(value)</code>, you'd call <code>LittleEndian16(value)</code>. Note that I've also used the explicit bit-width in the function's names, instead of the ambiguous <code>short</code> and <code>long</code> type names.</p>
 <h3 id="stackexchange#implementation#of#c#standard#library#function#ntohl">stackexchange <a href="https://codereview.stackexchange.com/questions/149717/implementation-of-c-standard-library-function-ntohl">Implementation of C Standard Library Function ntohl()</a></h3>
 <h3 id="stackoverflow#convert#little#endian#to#big#endian">stackoverflow <a href="https://stackoverflow.com/questions/19275955/convert-little-endian-to-big-endian">Convert Little Endian to Big Endian</a></h3>
+<h3 id="compile-time#endianness#swap">compile-time endianness swap</h3>
+<p>bit arithmetic: compile-time endianness swap based on </p>
+<p><a href="http://stackoverflow.com/a/36937049">http://stackoverflow.com/a/36937049</a> </p>
+<p><a href="https://en.cppreference.com/w/cpp/language/fold">https://en.cppreference.com/w/cpp/language/fold</a></p>
 <h2 id="query">Query</h2>
 <h3 id="compile#time">Compile time</h3>
 <p>quarkslab <a href="https://blog.quarkslab.com/unaligned-accesses-in-cc-what-why-and-solutions-to-do-it-properly.html">Unaligned accesses in C/C++: what, why and solutions to do it properly</a> 中的例子：</p>
@@ -4229,7 +4286,7 @@
   
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
-        <a href="../Endianness/" class="md-footer__link md-footer__link--prev" rel="prev">
+        <a href="../../Memory-alignment/Purpose-of-memory-alignment/" class="md-footer__link md-footer__link--prev" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -4238,7 +4295,7 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              Endianness
+              Introduction
             </div>
           </div>
         </a>
