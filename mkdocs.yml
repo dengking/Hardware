@@ -100,7 +100,7 @@ nav:
           - x86-64: CPU/Manufacturer/Intel/x86/Instruction/x86-64.md
           - x86-instruction-listings: CPU/Manufacturer/Intel/x86/Instruction/x86-instruction-listings.md
           - INT: CPU/Manufacturer/Intel/x86/Instruction/INT.md
-          - BOUND: CPU/Manufacturer/Intel/x86/Instruction/BOUND.md
+          - Bound.md: CPU/Manufacturer/Intel/x86/Instruction/Bound.md
         - x86-memory-segmentation: CPU/Manufacturer/Intel/x86/x86-memory-segmentation.md
         - Book-x86-assembly:
           - Introduction: CPU/Manufacturer/Intel/x86/Book-x86-assembly/index.md
@@ -167,6 +167,10 @@ nav:
       - Locality: CPU-memory-access/CPU-cache-memory/Cache/Locality.md
       - Cache-replacement-policy:
         - Introduction: CPU-memory-access/CPU-cache-memory/Cache/Cache-replacement-policy/index.md
+        - LRU-cache:
+          - Introduction: CPU-memory-access/CPU-cache-memory/Cache/Cache-replacement-policy/LRU-cache/index.md
+          - library-mohaps-lrucache:
+            - Introduction: CPU-memory-access/CPU-cache-memory/Cache/Cache-replacement-policy/LRU-cache/library-mohaps-lrucache/index.md
     - Coordination:
       - Introduction: CPU-memory-access/CPU-cache-memory/Coordination/index.md
       - Memory-coherence:
