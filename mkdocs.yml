@@ -164,7 +164,8 @@ nav:
         - Introduction: CPU-memory-access/CPU-cache-memory/Cache/Cache-line/index.md
       - Cache-miss:
         - Introduction: CPU-memory-access/CPU-cache-memory/Cache/Cache-miss/index.md
-      - Locality: CPU-memory-access/CPU-cache-memory/Cache/Locality.md
+      - Locality:
+        - Introduction: CPU-memory-access/CPU-cache-memory/Cache/Locality/index.md
       - Cache-replacement-policy:
         - Introduction: CPU-memory-access/CPU-cache-memory/Cache/Cache-replacement-policy/index.md
         - LRU-cache:
