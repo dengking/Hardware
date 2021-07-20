@@ -4,6 +4,6 @@ nav:
     - wikipedia-Cache-computing: wikipedia-Cache-computing
     - Cache-line: Cache-line
     - Cache-miss: Cache-miss
-    - Locality: Locality.md
+    - Locality: Locality
     - Cache-replacement-policy: Cache-replacement-policy
     
