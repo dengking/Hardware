@@ -50,6 +50,14 @@ cache performance 影响方方面面，无论是concurrency、single thread等�
 
 
 
+### Array
+
+1、相比于linked list，array的cache performance是更好的、cache hit rate也是更高的
+
+2、multiple dimension array的cache hit rate是高于nested vector(`std::vector<std::vector<int>>`)的
+
+
+
 ## TODO
 
 [How to improve my cache hit rate?](https://support.ezoic.com/kb/article/how-to-improve-my-cache-hit-rate)
