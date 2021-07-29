@@ -1,16 +1,12 @@
 nav:
     - Home: index.md
-
     - Computer-architecture: Computer-architecture
     - Memory: Memory
-    #################### 首先说明processor的概念，CPU就是一种processor##########
-    - Processor(computing): Processor(computing).md
+    - Processor(computing): Processor(computing).md #################### 首先说明processor的概念，CPU就是一种processor##########
     - CPU: CPU
     - Modern-CPU: Modern-CPU
-    #################### CPU的memory access####################        
-    - CPU-memory-access: CPU-memory-access
-    ################### 汇编语言####################    
-    - Assembly-language: Assembly-language
-    - TODO: TODO
+    - CPU-memory-access: CPU-memory-access #################### CPU的memory access####################        
+    - Assembly-language: Assembly-language ################### 汇编语言####################    
     - Expert-Ulrich-Drepper: Expert-Ulrich-Drepper
     - Book-计算机组成原理-科学出版社: Book-计算机组成原理-科学出版社    
+    - TODO: TODO

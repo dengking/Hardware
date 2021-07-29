@@ -1,6 +1,6 @@
 nav:
     - Introduction: index.md
-    - CPU的时序: CPU的时序.md
-    - Instruction-cycle: Instruction-cycle.md
+    - CPU的时序: CPU的时序
+    - Instruction-cycle: Instruction-cycle
     - Out-of-order-execution: Out-of-order-execution
     - Speculative: Speculative

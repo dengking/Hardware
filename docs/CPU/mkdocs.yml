@@ -1,13 +1,8 @@
 nav:
     - Introduction: index.md
-    #################### CPU####################    
-    - CPU: CPU.md
-    #################### 指令集的概念####################    
-    - Instruction-set-architectures: Instruction-set-architectures
-    #################### CPU的组成###################    
-    - Components: Components
-
-#################### 指令周期的概念####################    
-    - Execution-of-instruction: Execution-of-instruction
+    - CPU: CPU.md #################### CPU####################    
+    - Instruction-set-architectures: Instruction-set-architectures #################### 指令集的概念####################    
+    - Components: Components #################### CPU的组成###################    
+    - Execution-of-instruction: Execution-of-instruction #################### 指令周期的概念####################    
     - Optimization: Optimization
     - Manufacturer: Manufacturer
