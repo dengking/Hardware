@@ -17,16 +17,20 @@ A **memory barrier**, also known as a **membar**, **memory fence** or **fence in
 > NOTE: 
 >
 > 1、memory barrier 和 memory fence的意思是相同的
+>
+> 2、从本质上来说:
+>
+> CPU memory barrier instruction
 
 **Memory barriers** are necessary because most modern CPUs employ performance optimizations that can result in [out-of-order execution](https://en.wikipedia.org/wiki/Out-of-order_execution). This reordering of memory operations (**loads and stores**) normally goes unnoticed(未注意) within a single [thread of execution](https://en.wikipedia.org/wiki/Thread_(computer_science)), but can cause unpredictable behaviour in [concurrent programs](https://en.wikipedia.org/wiki/Concurrent_computing) and [device drivers](https://en.wikipedia.org/wiki/Device_driver) unless carefully controlled. The exact nature of an **ordering constraint** is hardware dependent and defined by the architecture's [memory ordering model](https://en.wikipedia.org/wiki/Memory_model_(programming)). Some architectures provide multiple barriers for enforcing different ordering constraints.
 
 > NOTE: memory barrier应该这样来进行理解: 由于 [out-of-order execution](https://infogalactic.com/info/Out-of-order_execution) ，导致了很多问题，因此引入memory barrier来供programmer来解决这些问题，它的思路如下: 
 >
-> 1) ordering and computational，参见工程discrete的`Relation-structure-computation\Make-it-computational`章节。
+> 1、ordering and computational，参见工程discrete的`Relation-structure-computation\Make-it-computational`章节。
 >
-> 2) control theory: 由programmer来添加显式的控制从而使之有序，非常类似于 `tf.control_dependency`
+> 2、control theory: 由programmer来添加显式的控制从而使之有序，非常类似于 `tf.control_dependency`
 >
-> 3) instruction level barrier
+> 3、instruction level barrier
 >
 > 关于 [out-of-order execution](https://infogalactic.com/info/Out-of-order_execution) ，参见工程hardware的`CPU\Execution-of-instruction\Out-of-order-execution`章节；
 >
