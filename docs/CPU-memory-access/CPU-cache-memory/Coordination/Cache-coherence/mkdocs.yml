@@ -1,4 +1,5 @@
 nav:
     - Introduction: index.md
     - Protocol: Protocol
+    - Bus-snooping: Bus-snooping
 

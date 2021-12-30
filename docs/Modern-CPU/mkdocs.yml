@@ -2,5 +2,7 @@ nav:
     - Introduction: index.md
     - Tendency-toward-parallel-computing: Tendency-toward-parallel-computing    
     - Multiprocessing: Multiprocessing
-    - Multicore-and-multiprocessor: Multicore-and-multiprocessor
+    - Multicore-CPU: Multicore-CPU
+    - Multiprocessor: Multiprocessor
+    - Multicore&Multiprocessor&HyperThreading: Multicore&Multiprocessor&HyperThreading
     - 流水线-超标量-微码-多发射简介: 流水线-超标量-微码-多发射简介

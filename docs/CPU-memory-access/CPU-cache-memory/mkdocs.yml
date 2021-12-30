@@ -2,6 +2,6 @@ nav:
     - Introduction: index.md
     - Cache: Cache
     - Coordination: Coordination
-    - False-sharing: False-sharing
-    - TODO-zhihu-高并发编程-多处理器编程中的一致性问题: TODO-zhihu-高并发编程-多处理器编程中的一致性问题
+    - Programming-problem: Programming-problem
+    - zhihu-高并发编程-多处理器编程中的一致性问题: zhihu-高并发编程-多处理器编程中的一致性问题
     - Cache-performance-optimization: Cache-performance-optimization    

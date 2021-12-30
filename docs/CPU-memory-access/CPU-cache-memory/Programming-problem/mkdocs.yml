@@ -1,0 +1,5 @@
+nav:
+    - Introduction: index.md
+    - False-sharing: False-sharing
+    - Cache-line-ping-pong: Cache-line-ping-pong    
+    

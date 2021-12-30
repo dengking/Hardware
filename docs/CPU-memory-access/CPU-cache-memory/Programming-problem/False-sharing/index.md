@@ -249,6 +249,8 @@ In [computer science](https://en.wikipedia.org/wiki/Computer_science), **false s
 
 
 
-## TODO
+## see also
 
 *Intel*. [Avoiding and Identifying False Sharing Among Threads](https://software.intel.com/en-us/articles/avoiding-and-identifying-false-sharing-among-threads).
+
+cnblogs [Cache ping-pong](https://www.cnblogs.com/fengshang/p/3524752.html)

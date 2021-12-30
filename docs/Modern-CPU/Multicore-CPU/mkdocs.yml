@@ -1,4 +1,4 @@
 nav:
-    - Multi-core-processor: Multi-core-processor.md
+    - Introduction: index.md
     - Multicore-VS-Multiprocessor: Multicore-VS-Multiprocessor.md
     

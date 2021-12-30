@@ -28,6 +28,10 @@ In [computer science](https://infogalactic.com/info/Computer_science), **cache c
 
 
 
+> NOTE: 
+>
+> cache之间的coherency
+
 In the illustration on the right, consider both the clients have a cached copy of a particular memory block from a previous read. Suppose the client on the bottom updates/changes that memory block, the client on the top could be left with an invalid cache of memory without any notification of the change. Cache coherence is intended to manage such conflicts by maintaining a coherent view of the data values in multiple caches.
 
 > NOTE: 描述的是一个典型的inconsistent 的场景
