@@ -4,9 +4,25 @@
 
 ## Wikipedia [Read-modify-write](https://infogalactic.com/info/Read-modify-write)
 
-In [computer science](https://infogalactic.com/info/Computer_science), **read-modify-write** is a class of [atomic operations](https://infogalactic.com/info/Atomic_operation) (such as [test-and-set](https://infogalactic.com/info/Test-and-set), [fetch-and-add](https://infogalactic.com/info/Fetch-and-add), and [compare-and-swap](https://infogalactic.com/info/Compare-and-swap)) that both read a memory location and write a new value into it simultaneously(同时), either with a completely new value or some function of the previous value. 
+In [computer science](https://infogalactic.com/info/Computer_science), **read-modify-write** is a class of [atomic operations](https://infogalactic.com/info/Atomic_operation) (such as [test-and-set](https://infogalactic.com/info/Test-and-set), [fetch-and-add](https://infogalactic.com/info/Fetch-and-add), and [compare-and-swap](https://infogalactic.com/info/Compare-and-swap)) that both read a memory location and write a **new value** into it simultaneously(同时), either with a completely **new value** or some function of the previous value. 
 
-> NOTE: "simultaneously"其实就意味着 "原子性" 。"some function of previous value" 的意思是 将previous value作为入参输入到一个function中而得到一个新value，然后将这个新value写入到memory中
+> NOTE:
+>
+> 一、"simultaneously"其实就意味着 "原子性" 。
+>
+> 二、read-modify-write的含义: 
+>
+> Read: "read a memory location "
+>
+> modify:  "with a completely new value or some function of the previous value"
+>
+> write: "write a new value into it "
+>
+> "some function of previous value" 的意思是 将previous value作为入参输入到一个function中而得到一个新value，然后将这个新value写入到memory中
+>
+> 它的含义在 stackoverflow [Why it's termed read-modify-write but not read-write?](https://stackoverflow.com/questions/49452022/why-its-termed-read-modify-write-but-not-read-write) # [A](https://stackoverflow.com/a/49638936) 中有着更好的阐述
+>
+>  
 
 These operations prevent [race conditions](https://infogalactic.com/info/Race_conditions) in multi-threaded applications. Typically they are used to implement [mutexes](https://infogalactic.com/info/Mutex) or [semaphores](https://infogalactic.com/info/Semaphore_(programming)). These atomic operations are also heavily used in [non-blocking synchronization](https://infogalactic.com/info/Non-blocking_synchronization).
 
@@ -27,9 +43,9 @@ These operations prevent [race conditions](https://infogalactic.com/info/Race_co
 
 > NOTE:上述自底向上依次增长
 
-It is impossible to implement an operation that requires a given **consensus number** with only operations with a lower **consensus number**, no matter how many of such operations one uses.[[2\]](https://infogalactic.com/info/Read-modify-write#cite_note-2)
+It is impossible to implement an operation that requires a given **consensus number** with only operations with a lower **consensus number**, no matter how many of such operations one uses.
 
-**Read-modify-write instructions** often produce unexpected results when used on [I/O](https://infogalactic.com/info/I/O) devices, as a write operation may not affect the same internal [register](https://infogalactic.com/info/Hardware_register) that would be accessed in a read operation.[[3\]](https://infogalactic.com/info/Read-modify-write#cite_note-3)
+**Read-modify-write instructions** often produce unexpected results when used on [I/O](https://infogalactic.com/info/I/O) devices, as a write operation may not affect the same internal [register](https://infogalactic.com/info/Hardware_register) that would be accessed in a read operation.
 
 
 
@@ -41,11 +57,17 @@ It is impossible to implement an operation that requires a given **consensus num
 
 Because that is exactly the sequence of events on a typical architecture such as `X86`.
 
-1. *read*: The value is read from a memory location (cache) into a CPU register
-2. *modify*: The value is incremented inside the CPU register
-3. *write*: The updated register value is written back to memory (cache).
+1、*read*: The value is read from a memory location (cache) into a CPU register
 
-In order to create the perception of atomicity, the cache line is locked between the `read` and the `write` operation.
+2、*modify*: The value is incremented inside the CPU register
+
+3、*write*: The updated register value is written back to memory (cache).
+
+In order to create the perception of atomicity, the **cache line** is locked between the `read` and the `write` operation.
+
+> NOTE: 
+>
+> 这里其实设计到了atomic read-modify-write的implementation
 
 For example, incrementing a C++ atomic variable:
 
