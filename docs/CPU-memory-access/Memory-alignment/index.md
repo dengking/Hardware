@@ -6,6 +6,12 @@
 
 When a computer reads from or writes to a memory address, it will do this in **word** sized chunks (for example, 4 byte (32-bit) chunks on the MPC8360). **Data alignment** means putting the data at a memory offset equal to some multiple of the **word size**, which increases the system's performance due to the way the CPU handles memory. **Most CPUs can access only memory aligned addresses**. 
 
+> NOTE: 
+>
+> 一、chunky memory management
+>
+> 二、"**Most CPUs can access only memory aligned addresses**" 这是一个非常重要的前提
+
 Table 1 show an example of some memory addresses and their alignment on different architectures. 
 
 ### Memory Alignment in the MPC8360 

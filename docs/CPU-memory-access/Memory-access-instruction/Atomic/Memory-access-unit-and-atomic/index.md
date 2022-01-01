@@ -1,6 +1,6 @@
 # Memory access unit and atomic
 
-在 `../../Memory-alignment` 章节中，已经讨论了这个问题，本节对这个topic进行总结。
+在 `Memory-alignment` 章节中，已经讨论了这个问题，本节对这个topic进行总结。
 
 ## Unit and atomic
 
@@ -88,13 +88,17 @@ Boy, what a question. The answer to which is:
 
 > Yes, no, hmmm, well, it depends
 
-It all comes down to the architecture of the system. On an IA32 a correctly aligned address will be an atomic operation. Unaligned writes might be atomic, it depends on the caching system in use. If the memory lies within a single L1 cache line then it is atomic, otherwise it's not. The width of the bus between the CPU and RAM can affect the atomic nature: a correctly aligned 16bit write on an 8086 was atomic whereas the same write on an 8088 wasn't because the 8088 only had an 8 bit bus whereas the 8086 had a 16 bit bus.
+It all comes down to the architecture of the system. On an IA32 a correctly aligned address will be an atomic operation. **Unaligned writes** might be atomic, it depends on the caching system in use. If the memory lies within a single **L1 cache line** then it is atomic, otherwise it's not. The width of the bus between the CPU and RAM can affect the atomic nature: a correctly aligned 16bit write on an 8086 was atomic whereas the same write on an 8088 wasn't because the 8088 only had an 8 bit bus whereas the 8086 had a 16 bit bus.
 
 Also, if you're using C/C++ don't forget to mark the shared value as volatile, otherwise the optimiser will think the variable is never updated in one of your threads.
 
-### [Why is integer assignment on a naturally aligned variable atomic on x86?](https://stackoverflow.com/questions/36624881/why-is-integer-assignment-on-a-naturally-aligned-variable-atomic-on-x86)
+### stackoverflow [Why is integer assignment on a naturally aligned variable atomic on x86?](https://stackoverflow.com/questions/36624881/why-is-integer-assignment-on-a-naturally-aligned-variable-atomic-on-x86)
 
 **"Natural" alignment means aligned to it's own type width**. Thus, the load/store will never be split across any kind of boundary wider than itself (e.g. page, cache-line, or an even narrower chunk size used for data transfers between different caches).
+
+> NOTE: 
+>
+> chunk memory management
 
 CPUs often do things like cache-access, or cache-line transfers between cores, in power-of-2 sized chunks, so alignment boundaries smaller than a cache line do matter. (See @BeeOnRope's comments below). See also [Atomicity on x86](https://stackoverflow.com/questions/38447226/atomicity-on-x86) for more details on how CPUs implement atomic loads or stores internally, and [Can num++ be atomic for 'int num'?](https://stackoverflow.com/questions/39393850/can-num-be-atomic-for-int-num) for more about how atomic RMW operations like `atomic<int>::fetch_add()` / `lock xadd` are implemented internally.
 

@@ -14,9 +14,7 @@
 
 使用CAS、MVCC来实现optimistic concurrency control，这两种方式本质上是有些类似的。
 
-
-
-后，我对compare-and-swap的认知是: 
+我对compare-and-swap的认知是: 
 
 使用transaction来理解compare-and-swap: 
 
@@ -26,7 +24,9 @@
 
 In [computer science](https://en.wikipedia.org/wiki/Computer_science), **compare-and-swap** (**CAS**) is an [atomic](https://en.wikipedia.org/wiki/Atomic_(computer_science)) [instruction](https://en.wikipedia.org/wiki/Instruction_(computer_science)) used in [multithreading](https://en.wikipedia.org/wiki/Thread_(computer_science)#Multithreading) to achieve [synchronization](https://en.wikipedia.org/wiki/Synchronization_(computer_science)). It compares the contents of a memory location with a given value and, only if they are the same, modifies the contents of that memory location to a new given value. This is done as a single **atomic operation**. The atomicity guarantees that the new value is calculated based on up-to-date information; if the value had been updated by another thread in the meantime, the write would fail. The result of the operation must indicate whether it performed the substitution; this can be done either with a simple [boolean](https://en.wikipedia.org/wiki/Boolean_logic) response (this variant is often called **compare-and-set**), or by returning the value read from the memory location (*not* the value written to it).
 
-
+> NOTE: 
+>
+> C++ `std::compare_exchange`所做的就是 **compare-and-set**
 
 ### Overview
 
