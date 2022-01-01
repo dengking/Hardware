@@ -2,7 +2,7 @@
 
 本文阐述computer的memory的架构、组成。
 
-## 维基百科[Computer memory](https://en.wikipedia.org/wiki/Computer_memory)
+## wikipedia [Computer memory](https://en.wikipedia.org/wiki/Computer_memory)
 
 
 
