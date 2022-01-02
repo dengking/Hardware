@@ -8,18 +8,23 @@
 
 2、ABA和time of check to time of use是非常类似的
 
-## Wikipedia [ABA problem](https://infogalactic.com/info/ABA_problem)
+## wikipedia [ABA problem](https://infogalactic.com/info/ABA_problem)
 
 In [multithreaded](https://en.wikipedia.org/wiki/Thread_(computer_science)) [computing](https://en.wikipedia.org/wiki/Computer_science), the **ABA problem** occurs during synchronization, when a location is read twice, has the same value for both reads, and "value is the same" is used to indicate "nothing has changed". However, another thread can execute between the two reads and change the value, do other work, then change the value back, thus fooling the first thread into thinking "nothing has changed" even though the second thread did work that violates that assumption.
 
-In [multithreaded](https://en.wikipedia.org/wiki/Thread_(computer_science)) [computing](https://en.wikipedia.org/wiki/Computer_science), the **ABA problem** occurs during synchronization, when a location is read twice, has the same value for both reads, and "value is the same" is used to indicate "nothing has changed". However, another thread can execute between the two reads and change the value, do other work, then change the value back, thus fooling the first thread into thinking "nothing has changed" even though the second thread did work that violates that assumption.
+> NOTE: 
+>
+> 在CAS中，会通过比较来判断状态是否变更，ABA则描述的是这种方法失败的场景
 
 The ABA problem occurs when multiple [threads](https://en.wikipedia.org/wiki/Thread_(computer_science)) (or [processes](https://en.wikipedia.org/wiki/Process_(computing))) accessing shared data interleave. Below is the sequence of events that will result in the ABA problem:
 
-- Process ${P_{1}}$ reads value A from shared memory,
-- ${P_{1}}$ is [preempted](https://en.wikipedia.org/wiki/Preemption_(computing)), allowing process ${P_{2}}$ to run,
-- ${P_{2}}$modifies the shared memory value A to value B and back to A before preemption,
-- ${P_{1}}$ begins execution again, sees that the shared memory value has not changed and continues.
+1、Process ${P_{1}}$ reads value A from shared memory,
+
+2、${P_{1}}$ is [preempted](https://en.wikipedia.org/wiki/Preemption_(computing)), allowing process ${P_{2}}$ to run,
+
+3、${P_{2}}$modifies the shared memory value A to value B and back to A before preemption,
+
+4、${P_{1}}$ begins execution again, sees that the shared memory value has not changed and continues.
 
 Although ${P_{1}}$ can continue executing, it is possible that the behavior will not be correct due to the "hidden" modification in shared memory.
 

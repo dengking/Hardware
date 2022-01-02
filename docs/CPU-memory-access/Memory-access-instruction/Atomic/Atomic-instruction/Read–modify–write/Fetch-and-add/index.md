@@ -1,5 +1,7 @@
 # Fetch-and-add
 
+这是最最简单的read-modify-write命令。
+
 ## wikipedia [Fetch-and-add](https://en.wikipedia.org/wiki/Fetch-and-add)
 
 In [computer science](https://en.wikipedia.org/wiki/Computer_science), the **fetch-and-add** [CPU](https://en.wikipedia.org/wiki/Central_processing_unit) instruction (FAA) [atomically](https://en.wikipedia.org/wiki/Atomic_(computer_science)) increments the contents of a memory location by a specified value.
@@ -30,7 +32,7 @@ When one process is doing x = x + a and another is doing x = x + b concurrently,
 
 In [uniprocessor](https://en.wikipedia.org/wiki/Uniprocessor) systems with no [kernel preemption](https://en.wikipedia.org/wiki/Kernel_preemption) supported, it is sufficient to disable [interrupts](https://en.wikipedia.org/wiki/Interrupt) before accessing a [critical section](https://en.wikipedia.org/wiki/Critical_section). However, in multiprocessor systems (even with interrupts disabled) two or more processors could be attempting to access the same memory at the same time. The fetch-and-add instruction allows any processor to atomically increment a value in memory, preventing such multiple processor collisions.
 
-[Maurice Herlihy](https://en.wikipedia.org/wiki/Maurice_Herlihy) (1991) proved that fetch-and-add has a finite [consensus](https://en.wikipedia.org/wiki/Consensus_(computer_science)) number, in contrast to the [compare-and-swap](https://en.wikipedia.org/wiki/Compare-and-swap) operation. The fetch-and-add operation can solve the wait-free consensus problem for no more than two concurrent processes.[[1\]](https://en.wikipedia.org/wiki/Fetch-and-add#cite_note-1)
+[Maurice Herlihy](https://en.wikipedia.org/wiki/Maurice_Herlihy) (1991) proved that fetch-and-add has a finite [consensus](https://en.wikipedia.org/wiki/Consensus_(computer_science)) number, in contrast to the [compare-and-swap](https://en.wikipedia.org/wiki/Compare-and-swap) operation. The fetch-and-add operation can solve the wait-free consensus problem for no more than two concurrent processes.
 
 
 
@@ -47,7 +49,11 @@ function FetchAndAdd(address location, int inc) {
 }
 ```
 
-To implement a mutual exclusion lock, we define the operation `FetchAndIncrement`, which is equivalent to `FetchAndAdd` with inc=1. With this operation, a mutual exclusion lock can be implemented using the [ticket lock](https://en.wikipedia.org/wiki/Ticket_lock) algorithm as:
+> NOTE: 
+>
+> 上述是典型的read-modify-write过程
+
+To implement a mutual exclusion lock, we define the operation `FetchAndIncrement`, which is equivalent to `FetchAndAdd` with `inc=1`. With this operation, a mutual exclusion lock can be implemented using the [ticket lock](https://en.wikipedia.org/wiki/Ticket_lock) algorithm as:
 
 ```c
  record locktype {
@@ -68,17 +74,23 @@ To implement a mutual exclusion lock, we define the operation `FetchAndIncrement
  }
 ```
 
+> NOTE: 
+>
+> 上述例子非常具有提示意义
+
 These routines provide a mutual-exclusion lock when following conditions are met:
 
-- Locktype data structure is initialized with function LockInit before use
-- Number of tasks waiting for the lock does not exceed INT_MAX at any time
-- Integer datatype used in lock values can 'wrap around' when continuously incremented
+1、`Locktype` data structure is initialized with function `LockInit` before use
+
+2、Number of tasks waiting for the lock does not exceed `INT_MAX` at any time
+
+3、Integer datatype used in lock values can 'wrap around' when continuously incremented
 
 
 
 ### Hardware and software support
 
-An atomic fetch_add function appears in the [C++11](https://en.wikipedia.org/wiki/C%2B%2B11) standard.[[2\]](https://en.wikipedia.org/wiki/Fetch-and-add#cite_note-2) It is available as a proprietary extension to [C](https://en.wikipedia.org/wiki/C_(programming_language)) in the [Itanium](https://en.wikipedia.org/wiki/Itanium) [ABI](https://en.wikipedia.org/wiki/Application_binary_interface) specification,[[3\]](https://en.wikipedia.org/wiki/Fetch-and-add#cite_note-3) and (with the same syntax) in [GCC](https://en.wikipedia.org/wiki/GNU_Compiler_Collection).[[4\]](https://en.wikipedia.org/wiki/Fetch-and-add#cite_note-4)
+An atomic fetch_add function appears in the [C++11](https://en.wikipedia.org/wiki/C%2B%2B11) standard.[[2\]](https://en.wikipedia.org/wiki/Fetch-and-add#cite_note-2) It is available as a proprietary extension to [C](https://en.wikipedia.org/wiki/C_(programming_language)) in the [Itanium](https://en.wikipedia.org/wiki/Itanium) [ABI](https://en.wikipedia.org/wiki/Application_binary_interface) specification,[[3\]](https://en.wikipedia.org/wiki/Fetch-and-add#cite_note-3) and (with the same syntax) in [GCC](https://en.wikipedia.org/wiki/GNU_Compiler_Collection).
 
 #### x86 implementation
 
