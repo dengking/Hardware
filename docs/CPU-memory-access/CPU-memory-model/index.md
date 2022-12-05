@@ -14,9 +14,5 @@ Compiler，CPU执行memory reordering的目的是: optimization，显然它是�
 
 ## 章节说明
 
-本章首先介绍一个programmer平时不会发现、但是普遍存在的的memory reordering，以及它所带来的影响；
-
-然后正式介绍memory ordering；
-
-然后介绍control手段: memory barrier；
+本章首先介绍一个programmer平时不会发现、但是普遍存在的的memory reordering，以及它所带来的影响；然后正式介绍memory ordering；然后介绍control手段: memory barrier；
 
