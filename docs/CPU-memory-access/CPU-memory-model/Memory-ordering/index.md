@@ -63,10 +63,6 @@ There are several **memory-consistency models** for [SMP](https://infogalactic.c
 
 
 
-
-
-
-
 ## Four type memory ordering and semantic
 
 参考: 
@@ -85,6 +81,8 @@ CPU的memory instruction有两种: load(read)、store(store)，因此可能的re
 
 ![img](https://preshing.com/images/barrier-types.png)
 
+> NOTE: 
+>
 > 1、上述table是源自 preshing [Memory Barriers Are Like Source Control Operations](https://preshing.com/20120710/memory-barriers-are-like-source-control-operations/)。
 >
 > 2、上述四种memory reordering非常重要，后续很多关于memory的分析都是基于它的。
