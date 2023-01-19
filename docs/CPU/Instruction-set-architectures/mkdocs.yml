@@ -2,4 +2,5 @@ nav:
     - Introduction: index.md
     - Classification: Classification
     - Comparison: Comparison.md
+    - RISC-V: RISC-V
     
