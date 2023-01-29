@@ -32,6 +32,5 @@ The stored-program computer idea can be traced back to the 1936 theoretical conc
 
 2、data
 
-在`./Function-and-data-model`中，将基于此来构建起一个连接software和hardware的uniform model。
+在`Function-and-data-model`中，将基于此来构建起一个连接software和hardware的uniform model。
 
-### 
