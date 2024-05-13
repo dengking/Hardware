@@ -1,8 +1,8 @@
 # Load–store architecture
 
-load 对应的是read data from memory；
+load 对应的是read data from memory to register；
 
-store 对应的是write data to memory；
+store 对应的是write data from register to memory；
 
 
 ## wikipedia [Load–store architecture](https://en.wikipedia.org/wiki/Load%E2%80%93store_architecture)
@@ -19,24 +19,33 @@ The earliest example of a load–store architecture was the [CDC 6600](https://e
 
 
 
-### See also
+## gpt-4-vision Load–store architecture 
 
-- [Load–store unit](https://en.wikipedia.org/wiki/Load–store_unit)
-- [Register memory architecture](https://en.wikipedia.org/wiki/Register_memory_architecture)
+**Load-store architecture** is a design approach used in computer processors where most instructions cannot directly manipulate memory, except for specific instructions designed to load data from memory into processor registers and store data from registers back into memory. This architecture is also known as a register-register or load/store architecture.
+
+In a load-store architecture, the CPU operates primarily on data that is held in its registers. The majority of the arithmetic and logical operations are performed between these registers. If data needs to be processed, it must first be loaded from memory into a register. Similarly, after processing, if the data needs to be saved, it must be stored back into memory from a register.
+
+Key characteristics of load-store architecture include:
+
+1. **Separation of Memory and Computational Instructions**: The architecture clearly distinguishes between instructions that move data between memory and registers (load and store) and instructions that perform operations on data in the registers.
+
+2. **Limited Memory Access**: Only load and store instructions can access memory. All other instructions operate on register contents.
+
+3. **Large Register Set**: To minimize the need for frequent memory access, load-store architectures often provide a larger set of registers to hold intermediate data and operands.
+
+4. **Simpler Instruction Set**: The separation of memory access from computational instructions often leads to a simpler and more orthogonal instruction set, which can make the processor design more efficient and easier to optimize.
+
+5. **Efficient Pipelining**: With a clear separation of memory access and computation, it's easier to design pipelines and schedule instructions for better CPU utilization and performance.
+
+Examples of load-store architectures include the RISC (Reduced Instruction Set Computer) architectures like ARM, MIPS, and RISC-V, as well as some DSP (Digital Signal Processor) architectures. These are contrasted with CISC (Complex Instruction Set Computer) architectures like x86, where instructions can often operate directly on memory.
+
+The load-store model is a fundamental part of the RISC philosophy, which aims to simplify the instruction set of the processor to enable faster instruction execution and easier optimization by the compiler. This simplicity often leads to more consistent and predictable performance, which is one reason why RISC architectures are prevalent in embedded systems and mobile devices.
 
 
-
-## chortle [Load and Store](https://chortle.ccsu.edu/AssemblyTutorial/Chapter-15/ass15_2.html)
-
-The operands for all arithmetic and logic operations are contained in registers. To operate on data in main memory, the data is first copied into registers. A **load** operation copies data from main memory into a register. A **store** operation copies data from a register into main memory .
-
-When a word (4 bytes) is loaded or stored the memory address must be a multiple of four. This is called an alignment restriction. Addresses that are a multiple of four are called **word aligned**. This restriction makes the hardware simpler and faster.
-
-The `lw` instruction loads a word into a register from memory. The `sw` instruction stores a word from a register into memory. Each instruction specifies a register and a memory address (details in a few pages).
 
 ## reading list
 
-
+chortle [Load and Store](https://chortle.ccsu.edu/AssemblyTutorial/Chapter-15/ass15_2.html)
 
 https://azeria-labs.com/memory-instructions-load-and-store-part-4/
 
