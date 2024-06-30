@@ -3,9 +3,8 @@ nav:
     - Computer-architecture: Computer-architecture
     - Memory: Memory
     - Processor(computing): Processor(computing).md #################### 首先说明processor的概念，CPU就是一种processor##########
+    - Computer-number-format: Computer-number-format        
     - CPU: CPU
-    - Modern-CPU: Modern-CPU
-    - CPU-memory-access: CPU-memory-access #################### CPU的memory access####################        
     - Assembly-language: Assembly-language ################### 汇编语言####################    
     - Expert-Ulrich-Drepper: Expert-Ulrich-Drepper
     - Book-计算机组成原理-科学出版社: Book-计算机组成原理-科学出版社    

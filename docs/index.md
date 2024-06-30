@@ -6,7 +6,7 @@
 
 章节 `Memory` 介绍memory。
 
-章节 `Processor(computing)` 介绍处理器的概念。
+章节 `Processors` 介绍处理器的概念。
 
 章节 `CPU` 介绍经典的CPU。
 
@@ -15,3 +15,13 @@
 章节 `CPU-memory-access`介绍CPU access memory。
 
 章节 `Assembly-language`介绍汇编的一些内容。
+
+
+
+## 融会贯通
+
+如何融会贯通programming language、compiler、hardware？下面的内容提供了非常好的解释:
+
+- `Interpretation-model`、`Type determines everything`
+- `Stored-program-computer`、`Function-and-data-model`
+

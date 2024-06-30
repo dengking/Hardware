@@ -2,8 +2,6 @@
 
 stored-program computer是非常重要的思想。
 
-
-
 ## wikipedia [Stored-program computer](https://en.wikipedia.org/wiki/Stored-program_computer)
 
 A **stored-program computer** is one which stores [program instructions](https://infogalactic.com/info/Instruction_(computer_science)) in electronic memory.[[1\]](https://infogalactic.com/info/Stored-program_computer#cite_note-1) Often the definition is extended with the requirement that the treatment of programs and data in memory be interchangeable or uniform.[[2\]](https://infogalactic.com/info/Stored-program_computer#cite_note-GilreathLaplante2003-2)[[3\]](https://infogalactic.com/info/Stored-program_computer#cite_note-Reilly2003-3)[[4\]](https://infogalactic.com/info/Stored-program_computer#cite_note-POCA-4)

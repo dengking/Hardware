@@ -78,7 +78,6 @@ OOP只是一种programming paradigm，不同的programming的实现方式是不�
 
 ### Operation on memory
 
-1、read
-
-2、write
+1. read
+2. write
 

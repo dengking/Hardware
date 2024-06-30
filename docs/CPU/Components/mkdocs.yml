@@ -1,3 +1,5 @@
 nav:
-    - Control-unit: Control-unit.md
+    - Arithmetic-logic-unit: Arithmetic-logic-unit
+    - Control-unit: Control-unit
     - Processor-register: Register
+    

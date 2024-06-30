@@ -1,4 +1,4 @@
-# 关于本章
+# CPU
 
 本章讨论CPU，重要内容如下:
 
@@ -11,3 +11,6 @@
 | Execution-of-instruction      | 描述CPU执行指令的过程 |
 | Manufacturer                  | 描述知名的CPU厂商     |
 
+
+
+## wikipedia [Central processing unit](https://en.wikipedia.org/wiki/Central_processing_unit)
