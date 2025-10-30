@@ -6,6 +6,18 @@
 
 在 cnblogs [从如何判断浮点数是否等于0说起——浮点数的机器级表示](https://www.cnblogs.com/kubixuesheng/p/4107309.html) 中，也有这样的论述
 
+
+
+wikipedia [IEEE 754](https://en.wikipedia.org/wiki/IEEE_754) 
+
+wikipedia [Kahan summation algorithm](https://en.wikipedia.org/wiki/Kahan_summation_algorithm) 
+
+wikipedia [Double-precision floating-point format](https://en.wikipedia.org/wiki/Double-precision_floating-point_format): 双精度浮点数 
+
+wikipedia [Single-precision floating-point format](https://en.wikipedia.org/wiki/Single-precision_floating-point_format): 单精度浮点数 
+
+wikipedia [Floating-point arithmetic](https://en.wikipedia.org/wiki/Floating-point_arithmetic) 
+
 ## wikipedia [Computer number format](https://en.wikipedia.org/wiki/Computer_number_format) # Floating-point numbers
 
 > NOTE: 
