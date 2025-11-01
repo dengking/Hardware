@@ -556,6 +556,10 @@ Single precision is termed *REAL* in [Fortran](https://en.wikipedia.org/wiki/For
 
 ### wikipedia [Subnormal number](https://en.wikipedia.org/wiki/Subnormal_number)
 
+![](subnormal-number-1.png)
+
+An unaugmented floating-point system would contain only normalized numbers (indicated in red). Allowing denormalized numbers (blue) extends the system's range.
+
 ## Unit in the last place
 
 1、在阅读 cppreference [`std::numeric_limits<T>::epsilon`](https://en.cppreference.com/w/cpp/types/numeric_limits/epsilon) 的example时，其中的例子有如下的code:
@@ -576,10 +580,230 @@ typename std::enable_if<!std::numeric_limits<T>::is_integer, bool>::type almost_
 
 In [computer science](https://en.wikipedia.org/wiki/Computer_science "Computer science") and [numerical analysis](https://en.wikipedia.org/wiki/Numerical_analysis "Numerical analysis"), **unit in the last place** or **unit of least precision** (**ulp**) is the spacing between two consecutive [floating-point](https://en.wikipedia.org/wiki/Floating-point "Floating-point") numbers, i.e., the value the *[least significant digit](https://en.wikipedia.org/wiki/Least_significant_digit "Least significant digit")* (rightmost digit) represents if it is 1. It is used as a measure of [accuracy](https://en.wikipedia.org/wiki/Accuracy_and_precision "Accuracy and precision") in numeric calculations.[[1]](https://en.wikipedia.org/wiki/Unit_in_the_last_place#cite_note-1) 
 
-## 相关内容
-
-wikipedia [Round-off error](https://en.wikipedia.org/wiki/Round-off_error) 
-
 ## Trade off: range VS precision
 
 trade off: range 和 precision，显然floating point number是牺牲precision来换取range
+
+## Code snippet(代码片段)
+
+### Verify the changing spacing/variable gap/precision limitations on integer values
+
+- Up to $2^{53}$: All integers are exact.
+
+- $[2^{53},2^{54})$: Only even integers are exact (others are "rounded").
+
+- $[2^{54},2^{55})$: Only multiples of 4 are exact.
+
+- Etc.
+
+We'll demonstrate this in **Python**, **Java**, and **C++** using double precision floating point (`float64`/`double`).
+
+We will show which integer values can be represented exactly, and which are not.
+
+---
+
+#### Python demonstration
+
+```python
+# Powers
+p53 = 2 ** 53
+p54 = 2 ** 54
+p55 = 2 ** 55
+
+
+def test_exactness(val):
+    """检测float存储数据是否准确"""
+    as_float = float(val)
+    back_to_int = int(as_float)
+    return val == back_to_int
+
+
+if __name__ == '__main__':
+    print("Testing integers just below and above 2^53:")
+    for i in [p53 - 1, p53, p53 + 1]:
+        print(f"Integer: {i}, float: {float(i)}, exact?: {test_exactness(i)}")
+
+    print("\nTesting odd/even values between 2^53 and 2^54:")
+    for i in [p53 + 1, p53 + 2]:
+        print(f"Integer: {i}, float: {float(i)}, exact?: {test_exactness(i)}")
+
+    print("\nTesting multiples of 4 between 2^54 and 2^55:")
+    for i in [p54, p54 + 1, p54 + 2, p54 + 3, p54 + 4]:
+        print(f"Integer: {i}, float: {float(i)}, exact?: {test_exactness(i)}")
+
+    # General demonstration
+    print("\nDemonstrating rounding for large integer values:")
+    for i in range(0, 20):
+        val = p54 + i
+        as_float = float(val)
+        print(f"Integer: {val}, float: {as_float}, diff: {val - int(as_float)}")
+```
+
+输出如下:
+
+```py
+Testing integers just below and above 2^53:
+Integer: 9007199254740991, float: 9007199254740991.0, exact?: True
+Integer: 9007199254740992, float: 9007199254740992.0, exact?: True
+Integer: 9007199254740993, float: 9007199254740992.0, exact?: False
+
+Testing odd/even values between 2^53 and 2^54:
+Integer: 9007199254740993, float: 9007199254740992.0, exact?: False
+Integer: 9007199254740994, float: 9007199254740994.0, exact?: True
+
+Testing multiples of 4 between 2^54 and 2^55:
+Integer: 18014398509481984, float: 1.8014398509481984e+16, exact?: True
+Integer: 18014398509481985, float: 1.8014398509481984e+16, exact?: False
+Integer: 18014398509481986, float: 1.8014398509481984e+16, exact?: False
+Integer: 18014398509481987, float: 1.8014398509481988e+16, exact?: False
+Integer: 18014398509481988, float: 1.8014398509481988e+16, exact?: True
+
+Demonstrating rounding for large integer values:
+Integer: 18014398509481984, float: 1.8014398509481984e+16, diff: 0
+Integer: 18014398509481985, float: 1.8014398509481984e+16, diff: 1
+Integer: 18014398509481986, float: 1.8014398509481984e+16, diff: 2
+Integer: 18014398509481987, float: 1.8014398509481988e+16, diff: -1
+Integer: 18014398509481988, float: 1.8014398509481988e+16, diff: 0
+Integer: 18014398509481989, float: 1.8014398509481988e+16, diff: 1
+Integer: 18014398509481990, float: 1.801439850948199e+16, diff: -2
+Integer: 18014398509481991, float: 1.801439850948199e+16, diff: -1
+Integer: 18014398509481992, float: 1.801439850948199e+16, diff: 0
+Integer: 18014398509481993, float: 1.801439850948199e+16, diff: 1
+Integer: 18014398509481994, float: 1.801439850948199e+16, diff: 2
+Integer: 18014398509481995, float: 1.8014398509481996e+16, diff: -1
+Integer: 18014398509481996, float: 1.8014398509481996e+16, diff: 0
+Integer: 18014398509481997, float: 1.8014398509481996e+16, diff: 1
+Integer: 18014398509481998, float: 1.8014398509482e+16, diff: -2
+Integer: 18014398509481999, float: 1.8014398509482e+16, diff: -1
+Integer: 18014398509482000, float: 1.8014398509482e+16, diff: 0
+Integer: 18014398509482001, float: 1.8014398509482e+16, diff: 1
+Integer: 18014398509482002, float: 1.8014398509482e+16, diff: 2
+Integer: 18014398509482003, float: 1.8014398509482004e+16, diff: -1
+```
+
+#### Java demonstration
+
+```java
+public class DoublePrecisionDemo {
+
+    public static void main(String[] args) {
+        long p53 = 1L << 53;
+        long p54 = 1L << 54;
+        long p55 = 1L << 55;
+
+        System.out.println("Testing values below and above 2^53:");
+        for (long val : new long[]{p53 - 1, p53, p53 + 1}) {
+            double dbl = (double) val;
+            long back = (long) dbl;
+            System.out.printf("Value: %d, Double: %.0f, Exact? %b\n", val, dbl, (val == back));
+        }
+
+        System.out.println("\nTesting odd/even between 2^53 and 2^54:");
+        for (long val : new long[]{p53 + 1, p53 + 2}) {
+            double dbl = (double) val;
+            long back = (long) dbl;
+            System.out.printf("Value: %d, Double: %.0f, Exact? %b\n", val, dbl, (val == back));
+        }
+
+        System.out.println("\nTesting multiples of 4 in [2^54, 2^55):");
+        for (long val = p54; val <= p54 + 4; val++) {
+            double dbl = (double) val;
+            long back = (long) dbl;
+            System.out.printf("Value: %d, Double: %.0f, Exact? %b\n", val, dbl, (val == back));
+        }
+    }
+}
+```
+
+输出如下:
+
+```java
+Testing values below and above 2^53:
+Value: 9007199254740991, Double: 9007199254740991, Exact? true
+Value: 9007199254740992, Double: 9007199254740992, Exact? true
+Value: 9007199254740993, Double: 9007199254740992, Exact? false
+
+Testing odd/even between 2^53 and 2^54:
+Value: 9007199254740993, Double: 9007199254740992, Exact? false
+Value: 9007199254740994, Double: 9007199254740994, Exact? true
+
+Testing multiples of 4 in [2^54, 2^55):
+Value: 18014398509481984, Double: 18014398509481984, Exact? true
+Value: 18014398509481985, Double: 18014398509481984, Exact? false
+Value: 18014398509481986, Double: 18014398509481984, Exact? false
+Value: 18014398509481987, Double: 18014398509481988, Exact? false
+Value: 18014398509481988, Double: 18014398509481988, Exact? true
+
+Process finished with exit code 0
+```
+
+#### C++ demonstration
+
+```cpp
+#include <cmath>
+#include <iomanip>
+#include <iostream>
+
+bool test_exactness(long long val) {
+  double d = (double)val;
+  long long back = (long long)d;
+  return val == back;
+}
+
+int main() {
+  long long p53 = 1LL << 53;
+  long long p54 = 1LL << 54;
+
+  std::cout << "Testing values around 2^53:\n";
+  for (long long val : {p53 - 1, p53, p53 + 1}) {
+    double d = (double)val;
+    std::cout << "Value: " << val << ", Double: " << std::fixed << std::setprecision(0) << d << ", Exact? "
+              << std::boolalpha << test_exactness(val) << "\n";
+  }
+
+  std::cout << "\nTesting odd/even values between 2^53 and 2^54:\n";
+  for (long long val : {p53 + 1, p53 + 2}) {
+    double d = (double)val;
+    std::cout << "Value: " << val << ", Double: " << std::fixed << std::setprecision(0) << d << ", Exact? "
+              << std::boolalpha << test_exactness(val) << "\n";
+  }
+
+  std::cout << "\nTesting multiples of 4 between 2^54 and 2^55:\n";
+  for (long long i = 0; i <= 4; ++i) {
+    long long val = p54 + i;
+    double d = (double)val;
+    std::cout << "Value: " << val << ", Double: " << std::fixed << std::setprecision(0) << d << ", Exact? "
+              << std::boolalpha << test_exactness(val) << "\n";
+  }
+}
+```
+
+输出如下:
+
+```cpp
+Testing values around 2^53:
+Value: 9007199254740991, Double: 9007199254740991, Exact? true
+Value: 9007199254740992, Double: 9007199254740992, Exact? true
+Value: 9007199254740993, Double: 9007199254740992, Exact? false
+
+Testing odd/even values between 2^53 and 2^54:
+Value: 9007199254740993, Double: 9007199254740992, Exact? false
+Value: 9007199254740994, Double: 9007199254740994, Exact? true
+
+Testing multiples of 4 between 2^54 and 2^55:
+Value: 18014398509481984, Double: 18014398509481984, Exact? true
+Value: 18014398509481985, Double: 18014398509481984, Exact? false
+Value: 18014398509481986, Double: 18014398509481984, Exact? false
+Value: 18014398509481987, Double: 18014398509481988, Exact? false
+Value: 18014398509481988, Double: 18014398509481988, Exact? true
+
+Process finished with exit code 0
+```
+
+### How to interpret this?
+
+- All integers up to $2^{53}$ are represented exactly.
+
+- Above $2^{53}$, not every integer is exact in `double`; every second integer is, then every fourth, etc.
+
+- **Try changing values and observing if `val == back_to_int` is true/false.**

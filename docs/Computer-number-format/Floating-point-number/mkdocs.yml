@@ -2,6 +2,4 @@ nav:
     - Introduction: index.md
     - Precision-model: Precision-model
     - Machine-epsilon: Machine-epsilon    
-    - Unit-in-the-last-place: Unit-in-the-last-place
-    - Subnormal-floating-point-number: Subnormal-floating-point-number
     - Comparation: Comparation    
