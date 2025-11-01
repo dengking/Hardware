@@ -58,6 +58,29 @@ Squeezing infinitely many **real numbers** into a finite number of bits requires
 
 Since most floating-point calculations have rounding error anyway, does it matter if the basic arithmetic operations introduce a little bit more rounding error than necessary? That question is a main theme throughout this section. The section [Guard Digits](https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html#693) discusses *guard* digits, a means of reducing the error when subtracting(减法) two nearby numbers. **Guard digits** were considered sufficiently important by IBM that in 1968 it added a guard digit to the double precision format in the System/360 architecture (single precision already had a guard digit), and retrofitted all existing machines in the field. Two examples are given to illustrate the utility of guard digits.
 
-> 翻译: 既然大多数浮点数计算总归会存在舍入误差，那么基本算术运算引入的舍入误差是否比必要值多一点，还重要吗？这个问题是本节的核心主题。“保护位”（Guard Digits）章节探讨了保护位 —— 一种在对两个相近数值做减法时减少误差的方法。保护位的重要性得到了 IBM 的高度认可，该公司在 1968 年为 System/360 架构的双精度格式增设了一个保护位（单精度格式当时已具备保护位），并对当时市面上所有在用的该架构机器进行了翻新改造。本节还通过两个示例，阐明了保护位的实用价值。
+> 翻译: 既然大多数浮点运算本身就存在舍入误差，那么基本算术运算引入的舍入误差即便比必要的多了一点点，又有什么关系呢？这个问题是本节的核心主题。“保护位”（Guard Digits）章节探讨了保护位 —— 一种在对两个相近数值做减法时减少误差的方法。保护位的重要性得到了 IBM 的高度认可，该公司在 1968 年为 System/360 架构的双精度格式增设了一个保护位（单精度格式当时已具备保护位），并对当时市面上所有在用的该架构机器进行了翻新改造。本节还通过两个示例，阐明了保护位的实用价值。
 
 The IEEE standard goes further than just requiring the use of a guard digit. It gives an algorithm for addition, subtraction, multiplication, division and square root, and requires that implementations produce the same result as that algorithm. Thus, when a program is moved from one machine to another, the results of the basic operations will be the same in every bit if both machines support the IEEE standard. This greatly simplifies the porting of programs. Other uses of this precise specification are given in [Exactly Rounded Operations](https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html#704).
+
+### Floating-point Formats
+
+Several different representations of real numbers have been proposed, but by far the most widely used is the floating-point representation.¹ Floating-point representations have a base $\beta$ (which is always assumed to be even) and a precision $p$. If $\beta = 10$ and $p = 3$, then the number 0.1 is represented as $1.00 \times 10^{-1}$. If $\beta = 2$ and $p = 24$, then the decimal number 0.1 cannot be represented exactly, but is approximately $1.10011001100110011001101 \times 2^{-4}$.
+
+In general, a floating-point number will be represented as $\pm d.dd\ldots d \times \beta^e$, where $d.dd\ldots d$ is called the [significand]² and has $p$ digits. More precisely $\pm d_0 . d_1 d_2 \ldots d_{p-1} \times \beta^e$ represents the number
+
+(1) $\pm (d_0 + d_1\beta^{-1} + \ldots + d_{p-1}\beta^{-(p-1)})\beta^e, (0 \leq d_i < \beta)$
+
+The term *floating-point number* will be used to mean a real number that can be exactly represented in the format under discussion. Two other parameters associated with floating-point representations are the largest and smallest allowable exponents, $e_{\text{max}}$ and $e_{\text{min}}$. Since there are $\beta^p$ possible significands, and $e_{\text{max}} - e_{\text{min}} + 1$ possible exponents, a floating-point number can be encoded in
+
+$$
+\lceil \log_2(e_{\text{max}} - e_{\text{min}} + 1) \rceil + \lceil \log_2(\beta^p) \rceil + 1
+
+$$
+
+bits, where the final +1 is for the sign bit. The precise encoding is not important for now.
+
+There are two reasons why a real number might not be exactly representable as a floating-point number. The most common situation is illustrated by the decimal number 0.1. Although it has a finite decimal representation, in binary it has an infinite repeating representation. Thus when $\beta = 2$, the number 0.1 lies strictly between two floating-point numbers and is exactly representable by neither of them. A less common situation is that a real number is out of range, that is, its absolute value is larger than $\beta \times \beta^{e_{\text{max}}}$ or smaller than $1.0 \times \beta^{e_{\text{min}}}$. Most of this paper discusses issues due to the first reason. However, numbers that are out of range will be discussed in the sections [Infinity] and [Denormalized Numbers].
+
+Floating-point representations are not necessarily unique. For example, both $0.01 \times 10^1$ and $1.00 \times 10^{-1}$ represent 0.1. If the leading digit is nonzero ($d_0 \neq 0$ in equation (1) above), then the representation is said to be *normalized*. The floating-point number $1.00 \times 10^{-1}$ is normalized, while $0.01 \times 10^1$ is not. When $\beta = 2$, $p = 3$, $e_{\text{min}} = -1$ and $e_{\text{max}} = 2$ there are 16 normalized floating-point numbers, as shown in [FIGURE D-1]. The bold hash marks correspond to numbers whose significand is 1.00. Requiring that a floating-point representation be normalized makes the representation unique. Unfortunately, this restriction makes it impossible to represent zero! A natural way to represent 0 is with $1.0 \times \beta^{e_{\text{min}} - 1}$, since this preserves the fact that the numerical ordering of nonnegative real numbers corresponds to the lexicographic ordering of their floating-point representations.³ When the exponent is stored in a $k$ bit field, that means that only $2^k - 1$ values are available for use as exponents, since one must be reserved to represent 0.
+
+Note that the $\times$ in a floating-point number is part of the notation, and different from a floating-point multiply operation. The meaning of the $\times$ symbol should be clear from the context. For example, the expression $(2.5 \times 10^{-3}) \times (4.0 \times 10^2)$ involves only a single floating-point multiplication.
