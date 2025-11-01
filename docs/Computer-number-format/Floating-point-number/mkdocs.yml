@@ -1,5 +1,4 @@
 nav:
     - Introduction: index.md
     - Precision-model: Precision-model
-    - Machine-epsilon: Machine-epsilon    
     - Comparation: Comparation    
