@@ -12,8 +12,6 @@ EPSILON被规定为是**最小误差**，换句话说就是使得EPSILON+1.0不�
 
 > For EPSILON, you can use the constants `FLT_EPSILON`, which is defined for float as 1.192092896e-07F, or DBL_EPSILON, which is defined for double as 2.2204460492503131e-016. You need to include `float.h` for these constants. These constants are defined as the smallest positive number x, such that x+1.0 is not equal to 1.0. Because this is a very small number, you should employ user-defined tolerance for calculations involving very large numbers.
 
-
-
 **还有一个问题，逼逼了那么多，浮点数无法精确表达实数，那为啥epsilon的大小是尼玛那样的？**
 
 ```C++
@@ -28,14 +26,12 @@ EPSILON被规定为是**最小误差**，换句话说就是使得EPSILON+1.0不�
 
 至于epsilon的大小，前面也贴出了官方定义，它就规定了，当x（假如x是双精度）落在了`+- DBL_EPSILON`之内，`x + 1.0 = 1.0`，就是这么规定的。x在此范围之内的话，都呗计算机认为是0.0 。
 
-
-
 ## wikipedia [Machine epsilon](https://en.wikipedia.org/wiki/Machine_epsilon)
 
 **Machine epsilon** gives an upper bound on the [relative error](https://en.wikipedia.org/wiki/Approximation_error) due to [rounding](https://en.wikipedia.org/wiki/Rounding) in [floating point arithmetic](https://en.wikipedia.org/wiki/Floating_point_arithmetic). This value characterizes [computer arithmetic](https://en.wikipedia.org/wiki/Computer_arithmetic) in the field of [numerical analysis](https://en.wikipedia.org/wiki/Numerical_analysis), and by extension in the subject of [computational science](https://en.wikipedia.org/wiki/Computational_science). The quantity is also called **macheps** or **unit roundoff**, and it has the symbols Greek [epsilon](https://en.wikipedia.org/wiki/Epsilon) $\epsilon$ or bold Roman **u**, respectively.
 
 > NOTE: 
->
+> 
 > 1、 [relative error](https://en.wikipedia.org/wiki/Approximation_error) 即"相对误差"
 
 ### How to determine machine epsilon

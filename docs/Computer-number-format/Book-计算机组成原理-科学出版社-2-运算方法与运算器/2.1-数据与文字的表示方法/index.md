@@ -12,6 +12,8 @@
 
 ![](./2.1.1-18.jpg)
 
+上面内容关于NaN和infinity的描述是不清晰的，wikipedia [Double-precision floating-point format](https://en.wikipedia.org/wiki/Double-precision_floating-point_format) 中有更加清晰的说明。
+
 ## 19
 
 ![](./2.1.1-19.jpg)
@@ -24,7 +26,7 @@
 
 ![](./2.1.1-21.jpg)
 
-## 总结
+### 总结
 
 不要死记上面的公式，而是要从原理来进行推导、记忆。
 
