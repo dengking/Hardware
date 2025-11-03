@@ -580,7 +580,7 @@ typename std::enable_if<!std::numeric_limits<T>::is_integer, bool>::type almost_
 
 In [computer science](https://en.wikipedia.org/wiki/Computer_science "Computer science") and [numerical analysis](https://en.wikipedia.org/wiki/Numerical_analysis "Numerical analysis"), **unit in the last place** or **unit of least precision** (**ulp**) is the spacing between two consecutive [floating-point](https://en.wikipedia.org/wiki/Floating-point "Floating-point") numbers, i.e., the value the *[least significant digit](https://en.wikipedia.org/wiki/Least_significant_digit "Least significant digit")* (rightmost digit) represents if it is 1. It is used as a measure of [accuracy](https://en.wikipedia.org/wiki/Accuracy_and_precision "Accuracy and precision") in numeric calculations.[[1]](https://en.wikipedia.org/wiki/Unit_in_the_last_place#cite_note-1) 
 
-# Machine epsilon
+## Machine epsilon
 
 在前面已经提到了machine epsilon
 
