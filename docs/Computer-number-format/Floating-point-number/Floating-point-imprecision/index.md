@@ -36,6 +36,30 @@ floating-point imprecision
 
 ### wikipedia [Round-off error](https://en.wikipedia.org/wiki/Round-off_error)
 
+In [computing](https://en.wikipedia.org/wiki/Computing "Computing"), a **roundoff error**,[[1]](https://en.wikipedia.org/wiki/Round-off_error#cite_note-1) also called **rounding error**,[[2]](https://en.wikipedia.org/wiki/Round-off_error#cite_note-2) is the difference between the result produced by a given [algorithm](https://en.wikipedia.org/wiki/Algorithm "Algorithm") using exact [arithmetic](https://en.wikipedia.org/wiki/Arithmetic "Arithmetic") and the result produced by the same algorithm using finite-precision, [rounded](https://en.wikipedia.org/wiki/Rounding "Rounding") arithmetic.[[3]](https://en.wikipedia.org/wiki/Round-off_error#cite_note-Forrester_2018-3) Rounding errors are due to inexactness in the representation of [real numbers](https://en.wikipedia.org/wiki/Real_number "Real number") and the arithmetic operations done with them. This is a form of [quantization error](https://en.wikipedia.org/wiki/Quantization_error "Quantization error").[[4]](https://en.wikipedia.org/wiki/Round-off_error#cite_note-4) When using approximation [equations](https://en.wikipedia.org/wiki/Equation "Equation") or algorithms, especially when using finitely many digits to represent real numbers (which in theory have infinitely many digits), one of the goals of [numerical analysis](https://en.wikipedia.org/wiki/Numerical_analysis "Numerical analysis") is to [estimate](https://en.wikipedia.org/wiki/Error_analysis_(mathematics) "Error analysis (mathematics)") computation errors.[[5]](https://en.wikipedia.org/wiki/Round-off_error#cite_note-5) Computation errors, also called [numerical errors](https://en.wikipedia.org/wiki/Numerical_error "Numerical error"), include both [truncation errors](https://en.wikipedia.org/wiki/Truncation_error "Truncation error") and roundoff errors.
+
+When a sequence of calculations with an input involving any roundoff error are made, errors may accumulate, sometimes dominating the calculation. In [ill-conditioned](https://en.wikipedia.org/wiki/Ill-conditioned "Ill-conditioned") problems, significant error may accumulate.[[6]](https://en.wikipedia.org/wiki/Round-off_error#cite_note-6)
+
+In short, there are two major facets of roundoff errors involved in numerical calculations:[[7]](https://en.wikipedia.org/wiki/Round-off_error#cite_note-Chapra_2012-7)
+
+1. The ability of computers to represent both magnitude and precision of numbers is inherently limited.
+2. Certain numerical manipulations are highly sensitive to roundoff errors. This can result from both mathematical considerations as well as from the way in which computers perform arithmetic operations.
+   1. 这就是ill-condition
+
+#### Representation error
+
+The error introduced by attempting to represent a number using a finite string of digits is a form of roundoff error called **representation error**.[[8]](https://en.wikipedia.org/wiki/Round-off_error#cite_note-Laplante_2000-8) Here are some examples of representation error in decimal representations:
+
+| Notation      | Representation                             | Approximation               | Error                                      |
+| ------------- | ------------------------------------------ | --------------------------- | ------------------------------------------ |
+| $\frac{1}{7}$ | $0.\overline{142\ 857}$                    | $0.142\ 857$                | $0.000\ 000\ \overline{142\ 857}$          |
+| $\ln 2$       | $0.693\ 147\ 180\ 559\ 945\ 309\ 41\ldots$ | $0.693\ 147$                | $0.000\ 000\ 180\ 559\ 945\ 309\ 41\ldots$ |
+| $\log_{10} 2$ | $0.301\ 029\ 995\ 663\ 981\ 195\ 21\ldots$ | $0.3010$                    | $0.000\ 029\ 995\ 663\ 981\ 195\ 21\ldots$ |
+| $\sqrt[3]{2}$ | $1.259\ 921\ 049\ 894\ 873\ 164\ 76\ldots$ | $1.25992$                   | $0.000\ 001\ 049\ 894\ 873\ 164\ 76\ldots$ |
+| $\sqrt{2}$    | $1.414\ 213\ 562\ 373\ 095\ 048\ 80\ldots$ | $1.41421$                   | $0.000\ 003\ 562\ 373\ 095\ 048\ 80\ldots$ |
+| $e$           | $2.718\ 281\ 828\ 459\ 045\ 235\ 36\ldots$ | $2.718\ 281\ 828\ 459\ 045$ | $0.000\ 000\ 000\ 000\ 000\ 235\ 36\ldots$ |
+| $\pi$         | $3.141\ 592\ 653\ 589\ 793\ 238\ 46\ldots$ | $3.141\ 592\ 653\ 589\ 793$ | $0.000\ 000\ 000\ 000\ 000\ 238\ 46\ldots$ |
+
 ### Gemini 2.5 Pro floating-point imprecision
 
 Of course. **Floating-point imprecision** is a fundamental concept in computer science and is the single biggest challenge that robust geometric libraries like JTS are designed to overcome.
