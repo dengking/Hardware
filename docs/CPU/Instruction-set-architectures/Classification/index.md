@@ -1,3 +1,7 @@
-# 关于本章
+# Classification
 
-本章所介绍的两种分类其实是基于memory access的。
+基于memory access:
+
+- Load–store-architecture
+
+- Register-memory-architecture
