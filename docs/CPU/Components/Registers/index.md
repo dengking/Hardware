@@ -1,8 +1,38 @@
-# [Stack register](https://en.wikipedia.org/wiki/Stack_register)
+# Registers
+
+本章描述register，它是理解很多内容的基础；关于具体architecture中的register，参见:
+
+| architecture | 章节          |
+| ------------ | ----------- |
+| ARM          | `CPU\ARM`   |
+| Intel        | `CPU\Intel` |
+
+除了本工程，在下面的工程中也涉及了register：
+
+| 工程                     | 章节                                                                                                              |
+| ---------------------- | --------------------------------------------------------------------------------------------------------------- |
+| 工程programming-language | `C-family-language\C-and-C++\From-source-code-to-exec\ABI\Call-convention`章节，涉及到Stack-register                  |
+| 工程Linux-OS             | `Shell-and-tools\Tools\Debug\GDB\Debugging-with-gdb\10-Examining-Data\10.13-Registers.md`章节，其中描述了如何查看register的值 |
+
+## Architecture’s canonical mnemonics for registers.
+
+不同的Architecture对于register往往采用不同的canonical mnemonics（助记符），非常典型的就是Intel和ARM，关于此，详见描述它们的章节。
+
+## Program counter
+
+这个寄存器非常重要，它告诉CPU去执行哪一条指令。所有对 [control flow](https://en.wikipedia.org/wiki/Control_flow) 的操作的指令最终都是通过操作这个寄存器的值来实现的。[Program counter](https://en.wikipedia.org/wiki/Program_counter)所指向的肯定是code area，[Program counter](https://en.wikipedia.org/wiki/Program_counter)相当于next pointer，默认情况下它是自加1的，除非通过[JMP (x86 instruction)](https://en.wikipedia.org/wiki/JMP_(x86_instruction))等指令来显示更改它的值。
+
+### wikipedia [Program counter](https://en.wikipedia.org/wiki/Program_counter)
+
+
+
+## Stack register
+
+### wikipedia [Stack register](https://en.wikipedia.org/wiki/Stack_register)
 
 A **stack register** is a computer central [processor register](https://en.wikipedia.org/wiki/Processor_register) whose purpose is to keep track of a [call stack](https://en.wikipedia.org/wiki/Call_stack). On an [accumulator-based architecture](https://en.wikipedia.org/wiki/Accumulator-based_architecture) machine, this may be a dedicated register such as SP on an [Intel x86](https://en.wikipedia.org/wiki/Intel_x86) machine. 
 
-## Stack registers in x86
+#### Stack registers in x86
 
 In [8086](https://en.wikipedia.org/wiki/8086), the main stack register is called stack pointer - SP. The stack segment register (SS) is usually used to store information about the [memory segment](https://en.wikipedia.org/wiki/Memory_segment) that stores the [call stack](https://en.wikipedia.org/wiki/Call_stack) of currently executed program. SP points to **current stack top**. By default, the stack grows downward in memory, so newer values are placed at lower memory addresses. To push a value to the stack, the `PUSH` instruction is used. To pop a value from the stack, the `POP` instruction is used.
 
@@ -34,3 +64,13 @@ POP AX
 **NOTE**: The program above pops BX first, that's because it was pushed last.
 
 **NOTE**: In 8086, `PUSH` & `POP` instructions can only work with 16-bit elements.
+
+
+
+## Status register
+
+### wikipedia [Status register](https://en.wikipedia.org/wiki/Status_register)
+
+
+
+

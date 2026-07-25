@@ -1,5 +1,0 @@
-nav:
-    - Introduction: index.md
-    - Program-counter: Program-counter.md
-    - Stack-register: Stack-register.md
-    - Status-register: Status-register.md

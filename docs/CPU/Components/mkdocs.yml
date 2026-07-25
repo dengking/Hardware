@@ -1,5 +1,6 @@
 nav:
     - Arithmetic-logic-unit: Arithmetic-logic-unit
     - Control-unit: Control-unit
-    - Processor-register: Register
+    - Registers: Registers
+    
     
