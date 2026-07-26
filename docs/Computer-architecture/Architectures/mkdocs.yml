@@ -1,0 +1,8 @@
+nav:
+    - Introduction: index.md
+    - Stored-program&Von-Neumann-architecture&Bottleneck: Stored-program&Von-Neumann-architecture&Bottleneck
+    - Harvard-architecture: Harvard-architecture
+    - Universal-Turing-machine: Universal-Turing-machine.md
+    - Von-neumann-architecture-VS-Harvard-architecture: Von-neumann-architecture-VS-Harvard-architecture.md
+    - TODO-Turing-machine-VS-Von-Neuman-machine: TODO-Turing-machine-VS-Von-Neuman-machine.md    
+    

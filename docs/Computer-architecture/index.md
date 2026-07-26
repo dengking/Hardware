@@ -4,4 +4,6 @@
 
 ## wikipedia [Computer architecture](https://en.wikipedia.org/wiki/Computer_architecture)
 
+[![](https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Computer_architecture_block_diagram.png/500px-Computer_architecture_block_diagram.png)](https://en.wikipedia.org/wiki/File:Computer_architecture_block_diagram.png)
+
 

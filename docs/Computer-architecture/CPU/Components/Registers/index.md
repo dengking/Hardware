@@ -24,8 +24,6 @@
 
 ### wikipedia [Program counter](https://en.wikipedia.org/wiki/Program_counter)
 
-
-
 ## Stack register
 
 ### wikipedia [Stack register](https://en.wikipedia.org/wiki/Stack_register)
@@ -65,12 +63,34 @@ POP AX
 
 **NOTE**: In 8086, `PUSH` & `POP` instructions can only work with 16-bit elements.
 
-
-
 ## Status register
 
 ### wikipedia [Status register](https://en.wikipedia.org/wiki/Status_register)
 
 
+
+## Memory address register
+
+
+
+### wikipedia [Memory address register](https://en.wikipedia.org/wiki/Memory_address_register)
+
+In a [computer](https://en.wikipedia.org/wiki/Computer "Computer"), the **memory address register** (**MAR**)[[1]](https://en.wikipedia.org/wiki/Memory_address_register#cite_note-1) is the [CPU](https://en.wikipedia.org/wiki/Central_processing_unit "Central processing unit") [register](https://en.wikipedia.org/wiki/Hardware_register "Hardware register") that either stores the [memory address](https://en.wikipedia.org/wiki/Memory_address "Memory address") from which data will be fetched to the CPU registers, or the address to which data will be sent and stored via [system bus](https://en.wikipedia.org/wiki/System_bus "System bus").
+
+In other words, this register is used to access data and instructions from memory during the execution phase of instruction. MAR holds the memory location of data that needs to be accessed. When reading from memory, data addressed by MAR is fed into the [MDR](https://en.wikipedia.org/wiki/Memory_data_register "Memory data register") (memory data register) and then used by the CPU. When writing to memory, the CPU writes data from MDR to the memory location whose address is stored in MAR. MAR, which is found inside the CPU, goes either to the RAM ([random-access memory](https://en.wikipedia.org/wiki/Random-access_memory "Random-access memory")) or cache.
+
+
+
+
+
+## Memory buffer register/Memory data register
+
+### wikipedia [Memory buffer register](https://en.wikipedia.org/wiki/Memory_buffer_register)
+
+A **memory buffer register** (**MBR**) or **memory data register** (**MDR**) is the [register](https://en.wikipedia.org/wiki/Processor_register "Processor register") in a computer's [CPU](https://en.wikipedia.org/wiki/Central_processing_unit "Central processing unit") that stores the data being transferred to and from the immediate access storage. It was first implemented in [von Neumann model](https://en.wikipedia.org/wiki/Von_Neumann_architecture "Von Neumann architecture"). It contains a copy of the value in the memory location specified by the [memory address register](https://en.wikipedia.org/wiki/Memory_address_register "Memory address register"). It acts as a [buffer](https://en.wikipedia.org/wiki/Data_buffer "Data buffer"),[[1]](https://en.wikipedia.org/wiki/Memory_buffer_register#cite_note-1) allowing the processor and [memory units](https://en.wikipedia.org/wiki/Random_access_memory "Random access memory") to act independently without being affected by minor differences in operation. A data item will be copied to the MBR ready for use at the next [clock](https://en.wikipedia.org/wiki/Clock_signal "Clock signal") cycle, when it can be either used by the processor for reading or writing, or stored in main memory after being written.
+
+This register holds the contents of the memory which are to be transferred from memory to other components or vice versa. A [word](https://en.wikipedia.org/wiki/Word_\(data_type\) "Word (data type)") to be stored must be transferred to the MBR, from where it goes to the specific memory location, and the arithmetic data to be processed in the [ALU](https://en.wikipedia.org/wiki/Arithmetic_logic_unit "Arithmetic logic unit") first goes to MBR and then to accumulator register, before being processed in the ALU.
+
+The memory data register is half of a minimal interface between a [microprogram](https://en.wikipedia.org/wiki/Microprogram "Microprogram") and [computer storage](https://en.wikipedia.org/wiki/Computer_storage "Computer storage"); the other half is a [memory address register](https://en.wikipedia.org/wiki/Memory_address_register "Memory address register") (MAR).
 
 
