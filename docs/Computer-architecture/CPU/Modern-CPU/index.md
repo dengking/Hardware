@@ -1,4 +1,4 @@
-# 关于本章
+# Modern-CPU
 
 本章讨论modern CPU，其中非常重要的一个内容是: parallel computing。
 
