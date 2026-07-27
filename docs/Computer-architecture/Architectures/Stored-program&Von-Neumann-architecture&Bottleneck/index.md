@@ -144,12 +144,15 @@ Single system bus evolution of the architecture
 经典哈佛结构从硬件上割裂指令与数据，打破"统一数据视图"：
 
 1. **两套物理独立存储器、两套独立地址空间**
+   
    - 指令存储器：Flash/ROM，专属指令总线
    - 数据存储器：RAM，专属数据总线
    
    两者地址互不重叠，不能互相访问；无法用数据总线读取指令，也不能用指令总线读写变量。
+
 2. **天然不支持自修改代码**
    指令区大多为只读 Flash，且没有通路让程序像操作数据一样改写指令存储区；嵌入式 MCU 无法动态加载、JIT。
+
 3. **改良哈佛（现代 RISC-V/ARM Cortex-A）补充**
    片内 L1 ICache/DCache 分离（内部双总线），但**片外主存仍是统一地址空间**，软件层面依然满足"一切皆数据"，只是硬件缓存做并行加速，不属于纯哈佛限制。
 
@@ -172,9 +175,9 @@ Single system bus evolution of the architecture
 ## 三、Von Neumann bottleneck（冯·诺依曼瓶颈）
 
 > NOTE: 记得大学时在学习**计算机组成原理**课程的时候，老师提出过重要的观点：“限制 CPU 速度的是从内存中读写数据”。意思是 CPU 的 ALU 的运算速度是非常快的，相比之下从内存中读取是比较缓慢的，所以 ALU 常常需要等待，这应该是当代 CPU 设计时需要考虑的一个矛盾所在，各种缓解这个矛盾的技术不断出现，比如:
->
+> 
 > 1. 在 Book-计算机组成原理-科学出版社的 5.1.3 CPU 中的主要寄存器章节中所描述的**数据缓冲寄存器（DR）**的作用：补偿 CPU 和内存、外围设备之间在操作速度上的差别。
->
+> 
 > 与 Von Neumann bottleneck 相关的一个问题是: IO-bound，关于此，参见工程 software-engineering 的 `Software-analysis\Performance\Bound` 章节。
 
 ### 3.1 冯·诺依曼架构回顾
@@ -269,11 +272,11 @@ CPU     = 一位手速极快的大厨（能瞬间做完菜）
         CPU
          │  ← 快
     ┌────┴────┐
-    │ L1 Cache │  几 KB，最快
+    │ L1 Cache│  几 KB，最快
     ├─────────┤
-    │ L2 Cache │  几百 KB
+    │ L2 Cache│  几百 KB
     ├─────────┤
-    │ L3 Cache │  几 MB
+    │ L3 Cache│  几 MB
     └────┬────┘
          │  ← 慢
       Memory     几 GB，最慢
@@ -394,6 +397,8 @@ FlashAttention：分块计算，中间结果留在 SRAM（片上）
 
 > **AI 芯片的趋势**：大量 NPU/AI 加速器采用**数据流架构**和**大片上存储（SRAM）**设计，本质都是为了绕开冯·诺依曼瓶颈——**把数据尽量留在离计算单元近的地方**。
 
+
+
 ### 3.8 总结
 
 ```
@@ -423,7 +428,7 @@ FlashAttention：分块计算，中间结果留在 SRAM（片上）
 | **AI 芯片如何突破？**  | 数据流架构、大片上 SRAM、存算一体         |
 
 > 📌 **一句话总结**：冯·诺依曼瓶颈是计算机体系结构最根本的性能限制——**"计算快、搬运慢"**。它是理解从 CPU 缓存设计，到 AI 编译器算子融合，再到 FlashAttention 和新型 AI 芯片架构的**共同底层逻辑**。
->
+> 
 > **对 AI 编译器从业者而言**：几乎所有"性能优化"最终都可以追溯到同一个目标——**减少数据在内存与计算单元之间的搬运，即对抗冯·诺依曼瓶颈**。理解了这一点，就抓住了 AI 编译器性能优化的"第一性原理"。
 
 ### 3.9 附：wikipedia 原文 [Von Neumann architecture # Design limitations # Von Neumann bottleneck](https://en.wikipedia.org/wiki/Von_Neumann_architecture#Von_Neumann_bottleneck)
